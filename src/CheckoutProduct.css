@@ -1,0 +1,32 @@
+.checkoutProduct__rating {
+    margin-bottom: 10px;
+}
+
+.checkoutProduct {
+    width: 85%;
+    display: inline-block;
+}
+
+.checkoutProduct__image {
+    width: 45%;
+}
+
+.details {
+    font-size: 16px;
+}
+
+.countdown {
+
+    display: flex;
+
+}
+
+.contatore {
+    align-self: center;
+    margin-left: auto;
+}
+
+
+.buttonbot > a:hover {
+    transform: scale(1.01);
+}

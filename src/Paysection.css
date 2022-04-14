@@ -1,0 +1,116 @@
+.header_pay {
+  text-align: center;
+}
+
+.form {
+  text-align: center;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: initial;
+  width: -webkit-fill-available;
+}
+
+.lista__uscita {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+fieldset {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  /*height: 40px !important;*/
+}
+
+.paypal-button-tagline {
+  display: none !important;
+}
+
+.paypal{
+  display: inline-flex;
+  margin-left: 25px;
+} 
+
+.stripe{
+  display: inline-flex;
+  margin-left: 25px;
+} 
+
+.css-vqmohf-MuiButtonBase-root-MuiRadio-root:hover {
+
+  background-color: none !important;
+}
+
+.name__surname {
+  display: inline-flex;
+  line-height: 0px;
+
+}
+
+.nome__ritiro {
+  text-align: justify;
+  padding-right: 40px;
+}
+
+.cognome__ritiro {
+  text-align: justify;
+  border-left: 1px solid #9a9a9a;
+  padding-left: 40px;
+}
+
+
+.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root {
+  padding: 7px !important;
+ /* padding-left: 12px !important; */
+}
+
+.warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  background-image: url('https://i.imgur.com/Z8q7ww7.png');
+  background-repeat: no-repeat;
+  font-size: 14px;
+  padding: 7px;
+}
+
+.signinpay {
+  position: absolute;
+  bottom: 0px;
+  height: 100%;
+  text-align: -webkit-center;
+}
+
+.check {
+  max-width: 434px;
+  width: auto;
+}
+
+.ciek {
+
+  background-image: url("https://chinesehsc.org/html_images/chinese_money/enlargements/chinese.money.007.jpg");
+}
+
+@media only screen and (max-width: 760px) {
+  .check {
+    margin-left:0%;
+    margin-right:0%;
+    }
+}
+
+.demo_pay:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.6;
+  background-image: url('https://rangewriter.files.wordpress.com/2014/04/dsc_0802.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

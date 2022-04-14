@@ -1,0 +1,236 @@
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.container.addproducts > p {
+  font-size: small;
+  margin: 1px;
+}
+
+.select {
+  width: 20%;
+}
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  background-color: white;
+}
+
+.css-q8hpuo-MuiFormControl-root {
+  background-color: white;
+  width: 175px !important;
+}
+
+
+
+
+
+/*GIOCHI CON LA TRANSLAZIONE*/
+.item-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.item-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 200ms, transform 200ms;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 200ms, transform 200ms;
+}
+
+
+.rightprod {
+  width: 50%;
+  margin-right: 5%;
+  margin-left: 5%;
+  text-align: end;
+  position: relative;
+}
+
+.leftprod {
+  width: 50%;
+  text-align: left;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.addbrodi {
+  display: flex;
+  margin-bottom: 55px;
+}
+
+
+p {
+  font-size: 17px;
+}
+
+.photopreview {
+  max-width: 100%;
+  margin: 5px;
+}
+
+.toda-lista {
+  justify-content: center;
+  display: inline-flex;
+  width: auto;
+  height: auto;
+  border: 9px dashed rgb(234,237,237);
+  border-radius: 10px;
+  min-width: 225px; 
+}
+
+
+
+.css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root {
+height: 30px !important;
+}
+
+
+.button__photo {
+  width: 116px;
+  justify-self: self-end; 
+}
+
+
+
+
+h5 {
+  font-size: 16px;
+  text-align: justify;
+}
+
+/*
+.allblock {
+  background-color: white;
+  margin: 40px;
+  padding: 5px;
+  box-shadow: 0 0 5px 5px #888;
+}
+*/
+
+.css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {  
+  color: black !important;
+}
+
+.selectbox {
+  display: flex;
+  justify-content: center;
+}
+
+.city {
+  width: 50%;
+  text-align: initial;
+}
+
+.tipo {
+  text-align: end;
+}
+
+
+
+/*TUTTO STO CASINO PER FARE IN MODO DI AVERE L'IMMAGINE BACKGROUND OPACA, CSS NON HA UNA VERA E PROPRIA FUNZIONE DI OPACITY PER LE BACKGROUND IMAGE*/
+.demo-wrap {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.demo-wrap:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  background-image: url('https://images.unsplash.com/photo-1523791792980-5a03818413b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.demo-content {
+  position: relative;
+}
+
+.imagepre {
+  position: absolute;
+}
+
+.noleggio {
+  height: auto;
+  margin: 0 auto;
+  padding-top: 15%;
+  position: relative;
+}
+
+@media only screen and (max-width: 760px) {
+
+  .addbrodi {
+    display: block;
+    margin-bottom: 0px;
+  }
+
+  .leftprod {
+   width: 100%;
+   text-align: center; 
+   margin-left: 0%; 
+  }
+
+  .rightprod {
+   width: 100%; 
+   margin-right: 0%; 
+   display: block; 
+   text-align: center;
+   margin-left: 0%;
+  }
+
+  .button__photo {
+    margin-right: 0% !important;
+  }
+
+  .toda-lista {
+   width: 130px;
+   display: block;
+   min-width: none;
+  }
+
+  .container.addproducts {
+    text-align: -webkit-center;
+  }
+
+  .city {
+    width: 100%;
+    text-align: center;
+  }
+
+  .noleggio {
+    padding-top: 0%;
+  }
+
+  .imagepre {
+    position: relative;
+  }
+  
+}
+
+.add button {
+    background-color:  #e05d5d !important;
+  }
+  
+  
+.add button:hover {
+    background-color: #c68525 !important;
+  }

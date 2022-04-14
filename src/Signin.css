@@ -1,0 +1,120 @@
+.signin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: hidden;
+}
+
+.signin__container {
+    width: 40%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 5px solid #00A19D;
+    padding: 17px;   
+    background-color: #FFF8E5;
+}
+
+.signin__container > h1 {
+font-weight: 500;
+margin-bottom: 20px;
+}
+
+.signin__container >  h5 {
+    margin-bottom: 5px;
+}
+
+.signin__container > input {
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: #FFF8E5;
+    width: -webkit-fill-available;
+}
+
+.signin__container >  p {
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.signin__signInButton {
+    background: #FFB344;
+    border-radius:  2px;
+    height: 35px;
+    border: 1px solid;
+    margin-top: 10px;
+    width: 90px;
+    align-self: center;
+}
+
+.signin__registerButton {
+    border-radius: 2px;
+    height: 35px;
+    border: 1px solid;
+    align-self: center;
+    margin-top: .5rem;
+}
+.registrazione {
+    font-size: large;
+    display: contents;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 760px) {
+    .signin__container {
+        width: auto;
+    }
+
+}
+
+
+
+
+.Toastify__toast-container--top-right {
+    top: 12em !important;
+    right: -2px !important
+}
+
+.Toastify__toast-container--top-left {
+    top: 16em !important;
+    left: -2px !important
+}
+
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+    z-index: 999;
+    height: 4px !important;
+    margin: 1.5px !important;
+}
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+height: 40px;
+}
+
+.demo-signin {
+    position: absolute;
+    bottom: 0px;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .demo-signin:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0.6;
+    background-image: url('https://cdn.lifehack.org/wp-content/uploads/2016/08/09092801/feature-image6.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  
+  .signin-content {
+    position: relative;
+    margin-top: 3%;
+  }

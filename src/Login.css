@@ -1,0 +1,119 @@
+
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: hidden;
+}
+
+.login__container {
+    width: 40%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 5px solid #00A19D;
+    padding: 20px;   
+    background-color: #FFF8E5;
+    font-family: sans-serif;
+}
+
+.login__container > h1 {
+font-weight: 500;
+margin-bottom: 20px;
+}
+
+.login__container >  h5 {
+    margin-bottom: 5px;
+}
+
+.login__container >  input {
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: #FFF;
+    width: -webkit-fill-available;
+}
+
+.password >  input {
+    height: 30px;
+    background-color: #FFF;
+    width: -webkit-fill-available;
+}
+
+.login__container >  p {
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.login__signInButton {
+    background: #c68525 !important;
+    border-radius:  4px;
+    height: 35px;
+    border: 1px solid;
+    width: 90px;
+    align-self: center;
+    border: 1px solid !important;
+}
+
+.login__signInButton:hover {
+background-color: #740604 !important;
+}
+
+.login__registerButton {
+    background: #E05D5D;
+    border-radius: 2px;
+    width: 75px;
+    height: 35px;
+    border: 1px solid;
+    align-self: center;
+}
+.registrazione {
+    font-size: large;
+    display: contents;
+}
+
+
+.visibilty {
+    display: flex !important;
+    justify-content: right;
+    margin-top: -30px;
+}
+
+.resetpass {
+    margin: 25px;
+    text-align: center;
+}
+
+.demo-login {
+    position: absolute;
+    bottom: 0px;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .demo-login:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0.6;
+    background-image: url('https://rangewriter.files.wordpress.com/2014/04/dsc_0802.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .login-content {
+    position: relative;
+    margin-top: 5%;
+  }
+
+  @media only screen and (max-width: 760px) {
+    .login__container {
+        width: 87%;
+      }
+}

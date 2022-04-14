@@ -1,0 +1,136 @@
+@import url(https://fonts.googleapis.com/css?family=Satisfy); 
+@import url(https://fonts.googleapis.com/css?family=Six+Caps);
+
+.list__row {
+    width: 100%;
+    text-align: -webkit-center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .productlist {
+    align-items: center;
+    justify-content: flex-end;
+    margin: 1%;
+    background-color: white;
+    z-index: 1;
+    transition: transform .1s ease;   
+    box-shadow: 0 0 5px 5px #888;
+    width: 441px ;
+     
+  }
+
+  .headlist {
+    background-color: white;
+    font-family: sans-serif;
+    display: flex;
+    /* margin-bottom: -2rem; */
+    padding: 47px;
+    height: 20px;
+    font-size: 25px;
+    box-shadow: 0 0 5px 5px #888;
+    background-image: url(http://cdn30.us1.fansshare.com/image/redwallpapers/red-background-wallpaper-hd-wallpapers-red-wallpaper-hd-lobster-robin-sox-schedule-menu-nose-day-rocks-1437111797.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.headtext {
+ /*padding:5px;*/
+  margin-top: 30px;
+  width: 70%;
+  align-self: center;
+  font-family: fantasy;
+  font-size: 30px;
+  line-height: 35px;
+  }
+
+.home .headtext {
+  padding:2px;
+  width: 70%;
+  align-self: none;
+  font-family: fantasy;
+  font-size: 30px;
+  line-height: 35px;
+  }
+
+.buttonadd {
+  align-self: center;
+  width: 50%;
+  text-align: end;
+}
+
+.state {
+  font-weight: 1000;
+  font-size: 35px;
+}
+
+.product:hover {
+  transition: none !important;
+}
+
+.productlist > a:hover {
+  transform: scale(1.01);
+}
+
+.css-i4bv87-MuiSvgIcon-root:hover {
+  transform: scale(1.01);
+} 
+
+.datesinfo {
+  font-size: 13px;
+  line-height: normal;
+}
+
+.product__rating {
+  font-size: 15px;
+  line-height: normal;
+  font-weight: bolder;
+}
+
+.intro {
+  color: rgb(230, 200, 160);
+  font-family: 'Satisfy', cursive;
+  font-size: 3vh;
+  text-shadow: 1px 1px black;
+  transform: rotate(-10deg);
+}
+
+.intro--the {
+  transform: rotate(-10deg) translate(-20px, 15px);
+}
+
+.intro--num {
+  background: rgb(240, 200, 160);
+  border: 1px dotted rgb(20, 60, 80);
+  color: rgb(20, 60, 80);
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: bolder;
+  width: 50px;
+  position: absolute;
+  margin-top: -5px;
+  text-shadow: none;
+  transform: rotate(-10deg) translate(138px, -7px)
+}
+
+.pageprod .intro--num {
+  transform: rotate(-10deg) translate(82px, -20px)
+}
+
+
+.headlist button:hover { 
+  background-color:  #740604 !important;
+}
+
+
+.headlist button {
+  border: 1px solid;
+  align-self: center;
+  background-color: #c68525 !important;
+}
+
+@media only screen and (max-width: 500px) {
+  .intro--num {
+    transform: rotate(-10deg) translate(80px, -15px)
+  }
+}

@@ -1,0 +1,57 @@
+.checkout {
+    display: flex;
+    padding: 6px;
+    background-color: white;
+    height: max-content;
+    margin-top: -10px;
+}
+
+
+
+.checkout__ad {
+    width: 100%;
+}
+
+.checkout__left {
+    width: 50%;
+    align-self: center;
+
+}
+
+.checkout__right {
+    width: 50%;
+    display:flex;
+    align-items: center;
+}
+
+.checkout__title {
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    margin: 15px;
+}
+
+
+@media only screen and (max-width: 760px) {
+    .checkout {
+        display:block;
+    }
+
+    .checkout__left {
+        width: 100%;
+    }
+    
+    
+    .checkout__right {
+        width: 100%;
+        display:flex;
+    }
+
+}
+
+
+.list {
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    width: 100%;
+    /*justify-content: center;*/
+}

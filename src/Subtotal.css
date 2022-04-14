@@ -1,0 +1,21 @@
+.subtotal {
+    flex-direction: column;
+    justify-content: space-between;
+    height: fit-content;
+    margin-left: auto;
+    position: relative;
+    border-radius: 10px;
+    color: #FFF8E5;
+    font-size: medium;
+    font-weight: 800;
+    padding-bottom: 25px;
+}
+
+.subtotal>Button {
+    height: 37px;
+    color: #FFF8E5;
+    width: 100%;
+    border: 1px solid;
+    line-height: 13px;
+}
+

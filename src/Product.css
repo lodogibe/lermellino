@@ -1,0 +1,94 @@
+.product {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 1%;
+    background-color: white;
+    z-index: 1;
+    font-family: sans-serif;
+    transition: transform .1s ease;
+    box-shadow: 0 0 5px 5px #888;
+    padding: 5px 65px;
+    align-self: center;
+}
+
+.product__infolist {
+    margin-top: -15px;
+}
+
+.product:hover {
+    transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+  .imghome {
+    width: 305px !important;
+  }
+
+@media only screen and (max-width: 494px) {
+    .product {
+        width: auto;
+        padding: 3px 15px
+    }
+
+}
+
+@media only screen and (max-width: 350px) {
+
+    .imghome {
+        width: 262px !important;
+      }
+}
+
+.product > img {
+    height: 375px;
+    width: 100%;
+    object-fit: contain;
+    background-color: black;
+}
+
+.buttons {
+    border-radius: 5px !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+    font-size: 17px;
+    color:#FFF8E5 !important;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    background:#E05D5D !important
+}
+
+
+.buttonbot {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+
+}
+
+
+
+.MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root{
+
+    color: black;
+    border: 9px solid black;
+    margin-right: 5px;
+}
+
+.product__info {
+    text-align: start;
+    line-height: 5px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-weight: 500;
+}
+
+
+

@@ -1,0 +1,264 @@
+httpscodesandbox.iosxxi8tfile=demo.js (per dropdownmenu)
+
+INSTALLA e CREA APP
+
+npx create-react-app my-app
+cd my-app
+npm start
+
+
+COMPONENTI
+
+npm install firebase
+
+npm install @mui/material
+
+npm install @mui/icons-material
+
+import { Button } from '@mui/material';   (da IMPORTARE! non da installare)
+
+npm install react-currency-format --save
+
+npm install --save react-router-dom
+
+npm install --save react-toastify
+
+npm install @emotion/react / npm install @emotion/styled (se sbugga ancora)
+
+npm install react-confirm-alert --save
+
+npm i --save react-select
+
+npm install react-transition-group --save
+
+npm install moment (import moment from 'moment';)
+
+npm install react-image-gallery // # CSS @import "~react-image-gallery/styles/css/image-gallery.css";
+
+npm install --save react-date-range
+
+npm install --save moment react-moment
+
+npm install @stripe/react-stripe-js @stripe/stripe-js
+
+npm i js-cookie
+
+npm install react-i18next i18next --save
+
+//PER API SU HEROKU
+
+npm install dotenv -S    //per camuffare la password, l'email e la chiave di entrata alle APIs
+
+npm i cors //per comunicare dal front-end al nodemailer
+
+npm install axios //per comunicare dal front-end al nodemailer
+
+
+
+
+https://dev.to/jlong4223/how-to-implement-email-functionality-with-node-js-react-js-nodemailer-and-oauth2-2h7m  //tutorial DEV per email nodemailer e Gmail API
+
+
+@import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css"); (creando scss per animated icon setting)
+
+--------------------------------------------------------------------------------------------------------
+
+BYPASS 10 limite  di elementi in un vettore in FIREBASE
+
+const [products, setProduct] = useState([]);
+const ids = ['H11LlJsh3sObwORZhA0b','om9m0lU9HYWyOJZKvEdi','1AoHyHuSFcF01zoyXyTD','6xoBlxsRXUoyzBUcWl0F',
+'GJqthlmBGZaFAJqtC2jK','QNT3PxMfhNGg1RZnuqcq','RZgGoFZHyDAYaVZJWxGk','g4UO5P0EgtEqJnawwhXX','gyrZm8p0cEgJdDvTuB1g','mrscldfeYlkaSF151MpI',]
+
+useEffect(() => {
+    const saveFirebaseTodos = [];      
+    ids.forEach((element) => {
+    fetchMyAPI()
+    async function fetchMyAPI() {
+        const q = query(collection(db, "a"), where('__name__', '==', element));
+        const querySnapshot = await getDocs(q); 
+        querySnapshot.forEach((doc) => {
+        saveFirebaseTodos.push(({id: doc.id, ...doc.data()}));
+        /*console.log(doc.id, " => ", doc.data());*/
+        if (ids.length===saveFirebaseTodos.length) {
+            setProduct(saveFirebaseTodos) 
+            }
+        });
+    }})
+
+}, [])
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+//per avere i giorni
+
+var getDaysBetweenDates = function(startDate, endDate) {
+  var now = startDate.clone(), dates = [];
+
+  while (now.isSameOrBefore(endDate)) {
+      dates.push(now.format('DD/MM/YYYY'));
+      now.add(1, 'days');
+  }
+  return dates;
+};
+
+var startDate = moment('2021-01-01');
+var endDate = moment('2021-01-06');
+
+var dateList = getDaysBetweenDates(startDate, endDate);
+console.log(dateList);
+
+--------------------------------------------------------------------------------------------------------
+
+//PER AVERE LA DATA DI OGGI SCRITTA NELLA MANIERA CONVENZIONALE IN ITALIA
+
+    function join(t, a, s) {
+        function format(m) {
+           let f = new Intl.DateTimeFormat('it', m);
+           return f.format(t);
+        }
+        return a.map(format).join(s);
+     }
+     
+     let a = [{day: 'numeric'}, {month: 'long'}, {year: 'numeric'}];
+     let s = join(new Date, a, ' ');
+     console.log(s);
+
+--------------------------------------------------------------------------------------------------------
+
+//PER CREARE IL SISTEMA DI NASCONDI MOSTRA PASSWORD
+
+<Button onClick={google}   style={{backgroundColor: "white", color: "red", marginBottom: "9px",marginBottom: "9px",borderRadius: "7px",width: "inherit"}} variant="contained" size="medium"> Google login </Button>
+                
+                <Button  onClick={facebook} style={{backgroundColor: "#1877f2", color: "#fff", marginBottom: "9px",marginBottom: "9px",borderRadius: "7px",width: "inherit"}} variant="contained" size="medium"> Facebook login </Button>
+
+
+
+                     <div className="password">
+                <TextField style={{height: "40px"}}
+                id="outlined-textareaname"
+                        type={values.showPassword ? "text" : "password"}
+                        autoComplete="new-password"
+                        value={password} onChange={e => setPassword(e.target.value)} 
+                        InputProps={{  
+                        endAdornment:     
+                        <IconButton style={{zIndex: "999",marginLeft:"10px"}}
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        >
+                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>  }}
+                />
+                    
+                 {/*<input type='password' name='password' value={password} onChange={e => setPassword(e.target.value)} /> */}
+                
+                 </div>
+
+
+
+
+const [values, setValues] = useState({
+    password: "",
+    showPassword: false,
+  });
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+----------------------------------------------------------------------------------------
+  Nodemailer.js con google auth funzionante (se messo nella stessa cartella di node_modules e non in qualche sotto cartella) + .env di backup:
+
+const nodemailer = require('nodemailer');
+require("dotenv").config();
+const { google } = require('googleapis'); 
+
+// These id's and secrets should come from .env file.
+const CLIENT_ID = process.env.OAUTH_CLIENTID;
+const CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET;
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+const REFRESH_TOKEN = process.env.OAUTH_REFRESH_TOKEN;
+
+
+const oAuth2Client = new google.auth.OAuth2(
+  CLIENT_ID,
+  CLIENT_SECRET,
+  REDIRECT_URI
+);
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN }); 
+
+async function sendMail() {
+  console.log(process.env.EMAIL, process.env.WORD, process.env.OAUTH_CLIENTID, process.env.OAUTH_CLIENT_SECRET, process.env.OAUTH_REFRESH_TOKEN)
+  try {
+  const accessToken = await oAuth2Client.getAccessToken(); 
+
+    const transport = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type:"OAuth2",
+        user:process.env.EMAIL,
+        pass:process.env.WORD,
+        clientId:CLIENT_ID,
+        clientSecret:CLIENT_SECRET,
+        refreshToken:REFRESH_TOKEN,
+        accessToken:accessToken,
+      },
+    });
+
+    const mailOptions = {
+      from: 'lodovicogiberti93@gmail.com',
+      to: 'lodovico.giberti@libero.it',
+      subject: 'Hello from gmail using API',
+      text: 'Hello from gmail email using API',
+      html: '<h1>Hello from gmail email using API</h1>',
+    };
+
+    const result = await transport.sendMail(mailOptions);
+    return result;
+  } catch (error) {
+    return error;
+  }
+}
+
+sendMail()
+  .then((result) => console.log('Email sent...', result))
+  .catch((error) => console.log(error.message));
+
+
+/*
+TRANSLATION A MIA API SU HEROKU
+
+const sendTrans = async (e) => {
+  e.preventDefault();
+  console.log({ TransState});
+  const response = await fetch("https://hosteapitestlodux.herokuapp.com/tran", {
+    method: "POST",
+    headers : { 
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+      },
+    body: JSON.stringify({ TransState}),
+  })
+  .then((response) => response.json())
+  .then((data) => console.log(data)) ;}
+*/
+
+
+
+
+/// env
+EMAIL='***************'
+WORD='****************'
+OAUTH_CLIENTID=*******************
+OAUTH_CLIENT_SECRET=***************************
+OAUTH_REFRESH_TOKEN=*****************************************************
+----------------------------------------------------------------------------------------
+
+//PER SPLITTARE L'URL, E FARMI PASSARE LE IMMAGINI CROPPATE NELLA MANIERA CORRETTA
+
+var url = 'https://firebasestorage.googleapis.com/v0/b/ermellino-34a69.appspot.com/o/images%2Fkangdm.jpg?alt=media&token=6f0cad1e-626c-4ec8-8c7c-4e1eaae48e8d';
+var newURL = url.split('https://firebasestorage.googleapis.com');
+console.log('https://ik.imagekit.io/l3um0lstzxmw/tr:w-400,h-400' + newURL[1]);

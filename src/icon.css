@@ -1,0 +1,46 @@
+@import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css");
+.icon-btn {
+  padding: 1px;
+  border-radius: 10px;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.icon-btn .icon {
+  font-size: 19px;
+  transition: 200ms ease;
+}
+
+.icon-btn.light-theme {
+  color: #1a1a1a;
+  margin-left: 6px;
+}
+
+.icon-btn:after {
+  display: inline-block;
+  margin-left: -8px;
+  font-family: "Font Awesome 5 Free";
+  content: "\f0da";
+  font-weight: 900;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+}
+
+.icon-btn.set .icon {
+  transform: translateX(-5px) rotateZ(-90deg);
+}
+
+.icon-btn.set:after {
+  margin-left: 0;
+  opacity: 1;
+  transform: rotateZ(90deg);
+}
+/*# sourceMappingURL=icon.css.map */

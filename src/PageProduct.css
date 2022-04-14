@@ -1,0 +1,102 @@
+
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.pageproduct {
+    background-color: #fff;
+    display: flex;
+    padding: 25px;
+}
+.pageproduct__info {
+    text-align: start;
+    width: 50%;
+}
+.image-gallery {
+max-width: 900px;
+height: auto;
+}
+
+.image-gallery-thumbnails .image-gallery-thumbnails-container {
+text-align: start !important;
+}
+
+.pageproduct__right {
+    text-align: start;
+    margin-top: 25px;
+    width: 30%;
+}
+
+
+.vl {
+    border-left: 1px solid black;
+    left: 50%;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+.pageproduct__aggiungi {
+    justify-content: right;
+}
+
+.pageproduct__rating {
+    margin-top: 10px;
+}
+
+.rdrCalendarWrapper
+ { font-size: 11px !important;}
+
+
+
+ .image-gallery-slide {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: black;
+ }
+
+ .image-gallery-content .image-gallery-slide .image-gallery-image {
+    max-height: calc(80vh - 375px);
+}
+
+
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+    vertical-align: top;
+    width: 100%;
+    line-height: 0;
+    height: 100px;
+    object-fit: contain;
+    background-color: black; }
+
+    .image-gallery-content.fullscreen {
+        background: #000;
+        margin-top: 15%; }
+
+
+.infocaparra {
+    font-size: smaller;
+    margin-bottom: 5px;
+}
+
+.home__container {
+    min-height: 1200px;
+    width: inherit;
+}
+
+@media only screen and (max-width: 901px) {
+    .pageproduct {
+        display: block;
+    }
+
+    .pageproduct__info {
+        width: 100%;
+    }
+
+    .pageproduct__right {
+        width: auto;
+    }
+
+    
+.page__description {
+    padding-left: 0px;
+}
+  }
