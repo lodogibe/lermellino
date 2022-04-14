@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/lermellino/static/css/main.8a26a5dd.chunk.css",
+    "main.js": "/lermellino/static/js/main.d85946b8.chunk.js",
+    "main.js.map": "/lermellino/static/js/main.d85946b8.chunk.js.map",
+    "runtime-main.js": "/lermellino/static/js/runtime-main.fd088d8b.js",
+    "runtime-main.js.map": "/lermellino/static/js/runtime-main.fd088d8b.js.map",
+    "static/css/2.887e8b32.chunk.css": "/lermellino/static/css/2.887e8b32.chunk.css",
+    "static/js/2.dcabac61.chunk.js": "/lermellino/static/js/2.dcabac61.chunk.js",
+    "static/js/2.dcabac61.chunk.js.map": "/lermellino/static/js/2.dcabac61.chunk.js.map",
+    "static/js/3.a0e5fc2a.chunk.js": "/lermellino/static/js/3.a0e5fc2a.chunk.js",
+    "static/js/3.a0e5fc2a.chunk.js.map": "/lermellino/static/js/3.a0e5fc2a.chunk.js.map",
+    "index.html": "/lermellino/index.html",
+    "static/css/2.887e8b32.chunk.css.map": "/lermellino/static/css/2.887e8b32.chunk.css.map",
+    "static/css/main.8a26a5dd.chunk.css.map": "/lermellino/static/css/main.8a26a5dd.chunk.css.map",
+    "static/js/2.dcabac61.chunk.js.LICENSE.txt": "/lermellino/static/js/2.dcabac61.chunk.js.LICENSE.txt",
+    "static/media/barcode.a54ae03d.png": "/lermellino/static/media/barcode.a54ae03d.png",
+    "static/media/contacts.79cb4355.jpg": "/lermellino/static/media/contacts.79cb4355.jpg",
+    "static/media/font-awesome.min.css": "/lermellino/static/media/fontawesome-webfont.f691f37e.woff",
+    "static/media/logo.ddd7e19c.png": "/lermellino/static/media/logo.ddd7e19c.png",
+    "static/media/old-staff-removebg-preview.2046095b.png": "/lermellino/static/media/old-staff-removebg-preview.2046095b.png",
+    "static/media/ownorder.68a1762f.png": "/lermellino/static/media/ownorder.68a1762f.png",
+    "static/media/pappagallo.3f8722b4.jpg": "/lermellino/static/media/pappagallo.3f8722b4.jpg",
+    "static/media/pavone.1c0e40be.jpg": "/lermellino/static/media/pavone.1c0e40be.jpg",
+    "static/media/struzzo.31cc4513.jpg": "/lermellino/static/media/struzzo.31cc4513.jpg",
+    "static/media/user-icon.b89021c6.png": "/lermellino/static/media/user-icon.b89021c6.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fd088d8b.js",
+    "static/css/2.887e8b32.chunk.css",
+    "static/js/2.dcabac61.chunk.js",
+    "static/css/main.8a26a5dd.chunk.css",
+    "static/js/main.d85946b8.chunk.js"
+  ]
+}
