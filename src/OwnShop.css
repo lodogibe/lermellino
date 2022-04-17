@@ -29,7 +29,7 @@
     height: 20px;
     font-size: 25px;
     box-shadow: 0 0 5px 5px #888;
-    background-image: url(http://cdn30.us1.fansshare.com/image/redwallpapers/red-background-wallpaper-hd-wallpapers-red-wallpaper-hd-lobster-robin-sox-schedule-menu-nose-day-rocks-1437111797.jpg);
+    background-image: url("./image-background/redback.jpg");
     background-position: center;
     background-size: cover;
 }

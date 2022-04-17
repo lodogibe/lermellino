@@ -19,6 +19,7 @@ import Cookies from 'js-cookie';
 import { useTranslation } from "react-i18next";
 import { getDatabase, ref, child, get } from "firebase/database";
 import { context } from "./App.js";
+import background from "./image-background/redback.jpg"
 
 
 
