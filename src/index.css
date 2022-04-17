@@ -191,6 +191,36 @@ text-align: end;
   margin: 1px 1.5px 1px 1.5px;
 }
 
+
+/*per sistemare INPUT material UI textbox, DOPO UPLOAD SU GITHUB CHE VA A CAMBIARE NOME CLASSE*/
+
+ .css-qiwgdb { 
+  z-index: 9;
+  text-align: end;
+  }
+  
+  .css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input  { 
+    z-index: 9;
+  }
+  
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    z-index: 9;
+  }
+  
+  .css-1x5jdmq {
+    z-index: 9;
+    padding: 7px !important;
+    padding-left: 12px !important;
+  }
+  
+  
+  .css-1x5jdmq:-webkit-autofill {
+    border-radius: inherit;
+    height: 13px;
+    margin: 1px 1.5px 1px 1.5px;
+  }
+  
+
 /*gestisce l'active dei TextInput, senno lo fa blu gigante, cosi almeno lo gestisco*/
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: black !important;
@@ -203,6 +233,22 @@ text-align: end;
 }
 
 .css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: black !important;
+  border-width: 1px !important;
+}
+
+/*gestisce l'active dei TextInput, di quando è uploadato su GitHub che va a cambiare nome classe*/
+.MuiOutlinedInput-root .MuiInputBase-root .Mui-focused .MuiInputBase-colorPrimary .MuiInputBase-adornedStart .css-1ufn0jl {
+  border-color: black !important;
+  border-width: 1px !important;
+}
+
+.MuiOutlinedInput-root .Mui-focused .MuiInputBase-root .MuiInputBase-colorPrimary .MuiInputBase-formControl .MuiSelect-root .css-1v4ccyo {
+  border-color: black !important;
+  border-width: 1px !important;
+}
+
+.MuiOutlinedInput-root .MuiInputBase-root .MuiInputBase-colorPrimary .Mui-focused .MuiInputBase-formControl .css-1v4ccyo {
   border-color: black !important;
   border-width: 1px !important;
 }
