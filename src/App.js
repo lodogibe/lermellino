@@ -42,14 +42,16 @@ console.log('carrello salvato in localstorage:',JSON.parse(localStorage.getItem(
 //TENGO I DATI DI ACCESSO AL MIO FIREBASE NASCOSTI
 
 const firebaseConfig = {
+
+  databaseURL: "https://lermellino-1d498-default-rtdb.europe-west1.firebasedatabase.app",
   apiKey: process.env.REACT_APP_API_KEYS,
   authDomain: process.env.REACT_APP_AUTHDOMAIN,
   projectId: process.env.REACT_APP_PROJECTID,
-  databaseURL: process.env.REACT_DATABASEURL,
-  storageBucket: process.env.REACT_STORAGEBUCKET,
+  storageBucket: "gs://lermellino-1d498.appspot.com",
   messagingSenderId: process.env.REACT_MESSAGINGSENDERID,
   appId: process.env.REACT_APPID,
   measurementId: process.env.REACT_MEASUREMENTID
+
 };
 
 // Initialize Firebase
@@ -79,7 +81,7 @@ onAuthStateChanged(auth, user => {
       <div className="App">
       <ToastContainer />
         <Switch>
-        <Route path="/aboutus">
+        <Route path="/lermellino/aboutus">
           <Header />
 
     
@@ -89,7 +91,7 @@ onAuthStateChanged(auth, user => {
 
             <Footer />
             </Route>
-            <Route path="/rules">
+            <Route path="/lermellino/rules">
           <Header />
 
     
@@ -99,7 +101,7 @@ onAuthStateChanged(auth, user => {
 
             <Footer />
             </Route>
-            <Route path="/contacts">
+            <Route path="/lermellino/contacts">
           <Header />
 
             <Contacts> 
@@ -108,7 +110,7 @@ onAuthStateChanged(auth, user => {
 
             <Footer />
             </Route>
-        <Route path="/signin">
+        <Route path="/lermellino/signin">
           <Header />
 
     
@@ -118,7 +120,7 @@ onAuthStateChanged(auth, user => {
 
             </Route>
 
-          <Route path="/login">
+          <Route path="/lermellino/login">
             <Header />
           
       
@@ -127,7 +129,7 @@ onAuthStateChanged(auth, user => {
             
 
             </Route>
-          <Route path="/resetpassword">
+          <Route path="/lermellino/resetpassword">
 
       
             <Forgetpassword> 
@@ -135,7 +137,7 @@ onAuthStateChanged(auth, user => {
             
 
             </Route>
-        <Route path="/checkout">
+        <Route path="/lermellino/checkout">
               <Header />
 
         
@@ -144,7 +146,7 @@ onAuthStateChanged(auth, user => {
 
             <Footer />
           </Route>
-          <Route path="/ownshop">
+          <Route path="/lermellino/ownshop">
             <Header />
 
       
@@ -154,7 +156,7 @@ onAuthStateChanged(auth, user => {
 
             <Footer />
             </Route>
-            <Route path="/ownorders">
+            <Route path="/lermellino/ownorders">
           <Header />
 
           
@@ -164,7 +166,7 @@ onAuthStateChanged(auth, user => {
 
             <Footer />
             </Route>
-          <Route path="/addproducts">
+          <Route path="/lermellino/addproducts">
           <Header />
 
           
@@ -173,7 +175,7 @@ onAuthStateChanged(auth, user => {
             
 
             </Route>
-            <Route path="/dashboard">
+            <Route path="/lermellino/dashboard">
             <Header />
 
           
@@ -183,7 +185,7 @@ onAuthStateChanged(auth, user => {
 
             <Footer />
             </Route>
-            <Route path="/search/:slug">
+            <Route path="/lermellino/search/:slug">
           <Header />
 
           
@@ -193,7 +195,7 @@ onAuthStateChanged(auth, user => {
 
             <Footer />
             </Route>
-            <Route path="/pageproduct/:id">
+            <Route path="/lermellino/pageproduct/:id">
             <Header />
             
             
@@ -203,7 +205,7 @@ onAuthStateChanged(auth, user => {
 
             <Footer />
             </Route>
-            <Route path="/paysection">
+            <Route path="/lermellino/paysection">
             <Header />
 
             
@@ -213,11 +215,11 @@ onAuthStateChanged(auth, user => {
 
             </Route>
 
-            <Route path="/deletesub/:email">
+            <Route path="/lermellino/deletesub/:email">
               <DeleteSub></DeleteSub>
             </Route>
             
-            <Route path="/">
+            <Route path="/lermellino/">
             <Header />        
             <Home />       
             <Footer />

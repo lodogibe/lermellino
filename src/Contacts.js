@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Image from './contacts.jpg';
+import background from './image-background/image2.jpg';
 import './Contacts.css';
 import { Button } from '@mui/material';
 import Newsletter from "./Newsletter";
 import { useTranslation } from "react-i18next";
 import { context } from "./App.js";
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 
 export default function Contacts() {
 
@@ -151,9 +155,9 @@ const sendEmail = async (e) => {
 
 
 return <div className='contacts' style={{minHeight:"100%"}}>
-          <img className="home__photo" src={Image} alt="" />     
+          <img className="home__photo" src={background} alt="" />     
             <div className="footerdistance" style={{minHeight:"1000px"}}>   
-              <div className="home__row" style={{display:"block", marginTop:"-55.6%", textAlign: "-webkit-center"}}>             
+              <div className="home__row" style={{display:"block", marginTop:"-55%", textAlign: "-webkit-center"}}>             
                 <div className='text-on-image first'>
                   <p className="vintage vintage__top"> </p>
                   <p className="vintage vintage__bot" style={{fontSize: "calc(9vh + 20px)"}}>{t("Contatti")}</p>
@@ -167,23 +171,23 @@ return <div className='contacts' style={{minHeight:"100%"}}>
     <div className="direct-contact-container">
 
       <ul className="contact-list">
-        <li className="list-item"><i className="fa fa-map-marker fa-2x"> Sede legale: Via Angelo Duro, 3 - 20139 Milano </i></li>
+        <li className="list-item"><i> <FaMapMarkerAlt /> Sede legale: Via Angelo Duro, 3 - 20139 Milano </i></li>
 
-        <li className="list-item"><i className="fa fa-map-marker fa-2x"> Sede operativa: Via Spessa del Po, 8 - 20139 Milano </i></li>
+        <li className="list-item"><i> <FaMapMarkerAlt /> Sede operativa: Via Spessa del Po, 8 - 20139 Milano </i></li>
 
-        <li className="list-item"><i className="fa fa-map-marker fa-2x"> Sede operativa: Via Gladiatore, 10 - 20139 Roma </i></li>
+        <li className="list-item"><i> <FaMapMarkerAlt /> Sede operativa: Via Gladiatore, 10 - 20139 Roma </i></li>
         
-        <li className="list-item"><i className="fa fa-phone fa-2x">  02 89763234</i></li>
+        <li className="list-item"><i> <FaPhone />  02 89763234</i></li>
         
-        <li className="list-item"><i className="fa fa-envelope fa-2x"> lermellino@gmail.com</i></li>
+        <li className="list-item"><i> <FaEnvelope /> lermellino@gmail.com</i></li>
         
       </ul>
 
       <hr />
       <div className="col-md-4 col-sm-6 col-xs-12" style={{textAlign:"center"}}>
           <ul className="social-icons">
-            <li><a className="facebook" style={{backgroundColor:"black"}} href="#"><i className="fa fa-facebook"></i></a></li>
-            <li><a className="instagram" style={{backgroundColor:"black"}} href="#"><i className="fa fa-instagram"></i></a></li>  
+            <li><a className="facebook" style={{backgroundColor:"black"}} href="#"><FontAwesomeIcon icon={faFacebookF} /></a></li>
+            <li><a className="instagram" style={{backgroundColor:"black"}} href="#"><FontAwesomeIcon icon={faInstagram} /></a></li>  
           </ul>
         </div>
       <hr />

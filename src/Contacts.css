@@ -68,16 +68,12 @@ textarea {
     background-color: #ffffff96;
 }
 
-.fa-2x {
-  font-size: 1.2em !important;
-}
   
   /* Location, Phone, Email Section */
   .contact-list {
     list-style-type: none;
     margin-left: -30px;
     padding-right: 20px;
-    font-size: 15px;
   }
   
   .list-item {

@@ -6,12 +6,23 @@ import CheckoutProduct from "./CheckoutProduct";
 import barcode from "./barcode.png";
 import { context } from "./App.js";
 import { useTranslation } from "react-i18next";
+import background from './image-background/image8.jpg';
+import {
+    CSSTransition,
+    TransitionGroup,
+  } from 'react-transition-group';
 
 
 function Checkout() {
     const [{basket}, dispatch] = useStateValue();
     const { t } = useTranslation();
     const language = React.useContext(context);
+    const [items, setItems] = useState([
+        { id: 2, text: 'Buy eggs' },
+        { id: 3, text: 'Pay bills' },
+        { id: 4, text: 'Invite friends over' },
+        { id: 5, text: 'Fix the TV' },
+      ]);
 
 
     return (
@@ -29,11 +40,44 @@ function Checkout() {
             </div>
             <div className="home__container">
             <div className="footerdistance" style={{minHeight:"1170px"}}>
-            <img className="home__photo" src="https://img-prod.ilfoglio.it/2021/11/29/091843519-2b237430-a66a-4398-acd9-40d9efbc1b6e.jpg" alt="" />
-            <div className="home__row" style={{marginTop:"-52%"}} >
+            <img className="home__photo" src={background} alt="" />
+            <div className="home__row" style={{marginTop:"-55%"}} >
 
-            
-            <div className="list">
+
+            <TransitionGroup className="toda-lista">
+                {basket.map((item,index) => (     
+                  
+                <CSSTransition
+                  key={item}
+                  timeout={200}
+                  classNames="item"
+                >
+
+                <div key={item}>
+                <CheckoutProduct 
+                    key={item.id}
+                    id={item.id}
+                    title={item.title}
+                    image={item.image}
+                    price={item.price}
+                    city={item.city}
+                    tipo={item.tipo}
+                    totalday={item.totalday}
+                    pricerent={item.pricerent}
+                    caparra={item.caparra}
+                    startDate={item.startDate}
+                    endDate={item.endDate}
+                    preview={item.preview}
+                    idbuyer={item.idbuyer}
+                    createdon={item.CreatedOn}>
+                </CheckoutProduct>
+                </div>
+
+                </CSSTransition> ))
+                }
+            </TransitionGroup>
+
+            {/*<div className="list">
             {basket.map((item,index) => ( <CheckoutProduct 
             key={item.id}
             id={item.id}
@@ -51,7 +95,7 @@ function Checkout() {
             idbuyer={item.idbuyer}
             createdon={item.CreatedOn}>
             </CheckoutProduct> ))}
-            </div>
+            </div>*/}
             </div>
             </div>
             </div>

@@ -1,15 +1,16 @@
 import React from 'react';
 import './Rules.css';
 import { useTranslation } from "react-i18next";
+import background from './image-background/image8.jpg';
 
 export default function Rules() {
 
   const { t } = useTranslation();
 
   return <div className='rules' style={{minHeight:"100%"}}>     
-            <img className="home__photo" style={{position:"relative"}} src="https://global-uploads.webflow.com/5d7cb2fda3db082fa2313a36/6083433d71f01d2f3be6987e_second%20hand%20shop.jpeg" alt="" />   
+            <img className="home__photo" style={{position:"relative"}} src={background} alt="" />   
             <div className="footerdistance" style={{minHeight:"1000px"}}>       
-              <div className="home__row" style={{display:"block", marginTop:"-55.6%"}}>          
+              <div className="home__row" style={{display:"block", marginTop:"-55%"}}>          
                 <div className='text-on-image first'>
                   <p className="vintage vintage__top"></p>
                   <p className="vintage vintage__bot" style={{fontSize: "calc(9vh + 20px)"}}>{t("Regolamento")}</p>

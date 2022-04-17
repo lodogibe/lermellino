@@ -61,7 +61,7 @@ margin-bottom: 20px;
 }
 
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1200px) {
     .signin__container {
         width: auto;
     }
@@ -107,7 +107,7 @@ height: 40px;
     bottom: 0;
     width: 100%;
     opacity: 0.6;
-    background-image: url('https://cdn.lifehack.org/wp-content/uploads/2016/08/09092801/feature-image6.jpg');
+    background-image: url('image-background/image7.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

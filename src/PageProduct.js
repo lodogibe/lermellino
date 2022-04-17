@@ -18,6 +18,7 @@ import barcode from "./barcode.png"
 import { toast } from 'react-toastify';
 import { context } from "./App.js";
 import { useTranslation } from "react-i18next";
+import Loader from "./Loader";
 
 
 function PageProduct() {
@@ -32,6 +33,7 @@ function PageProduct() {
     const [endDate,setEndDate] = useState(new Date(today.setDate(today.getDate())));
     const db = getFirestore();
     const [products, setProduct] = useState([]);
+    const dbr = getDatabase();
     const auth = getAuth();
     const user = auth.currentUser;
     const [iduser,setId] = useState('');
@@ -49,6 +51,7 @@ function PageProduct() {
     const [textdeposit, setTextdeposit] = useState("");
     const language = React.useContext(context);
     const { t, i18n } = useTranslation();
+    const [showloader, setShowloader] = useState(false);
   
     //utilizza l'useContext per cambiare la lingua
     useEffect(() => {
@@ -185,6 +188,8 @@ function PageProduct() {
     //TUTTA SERIE DI CONTROLLI PER VERIFICARE SE IL PRODOTTO NON é IN UN ALTRO CARRELLO O é STATO ACQUISTATO/NOLEGGIATO MENTRE IL CLIENTE ERA GIA NELLA PAGINA DEL PRODOTTO
 
     const addtoBasket = () => {  
+
+    setShowloader(true)
     const timestamp = Date.now();
 
     console.log(basketlenght);
@@ -194,7 +199,7 @@ function PageProduct() {
   
         if (user && basketlenght < 5 && checkprodincart == false) {
 
-            // qui gli faccio rifare un controllo di sicurezza al database principale per vedere se nel mentre che lui guardava il prodotto qualcuno non ha finito un acquisto
+            // qui gli faccio rifare un controllo di sicurezza al database principale per vedere se nel mentre che lui guardava il prodotto qualcuno non ha acquisto questo prodotto
             fetchMyAPI()
             async function fetchMyAPI() {
             const docRef = doc(db, "products", id);
@@ -207,8 +212,6 @@ function PageProduct() {
             console.log(saveFirebaseTodos[0].Type);
             if(saveFirebaseTodos[0].State === 'DISPONIBILE') 
             {
-            console.log("ceee");
-            console.log(saveFirebaseTodos[0].datesbooked)
                 if(saveFirebaseTodos[0].Type === 'NOLEGGIO') 
                 { 
                     var found = "";
@@ -224,6 +227,7 @@ function PageProduct() {
                     checkothercarts(); //non sono state trovate date già prenotato nel mentre, quindi procedo a controllare i carrelli provvisori
                     else
                     {   //state trovate date già prenotato nel mentre, quindi faccio refreshare la pagina all'user per valutare le date disponibili
+                        setShowloader(false)
                         toast.warning("Siamo spiacenti, ma il prodotto è stato già prenotato per alcune delle date selezionate, ricarica la pagina e verifica le date ancora disponibili" , { 
                             position: "top-left",
                             autoClose: true,
@@ -240,6 +244,7 @@ function PageProduct() {
             }
             
             else { 
+                setShowloader(false)
                 toast.warning("Siamo spiacenti, ma il prodotto non è più disponibile" , { 
                     position: "top-left",
                     autoClose: true,
@@ -254,7 +259,7 @@ function PageProduct() {
             }
 
             } else { 
-                
+                setShowloader(false)
                 toast.warning("Siamo spiacenti, ma il prodotto non è più disponibile" , { 
                     position: "top-left",
                     autoClose: true,
@@ -338,11 +343,10 @@ function PageProduct() {
             switch (sentence) {
 
             case 'good' :
-            
+            setShowloader(false)
             writeUserData();
-                    function writeUserData() {
-                    const db = getDatabase();
-                    set(ref(db, 'users/' + iduser + '/' + id), {
+                    function writeUserData() {                  
+                    set(ref(dbr, 'users/' + iduser + '/' + id), {
                         id: id,
                         preview: products.Preview,
                         title: products.Name,
@@ -381,7 +385,7 @@ function PageProduct() {
                 break;
 
                 case 'articolo in vendita in un altro carrello':
-
+                    setShowloader(false)
                     toast.warning("Siamo spiacenti, articolo in vendita in un altro carrello, riprova tra qualche minuto" , { 
                         position: "top-left",
                         autoClose: true,
@@ -396,7 +400,7 @@ function PageProduct() {
                 break;
 
                 case 'articolo con date in comune in altro carrello':
-
+                    setShowloader(false)
                     toast.warning("Siamo spiacenti, articolo con date in comune in un altro carrello, riprova tra qualche minuto o cambia le date" , { 
                         position: "top-left",
                         autoClose: true,
@@ -418,7 +422,7 @@ function PageProduct() {
         else 
         { 
           if (!user) {
-
+            setShowloader(false)
             toast.error("Devi prima effettuare il login, per poter prenotare un prodotto nel carrello" , { 
                 position: "top-left",
                 autoClose: true,
@@ -430,7 +434,7 @@ function PageProduct() {
                 });
     
           } else if (basketlenght > 3) {
-
+            setShowloader(false)
             toast.error("Hai gia troppi articoli bloccati nel tuo carrello, bloccando i prodotti il massimo prenotabile per volta è di soli 3 articoli" , { 
                 position: "top-left",
                 autoClose: true,
@@ -443,7 +447,7 @@ function PageProduct() {
             
           }
           else { 
-            
+            setShowloader(false)
             toast.error("Questo articolo è già presente nel carrello, se è un noleggio e lo vuoi noleggiare un altra volta dovrai fare un altro carrello" , { 
                 position: "top-left",
                 autoClose: true,
@@ -474,7 +478,7 @@ useLayoutEffect(() => { getComments() },  [location])
 
     return (
         <div className="pageprod">
-
+        { showloader && <Loader /> } {/* loader di inizializzazione */}
         <div className="headlist"> 
         
         <div className="headtext" style={{textAlign: "start"}}>

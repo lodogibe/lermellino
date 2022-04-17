@@ -1,5 +1,5 @@
 {
-  "homepage": "https://lodux93.github.io/lermellino",
+  "homepage": "http://lodux93.github.io/lermellino",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -11,7 +11,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@mui/icons-material": "^5.0.1",
@@ -54,6 +54,7 @@
     "react-dom": "^17.0.2",
     "react-gallery-carousel": "^0.2.4",
     "react-i18next": "^11.16.1",
+    "react-icons": "^4.3.1",
     "react-image-gallery": "^1.2.7",
     "react-image-show": "^0.3.4",
     "react-images": "^1.2.0-beta.7",

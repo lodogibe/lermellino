@@ -1,6 +1,8 @@
 import React from 'react';
-import {Link, useHistory, useLocation} from "react-router-dom";
-import 'font-awesome/css/font-awesome.min.css';
+import {useLocation} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 function Footer() {
 
@@ -22,8 +24,8 @@ function Footer() {
 
           <div className="col-md-4 col-sm-6 col-xs-12">
             <ul className="social-icons">
-              <li><a className="facebook" href=""><i className="fa fa-facebook"></i></a></li>
-              <li><a className="instagram" href=""><i className="fa fa-instagram"></i></a></li>  
+              <li><a className="facebook" href=""><FontAwesomeIcon icon={faFacebookF} /></a></li>
+              <li><a className="instagram" href=""><FontAwesomeIcon icon={faInstagram} /></a></li> 
             </ul>
           </div>
         </div>

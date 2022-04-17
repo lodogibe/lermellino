@@ -6,9 +6,7 @@ import Pappagallo from './pappagallo.jpg';
 import Pavone from './pavone.jpg';
 import Struzzo from './struzzo.jpg';
 import { useTranslation } from "react-i18next";
-
-
-
+import background from './image-background/image7.jpg';
 
 export default function Aboutus() {
 
@@ -22,9 +20,9 @@ export default function Aboutus() {
 
 
   return <div className='aboutus' style={{minHeight:"100%"}}>   
-          <img className="home__photo" style={{position:"relative"}} src="https://www.wtskiphire.co.uk/latest-news/img/antique-film-camera-photo.jpg" alt="" />   
+          <img className="home__photo" style={{position:"relative"}} src={background} alt="" />   
           <div className="footerdistance" style={{minHeight:"1000px"}}>       
-            <div className="home__row" style={{display:"block", marginTop:"-65.7%"}}>    
+            <div className="home__row" style={{display:"block", marginTop:"-55%"}}>    
               <div className='text-on-image section'>
                 <p className="vintage vintage__top"></p>
                 <p className="vintage vintage__bot" style={{fontSize: "calc(9vh + 20px)"}}>{t("Chi siamo")}</p>

@@ -111,6 +111,7 @@ margin: 5px;
     font-size: 17px;
     font-weight: 650;
     text-decoration: none;
+    text-align: justify;
 }
 .header__optionBasket {
     display: grid;
@@ -324,7 +325,7 @@ background-color:  #c68525 !important;
 .social-icons a{
   background-color:#eceeef;
   color:#818a91;
-  font-size:16px;
+  font-size:20px;
   display:inline-block;
   line-height:44px;
   width:44px;

@@ -29,18 +29,18 @@ export default function Paypal({name,surname,props,total,email, idbuyer, caparra
   const [showloader, setShowloader] = useState(false);
   
   const location = {
-    pathname: '/',
+    pathname: '/lermellino/',
     state: { fromCheckout: true }
   }
 
 //faccio il resoconto di ogni singolo ordine in una sola stringa per poter archiviare e mandare il resoconto via email in html
   useEffect(() => {
-    html = "<h2> Resoconto del suo ordine eseguito il: " + s + " </h2> <br> <h3> Spesa totale: <h2> " + total + " <h2> </h3> <br> <h3> Caparra totale: <h2> " + caparra + " <h2> </h3> <br> <h3> Persona delegata al ritiro (presentarsi con documento di identita valido: " + name + " " + surname + " </h3>  <br> <h2> Lista delle sue operazioni: </h2>  <br> <br> <p> Copyright &copy; All Rights Reserved by ERMELLINO S.P.A. </p>"           
+    html = "<h2> Resoconto del suo ordine eseguito il: " + s + " </h2> <br> <h3> Spesa totale: <h2> " + total + " <h2> </h3> <br> <h3> Caparra totale: <h2> " + caparra + " <h2> </h3> <br> <h3> Persona delegata al ritiro (presentarsi con documento di identita valido: " + name + " " + surname + " </h3>  <br> <h2> Lista delle sue operazioni: </h2>  <br> "           
     for(var i = 0; i < props.length; i++) 
     {
       if(props[i].tipo === 'NOLEGGIO')
       {
-      info = "Id prodotto: " + props[i].id + " / Nome articolo: " + props[i].title + " / Tipo : Noleggio / Data inizio noleggio: " + props[i].startDate + " - Data fine noleggio: " + props[i].endDate + " / Caparra: " + props[i].caparra;
+      info = "<br> Id prodotto: " + props[i].id + " / Nome articolo: " + props[i].title + " / Tipo : Noleggio / Data inizio noleggio: " + props[i].startDate + " - Data fine noleggio: " + props[i].endDate + " / Caparra: " + props[i].caparra;
       allinfo = {id: props[i].id, titolo: props[i].title, tipo: "Noleggio", caparra: props[i].caparra, datainizio: props[i].startDate, datafine: props[i].endDate, prezzo: props[i].price, foto: props[i].image[0], data: s}
       infoprod.push(info) //pusho le info in questo modo per avere la lista in vettori 
       allinfoS.push(allinfo);
@@ -49,7 +49,7 @@ export default function Paypal({name,surname,props,total,email, idbuyer, caparra
       console.log(allinfoS)
       }
       else {
-      info = "Id prodotto: " + props[i].id + " / Nome articolo: " + props[i].title + " / Nome articolo: " +  props[i].price + " / Tipo : Acquisto " ;
+      info = "<br> Id prodotto: " + props[i].id + " / Nome articolo: " + props[i].title + " / Nome articolo: " +  props[i].price + " / Tipo : Acquisto " ;
       allinfo = {id: props[i].id, titolo: props[i].title, tipo: "Acquisto", prezzo: props[i].price, foto: props[i].image[0], data: s }
       infoprod.push(info)
       allinfoS.push(allinfo);
@@ -128,7 +128,7 @@ export default function Paypal({name,surname,props,total,email, idbuyer, caparra
                 //setto l'id dell'ordine che poi spedisco per email al cliente
                 console.log(docRef.id)
                 mailerState.subject = "Ricevuta ordine: " + docRef.id;
-                mailerState.html = html;
+                mailerState.html = html + "<br> <p> Copyright &copy; All Rights Reserved by ERMELLINO S.P.A. </p>";
               }).then(() => { 
               submitEmail();
               })

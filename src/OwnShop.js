@@ -8,6 +8,7 @@ import barcode from "./barcode.png"
 import { collection, getDocs, getFirestore, query, orderBy, where} from "firebase/firestore";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useTranslation } from "react-i18next";
+import background from './image-background/image3.jpg';
 import { context } from "./App.js";
 
 
@@ -79,15 +80,15 @@ const getdata = () => {
             <span className="intro">{t("Stato dei tuoi articoli")}</span>
             </div>
             <div className="buttonadd">
-            <Link to="/addproducts">
+            <Link to="/lermellino/addproducts">
             <Button variant="contained"> {t("Aggiungi articolo")} </Button>
             </Link>
             </div>
             </div>
             <div className="home__container">
-            <img className="home__photo" src="https://ideas.rejuvenation.com/content/images/2018/07/160729_Y2016B7_A-V_Hardware_V1_BRIGHT_6697.jpg" alt="" />
+            <img className="home__photo" src={background} alt="" />
             <div className="footerdistance" style={{minHeight:"1000px"}}> 
-            <div className="home__row" style={{marginTop:"-65.5%"}}  >
+            <div className="home__row" style={{marginTop:"-55%"}}  >
                 {products.map((value, key) =>
                  <div className="productlist" key={key} >
                     <div className="product" style={{boxShadow:"none",transform: "none"}}>
@@ -109,7 +110,7 @@ const getdata = () => {
                 </div>   
             <img src={value.Img[0]} alt="" />
             <div className="hovereye">
-            <Link to={`/pageproduct/${value.id}`} style={{height:"40px"}}> <VisibilityIcon style={{color:"black",border:"1px solid black",borderRadius:"9px",width:"50%",height:"38px"}} />
+            <Link to={`/lermellino/pageproduct/${value.id}`} style={{height:"40px"}}> <VisibilityIcon style={{color:"black",border:"1px solid black",borderRadius:"9px",width:"50%",height:"38px"}} />
            </Link>
            </div>
         </div>  

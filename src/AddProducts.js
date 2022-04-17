@@ -21,6 +21,7 @@ import imageCompression from "browser-image-compression";
 import { toast } from 'react-toastify';
 import Loader from "./Loader";
 import { useTranslation } from "react-i18next";
+import logopic from "./piclogo.jpg"
 
 
 
@@ -315,7 +316,7 @@ const handleCity = (event) => {
                 PreviewEN: previewEN, 
             }).then(() => {
               setShowloader(false)
-                history.push('/ownshop')
+                history.push('/lermellino/ownshop')
             })} catch (e) {
               setShowloader(false)
                 console.error("Error adding document: ", e);
@@ -338,7 +339,7 @@ const handleCity = (event) => {
           <div className="demo-wrap">
           <div className="demo-content">
             <div className='login'>
-            <Link to="/">
+            <Link to="/lermellino/">
             <img className="login_logo"
             src={logo} alt="logo"  width="160" height="118" />
             </Link>     
@@ -456,7 +457,7 @@ const handleCity = (event) => {
                 <div className="imagepre">
                 <Button onClick={handleClick} className="button__photo" style={{border:"1px solid #337ab7", width: "145px",marginBottom:"5px",marginTop:"10px",backgroundColor:"white"}}> {t("Carica foto")} </Button>
                 <div className="separatore">
-                <img src="https://www.windowsteca.net/wp-content/uploads/2016/09/Microsoft-Foto-730x430.jpg"   style={{width:"145px"}} />
+                <img src={logopic}   style={{width:"145px"}} />
                 <input type="file" multiple onChange={handleChange} ref={hiddenFileInput} style={{display: 'none'}} />
                 <p> *({t("devi caricare almeno una foto, fino ad un massimo di 5")}) </p>
                 </div>

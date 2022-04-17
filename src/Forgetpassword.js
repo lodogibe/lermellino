@@ -4,7 +4,7 @@ import logo from './logo.png';
 import {Link, useHistory} from "react-router-dom";
 import {getAuth, sendPasswordResetEmail} from 'firebase/auth';
 import { Button } from '@mui/material';
-import TextField from '@mui/material/TextField';
+
 
 function Forgetpassword() {
     const [showText, setShowText] = useState(false);
@@ -27,7 +27,7 @@ function Forgetpassword() {
             setShowText(true);
             
             setTimeout(() =>
-            history.push("/login"),3000)
+            history.push("/lermellino/login"),3000)
     
         }).catch((e) => alert(e.message))
         .finally(() => setLoading(false))
@@ -37,7 +37,7 @@ function Forgetpassword() {
     return (
         <div className="demo_resetpassword">
         <div className='resetpassword' style={{marginTop: "5%"}}>
-             <Link to="/">
+             <Link to="/lermellino/">
             <img className="login_logo"
             src={logo} alt="logo"  width="160" height="118" />
             </Link>      

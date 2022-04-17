@@ -86,10 +86,10 @@ console.log(dates);
             label: 'Yes',
             onClick: () =>   fetchMydelete().then(() => {
               if (whatis === "comments") {
-                history.push(`/pageproduct/${idpost}`)
+                history.push(`/lermellino/pageproduct/${idpost}`)
               }
             else {
-              history.push(`/pageproduct/${idpost}`) }}) 
+              history.push(`/lermellino/pageproduct/${idpost}`) }}) 
           },
           {
             label: 'No',

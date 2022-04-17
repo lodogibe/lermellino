@@ -12,6 +12,7 @@ import Cookies from 'js-cookie';
 import { useTranslation } from "react-i18next";
 import { context } from "./App.js";
 import Loader from "./Loader";
+import background from "./image-background/image4.jpg";
 
 
 //importo il context dall'app in modo di avere lo state impostato sull'app in modo che se rientro nell'home non riesce il pop-up (in caso di rifiuto di cookies ovviamente)
@@ -312,7 +313,7 @@ function Home() {
                 </div>
                 }
                 <div className="footerdistance" style={{minHeight:"1000px"}}>
-                <img className="home__photo" src="https://img5.goodfon.com/original/1920x1080/8/17/instrumenty-starye-veshchi-retro.jpg" alt="" />
+                <img className="home__photo" src={background} alt="" />
                 {showallprod === false && 
                 <div className="home__row">
                 <div className='text-on-image' style={{paddingLeft: "30px"}}>

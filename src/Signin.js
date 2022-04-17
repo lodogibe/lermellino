@@ -52,7 +52,7 @@ const [values, setValues] = useState({
 
 //variabile di riassegnazione per far apparire il messaggio di benvenuto
 const location = {
-    pathname: '/',
+    pathname: '/lermellino/',
     state: { fromLogin: 'signin' }
   }
 
@@ -151,7 +151,7 @@ const register = e => {
                 });
             signOut(auth)
             setTimeout(() =>
-            history.push("/login"),5000)
+            history.push("/lermellino/login"),5000)
         })
     }).catch((e) => 
     
@@ -213,7 +213,7 @@ const register = e => {
       <div className="demo-signin">
       <div className="signin-content">
         <div className='signin'>
-            <Link to="/">
+            <Link to="/lermellino/">
             <img className="signin_logo"
             src={logo} alt="logo"  width="160" height="118" />
             </Link>      
@@ -268,7 +268,7 @@ const register = e => {
                 <Button  onClick={facebook} style={{backgroundColor: "#1877f2", color: "#fff", marginBottom: "9px",marginBottom: "9px",borderRadius: "7px", lineHeight: "inerith", width: "175px" , alignSelf: "center"}} variant="contained" size="medium"> Facebook login </Button>
 
                 <div className="registrazione"> <p> {t("Hai gia un account?")} </p>
-                <Link to="/login">
+                <Link to="/lermellino/login">
                     {t("fai il login")}!
                 </Link>
                 </div>

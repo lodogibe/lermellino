@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getAuth} from 'firebase/auth';
 import { collection, getDocs, getFirestore, query, where} from "firebase/firestore";
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import ownorderpic from './ownorder.png';
+import background from './image-background/image1.jpg';
 import { useTranslation } from "react-i18next";
 import { context } from "./App.js";
 
@@ -84,8 +84,8 @@ const getdata = () => {
             </div>
             <div className="home__container">
             <div className="footerdistance" style={{minHeight:"1170px"}}>
-            <img className="home__photo" src={ownorderpic} alt="" />
-            <div className="home__row" style={{marginTop:"-65.5%"}}  >
+            <img className="home__photo" src={background} alt="" />
+            <div className="home__row" style={{marginTop:"-55%"}}  >
             {infoprod.map((value, key) => 
                  <div className="productlist" key={key} >
                     <div className="product" style={{boxShadow:"none",transform: "none"}}>
@@ -129,7 +129,7 @@ const getdata = () => {
                 </div>   
             <img src={value.foto} alt="" />
             <div className="hovereye">
-            <Link to={`/pageproduct/${value.id}`} style={{height:"40px"}}> <VisibilityIcon style={{color:"black",border:"1px solid black",borderRadius:"9px",width:"50%",height:"38px"}} />
+            <Link to={`/lermellino/pageproduct/${value.id}`} style={{height:"40px"}}> <VisibilityIcon style={{color:"black",border:"1px solid black",borderRadius:"9px",width:"50%",height:"38px"}} />
            </Link>
            </div>
            <div className="ordine">

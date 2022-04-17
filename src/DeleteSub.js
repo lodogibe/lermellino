@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import { useParams} from "react-router-dom";
 import { getFirestore, doc, deleteDoc, getDoc} from "firebase/firestore";
-import Newsletter from './Newsletter';
+
 
 
 

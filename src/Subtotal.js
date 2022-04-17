@@ -18,7 +18,7 @@ function Subtotal() {
     const gotopay = () => {
         
         if(basket.length > 0)
-        history.push('/paysection')
+        history.push('/lermellino/paysection')
 
         else 
         {

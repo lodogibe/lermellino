@@ -86,7 +86,7 @@ const addComment = (text, name, idpost, Date, type, email, iduser) => {
               IDuser: iduser,
               whatis: "comments",
           }).then(() => {
-            history.push(`/pageproduct/${idpost}`)
+            history.push(`/lermellino/pageproduct/${idpost}`)
           })} catch (e) {
               console.error("Error adding document: ", e);
             }  
@@ -104,7 +104,7 @@ const addComment = (text, name, idpost, Date, type, email, iduser) => {
   }
   
   fetchMyedit().then(() => {
-    history.push(`/pageproduct/${idpost}`)
+    history.push(`/lermellino/pageproduct/${idpost}`)
   })
   } catch (e) {
     console.error("Error adding document: ", e);
@@ -125,7 +125,7 @@ const addComment = (text, name, idpost, Date, type, email, iduser) => {
             IDuser: iduser,
             whatis: "replies",
         }).then(() => {
-          history.push(`/pageproduct/${idpost}`)
+          history.push(`/lermellino/pageproduct/${idpost}`)
         })} catch (e) {
             console.error("Error adding document: ", e);
           }  

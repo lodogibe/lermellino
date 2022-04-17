@@ -6,11 +6,12 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useTranslation } from "react-i18next";
 import { context } from "./App.js";
 
+
 function Product({id,tipo,title,preview,image,price,priceday,city,previewEN,titleEN}) {
 
     let history = useHistory();
     const type = tipo;
-    const getprodotto = () => {history.push(`/pageproduct/${id}`)}
+    const getprodotto = () => {history.push(`/lermellino/pageproduct/${id}`)}
     const [convertedText, setConvertedText] = useState('');
     const [titleconvertedText, setTitleConvertedText] = useState('');
     const { t } = useTranslation();

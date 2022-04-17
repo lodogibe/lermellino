@@ -58,7 +58,7 @@ useEffect(() => {
  
 
 return (
-        <div className="product" style={{transform: "none"}}>
+        <div className="product" style={{transform: "none",  position: "relative"}}>
         <div className="product__info" >
         <div className="countdown">
         <h4>{tipo === "VENDO" ? "ACQUISTA" : "NOLEGGIA"} </h4>
@@ -93,7 +93,7 @@ return (
         </div>   
     <img src={image} className="imghome" />     
     <div className="buttonbot">
-    <Link to={`/pageproduct/${id}`} style={{marginRight:"5px",height:"36px"}}> <VisibilityIcon style={{color:"black",border:"1px solid white",borderRadius:"9px",width:"100%",height:"34.035px"}} />
+    <Link to={`lermellino/pageproduct/${id}`} style={{marginRight:"5px",height:"36px"}}> <VisibilityIcon style={{color:"black",border:"1px solid white",borderRadius:"9px",width:"100%",height:"34.035px"}} />
     </Link>
     <Button variant="outlined" startIcon={<DeleteIcon />} onClick={removefromBasket} >Rimuovi articolo </Button>
     </div>

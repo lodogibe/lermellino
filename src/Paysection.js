@@ -105,13 +105,13 @@ export default function Paysection() {
   
   //meccanismo di rispedizione alla home page quando il carrello va a 0
   const location = {
-       pathname: '/',
+       pathname: '/lermellino/',
       state: { fromCart: true }
     }
 
     return (      
         <div className="signin ciek">
-            <Link to="/">
+            <Link to="/lermellino/">
             <img className="signin_logo"
             src={logo} alt="logo"  width="160" height="118" />
             </Link>      

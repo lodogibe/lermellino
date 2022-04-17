@@ -98,7 +98,7 @@ const acceptprod = (id,index) => {
                     </div>
                 </div>   
             <img src={value.Img[0]} alt="" />
-            <Link to={`/pageproduct/${value.id}`} style={{height:"40px"}}> <VisibilityIcon style={{color:"black",border:"1px solid black",borderRadius:"9px",width:"50%",height:"38px"}} />
+            <Link to={`/lermellino/pageproduct/${value.id}`} style={{height:"40px"}}> <VisibilityIcon style={{color:"black",border:"1px solid black",borderRadius:"9px",width:"50%",height:"38px"}} />
            </Link>
         </div>  
            

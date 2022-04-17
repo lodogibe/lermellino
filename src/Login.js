@@ -11,6 +11,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { useTranslation } from "react-i18next";
 import { context } from "./App.js";
 
+
 function Login() {
 
 const [email, setEmail] = useState('');
@@ -51,7 +52,7 @@ const [values, setValues] = useState({
 
 //variabile di riassegnazione per far apparire il messaggio di benvenuto
 const location = {
-    pathname: '/',
+    pathname: '/lermellino/',
     state: { fromLogin: true }
   }
 
@@ -69,7 +70,7 @@ const logIn = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined, })
-
+                setLoading(false);
             break;
         case 'Firebase: Error (auth/invalid-email).' :
             toast.error("Email inserita non valida",  {
@@ -80,6 +81,7 @@ const logIn = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined, })
+                setLoading(false);
             break;
 
         case 'Firebase: Error (auth/user-not-found).' :
@@ -91,6 +93,7 @@ const logIn = () => {
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined, })
+                    setLoading(false);
                 break;
 
         case 'Firebase: Password should be at least 6 characters (auth/weak-password).' :
@@ -103,7 +106,22 @@ const logIn = () => {
                     draggable: true,
                     progress: undefined,
                     });
+                    setLoading(false);
                 break;   
+
+        case 'Firebase: Error (auth/wrong-password).' :
+            toast.warn('La password inserita non è corretta', {
+                position: "top-left",
+                autoClose: true,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+                setLoading(false);
+            break; 
+
         default:
             alert(e.message)
     }})
@@ -115,7 +133,7 @@ const logIn = () => {
         <div className="login-content">
         <div className='login'>
 
-            <Link to="/">
+            <Link to="/lermellino/">
             <img className="login_logo"
             src={logo} alt="logo"  width="160" height="118" />
             </Link>      
@@ -151,7 +169,7 @@ const logIn = () => {
             </div>
             
                 <div className="resetpass">
-                    <Link to="./resetpassword">
+                    <Link to="lermellino/resetpassword">
                    {t("Password dimenticata?")}
                     </Link>
                 </div>
@@ -162,7 +180,7 @@ const logIn = () => {
            
 
                 <div className="registrazione"> <p> {t("Non ti sei ancora registrato/a")} ? </p>
-                <Link to="./signin">
+                <Link to="lermellino/signin">
                 <Button style={{color: "#1877f2", marginBottom: "9px",borderRadius: "7px", border: "2px solid", backgroundColor: "#fff"}} type="submit"  className='signin__registerButton'> {t("Registrati")} </Button>
                 </Link>
                 </div> 

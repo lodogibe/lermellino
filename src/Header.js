@@ -74,7 +74,7 @@ function Header() {
     //per fare ricerca di un oggetto nella barra in alto 
     const parentToChild = () => {
         const search = {
-            pathname: `/search/${searchTerm}`,
+            pathname: `/lermellino/search/${searchTerm}`,
           }
         history.push(search)
       }
@@ -99,7 +99,7 @@ function Header() {
       });
       if (user != null) {
         setShowResults(false)
-          if (user.email === 'lodovico.giberti@libero.it') //ho impostato la mia email come admin per vedere la dashboard ed accettare i prodotti
+          if (user.email === 'giberti.21638@iisvolta.it') //ho impostato la mia email come admin per vedere la dashboard ed accettare i prodotti
           {
           setShowResults(true)
           }
@@ -198,14 +198,14 @@ function Header() {
           dispatch({
             type: 'CLEAR_BASKET'});
 
-            history.push("/")
+            history.push("/lermellino/")
           }).catch((error) => {
             // An error happened.
           });
     }
 
     const dashboard = () => {
-          history.push("/dashboard")
+          history.push("/lermellino/dashboard")
         }
   
 
@@ -258,22 +258,22 @@ function Header() {
 //Header senza login
     if (isSignedin === false) {
     return (
-        <div className={classheader}  style={{display: location.pathname === "/paysection" || location.pathname === "/signin" || location.pathname === "/login" ? "none" : "" }}>
+        <div className={classheader}  style={{display: location.pathname === "/lermellino/paysection" || location.pathname === "/lermellino/signin" || location.pathname === "/lermellino/login" ? "none" : "" }}>
         <div style={{display:"flex",justifyContent: "center"}}>
-        <Link to="/">
+        <Link to="/lermellino/">
             <img className="header_logo"
             src={logo} alt="logo"  width="160" height="118" />
         </Link>
         <div className="listmenu">
-        <Link to="/aboutus">
+        <Link to="/lermellino/aboutus">
         {/*il pathname a condizione dello stile è per identificare la section dell'user*/}
-        <div className='listitem'  style={{color: location.pathname === "/aboutus" ? 'rgb(198, 133, 37)' : '' }}> {t("Chi siamo")} </div>
+        <div className='listitem'  style={{color: location.pathname === "/lermellino/aboutus" ? 'rgb(198, 133, 37)' : '' }}> {t("Chi siamo")} </div>
         </Link>
-        <Link to="/rules">
-        <div className='listitem' style={{color: location.pathname === "/rules" ? 'rgb(198, 133, 37)' : '' }}> {t("Regolamento")} </div>
+        <Link to="/lermellino/rules">
+        <div className='listitem' style={{color: location.pathname === "/lermellino/rules" ? 'rgb(198, 133, 37)' : '' }}> {t("Regolamento")} </div>
         </Link>
-        <Link to="/contacts">
-        <div className='listitem' style={{color: location.pathname === "/contacts" ? 'rgb(198, 133, 37)' : '' }}> {t("Contatti")} </div>
+        <Link to="/lermellino/contacts">
+        <div className='listitem' style={{color: location.pathname === "/lermellino/contacts" ? 'rgb(198, 133, 37)' : '' }}> {t("Contatti")} </div>
         </Link>
         <span className="flag-icon flag-icon-it" onClick={() => {i18n.changeLanguage("it");cookieslan("it");setLanguage("it")}}> </span>
         <span className="flag-icon flag-icon-gb" onClick={() => {i18n.changeLanguage("en");cookieslan("en");setLanguage("en")}}></span>
@@ -304,13 +304,13 @@ function Header() {
             <div className="header__nav">
                     <div className='header__option'>
                         <span className='header__optionLineOne'> {t("Benvenuto fratello/sorella")} </span>
-                        <Link to='/signin' >
+                        <Link to='/lermellino/signin' >
                         <span className='header__optionLineTwo'> {t("Registrati!")} </span>
                         </Link>
                     </div>
             <div className='header__option'>
                     <span className='header__optionLineOne'> {t("Sei gia registrato/a?")}  </span>
-                <Link to='/login' >
+                <Link to='/lermellino/login' >
                     <span className='header__optionLineTwo'> Log in </span>
                 </Link>
                 </div>
@@ -324,22 +324,22 @@ function Header() {
     else {
 
         return (
-            <div className={classheader} style={{display: location.pathname === "/paysection" || location.pathname === "/signin" || location.pathname === "/login" || location.pathname === "/addproducts" ? "none" : "" }}  > {/* style={{display: location.pathname === "/paysection" ? "none" : "" }}   condizione nello style diretto */} 
+            <div className={classheader} style={{display: location.pathname === "/lermellino/paysection" || location.pathname === "/lermellino/signin" || location.pathname === "/lermellino/login" || location.pathname === "/lermellino/addproducts" ? "none" : "" }}  > {/* style={{display: location.pathname === "/lermellino/paysection" ? "none" : "" }}   condizione nello style diretto */} 
             <div style={{display:"flex",justifyContent: "center"}}>
-            <Link to="/">
+            <Link to="/lermellino/">
             <img className="header_logo"
             src={logo} alt="logo"  width="160" height="118" />
               </Link>
               <div className="listmenu">
-              <Link to="/aboutus">
+              <Link to="/lermellino/aboutus">
                 {/*il pathname a condizione dello stile è per identificare la section dell'user*/}
-              <div className='listitem' style={{color: location.pathname === "/aboutus" ? 'rgb(198, 133, 37)' : '' }}> {t("Chi siamo")} </div>
+              <div className='listitem' style={{color: location.pathname === "/lermellino/aboutus" ? 'rgb(198, 133, 37)' : '' }}> {t("Chi siamo")} </div>
               </Link>
-              <Link to="/rules">
-              <div className='listitem' style={{color: location.pathname === "/rules" ? 'rgb(198, 133, 37)' : '' }}> {t("Regolamento")} </div>
+              <Link to="/lermellino/rules">
+              <div className='listitem' style={{color: location.pathname === "/lermellino/rules" ? 'rgb(198, 133, 37)' : '' }}> {t("Regolamento")} </div>
               </Link>
-              <Link to="/contacts">
-              <div className='listitem' style={{color: location.pathname === "/contacts" ? 'rgb(198, 133, 37)' : '' }}> {t("Contatti")} </div>
+              <Link to="/lermellino/contacts">
+              <div className='listitem' style={{color: location.pathname === "/lermellino/contacts" ? 'rgb(198, 133, 37)' : '' }}> {t("Contatti")} </div>
               </Link>
               <span className="flag-icon flag-icon-it" onClick={() => {i18n.changeLanguage("it");cookieslan("it");setLanguage("it")}}> </span>
               <span className="flag-icon flag-icon-gb" onClick={() => {i18n.changeLanguage("en");cookieslan("en");setLanguage("en")}}> </span>
@@ -389,7 +389,7 @@ function Header() {
 
                 <div className="header__nav two">
                     <div className='header__option'>
-                        <Link to='/ownorders' >
+                        <Link to='/lermellino/ownorders' >
                         <span className='header__optionLineTwo'> {t("I tuoi")} </span>
                         <br/>
                         <span className='header__optionLineTwo'> {t("acquisti")} </span>
@@ -397,7 +397,7 @@ function Header() {
                     </div>
             
             <div className='header__option'>
-                <Link to='/ownshop' >
+                <Link to='/lermellino/ownshop' >
                     <span className='header__optionLineTwo'> {t("Vendi o")} </span>
                     <br/>
                     <span className='header__optionLineTwo'> {t("noleggia")}  </span>
@@ -405,7 +405,7 @@ function Header() {
                 </div>
                 </div>
 
-                 <Link to="/checkout"  style={{ textDecoration: 'none', alignSelf: 'center'}}>
+                 <Link to="/lermellino/checkout"  style={{ textDecoration: 'none', alignSelf: 'center'}}>
                     <div className='header__optionBasket'>
                     <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
                     <AddShoppingCartIcon />
