@@ -21,9 +21,10 @@ input[type=number] {
   background-color: white;
 }
 
-.css-q8hpuo-MuiFormControl-root {
+.css-1x5jdmq {
   background-color: white;
   width: 175px !important;
+  z-index: 9;
 }
 
 

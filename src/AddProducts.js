@@ -371,8 +371,8 @@ const handleCity = (event) => {
              <hr />
             <div className="city">
               <h5> {t("Città")}: </h5> 
-            <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">MI / RM</InputLabel>
+            <FormControl fullWidth style={{backgroundColor:"white", width:"175px"}}>
+            <InputLabel  id="demo-simple-select-label">MI / RM</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
