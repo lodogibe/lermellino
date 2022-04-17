@@ -129,6 +129,8 @@
   background-color: #c68525 !important;
 }
 
+textarea { resize: none; }
+
 @media only screen and (max-width: 500px) {
   .intro--num {
     transform: rotate(-10deg) translate(80px, -15px)

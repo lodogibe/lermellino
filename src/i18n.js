@@ -99,6 +99,7 @@ const resources = {
       "Descrizione completa" : "Descrizione completa",
       "Breve descrizione" : "Breve descrizione",
       "Nome prodotto" : "Nome prodotto",
+      "INVIA RICHIESTA AGGIUNTA PRODOTTO ALL'ERMELLINO" : "INVIA RICHIESTA AGGIUNTA PRODOTTO ALL'ERMELLINO",
       "devi caricare almeno una foto, fino ad un massimo di 5" : "devi caricare almeno una foto, fino ad un massimo di 5",
       "Carica foto" : "Carica foto",
       "compila questo campo solo se stai noleggiando il prodotto" : "compila questo campo solo se stai noleggiando il prodotto",
@@ -208,6 +209,7 @@ const resources = {
       "se noleggi il prodotto inserisci il suo valore assoluto per stabilirne la caparra" : "if you rent the product, enter its absolute value to establish the deposit",
       "Inserisci il prezzo" : "Enter the price",
       "Procedi all'acquisto" : "Proceed to checkout",
+      "INVIA RICHIESTA AGGIUNTA PRODOTTO ALL'ERMELLINO" : "SEND REQUEST FOR ADDING PRODUCT TO ERMELLINO",
       "compila questo campo solo se stai noleggiando il prodotto" : "fill in this field only if you are renting the product",
       "differenza tra costo noleggio e valore totale del prodotto, per ulteriori info controlla il nostro regolamento" : "difference between rental cost and total value of the product, for more info check our rules",
     }

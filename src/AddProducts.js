@@ -352,76 +352,49 @@ const handleCity = (event) => {
             <div className="addbrodi">
             <div className="leftprod">
             <div className="city">
-                  <h5>{t("Vendi o noleggi?")} </h5> 
-                    <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">{t("Vendo / Noleggio")}</InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={type}
-                      label="Acquista / Noleggia"
-                      onChange={ handleType }
-                      required
-                    >
-                      <MenuItem value={'VENDO'}>{t("Vendi")}</MenuItem>
-                      <MenuItem value={'NOLEGGIO'}>{t("Noleggia")}</MenuItem>
-                    </Select>
-                  </FormControl>
+              <h5>{t("Vendi o noleggi?")} </h5> 
+              <select style={{width: "-webkit-fill-available", height: "40px", fontFamily: "sans-serif",fontSize: "inherit"}} value={type} onChange={handleType}>
+                <option value={'VENDO'}>{t("Vendi")}</option>
+                <option value={'NOLEGGIO'}>{t("Noleggia")}</option>
+              </select>
+
              </div>
              <hr />
             <div className="city">
               <h5> {t("Città")}: </h5> 
-            <FormControl fullWidth style={{backgroundColor:"white", width:"175px"}}>
-            <InputLabel  id="demo-simple-select-label">MI / RM</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={city}
-              label="Acquista / Noleggia"
-              onChange={ handleCity }
-              required
-            >
-              <MenuItem value={'Milano'}>Milano</MenuItem>
-              <MenuItem value={'Roma'}>Roma</MenuItem>
-            </Select>
-          </FormControl>
+              <select style={{width: "-webkit-fill-available", height: "40px", fontFamily: "sans-serif",fontSize: "inherit"}} value={city} onChange={handleCity}>
+                <option value={'Milano'}>Milano</option>
+                <option value={'Roma'}>Roma</option>
+              </select>
+
           </div>
           <hr />
                 <div className="product-name"> <h5> {t("Nome prodotto")}: </h5>
-                <TextField
-                      id="outlined-textareaname"
-                      autoComplete='no'
-                      inputProps={{
-                        maxLength: 16,
-                      }}
+                <input style={{width: "-webkit-fill-available", height: "35px", fontFamily: "sans-serif",fontSize: "inherit"}}
+                      autocomplete='no'
+                      maxLength="12"
                       value={productName}
-                      onChange={(e) => setProductName(e.target.value)}
-                    />
+                      onChange={(e) => setProductName(e.target.value)}>
+                      </input>
                     </div>
                     <hr />
                     <div className="product-name"> <h5> {t("Breve descrizione")}: </h5>
-                <TextField
+                    <input style={{width: "-webkit-fill-available", height: "35px", fontFamily: "sans-serif",fontSize: "inherit"}}
                       className="preview"
-                      id="outlined-textarea"
-                      inputProps={{
-                        maxLength: 34,
-                      }}
+                      maxLength="24"
                       value={preview}
-                      onChange={(e) => setPreview(e.target.value)}
-                    />
+                      onChange={(e) => setPreview(e.target.value)}>
+                      </input>
                     </div>
                     <hr />
                 <div className="product-name" > <h5> {t("Descrizione completa")}: </h5>
-                    <TextField  
+                    <textarea style={{fontFamily: "sans-serif",fontSize: "inherit", width: "-webkit-fill-available", height: "65px",maxWidth:"-webkit-fill-available",borderWidth:"1px"}}
                       className="description"
-                      id="outlined-multiline-static"
-                      inputProps={{
-                        maxLength: 250,
-                      }}
+                      maxLength="160"
                       rows={4}
                       value={description}
-                      onChange={(e) => setDesc(e.target.value)}
-                    />
+                      onChange={(e) => setDesc(e.target.value)}>
+                    </textarea>
                     </div>
                     <br />
                   </div>
@@ -430,26 +403,22 @@ const handleCity = (event) => {
                   <div className="prezzo">
                 <div className="label"> <h5> {t("Inserisci il prezzo")}: </h5> 
                 
-                  <OutlinedInput
-                    id="outlined-adornment-amount"
+                <input style={{width: "85%",height: "35px",textAlign: "end",fontFamily: "sans-serif",fontSize: "inherit"}}
                     type="number"
-                    inputProps={{
-                      maxLength: 0,
-                    }}
                     onChange={(e) => setProductPrice(e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,9))} value={productPrice}
                     startAdornment={<InputAdornment position="start">€</InputAdornment>}
-                  />,00 €
+                  ></input>,00 €
                   <p> *({t("se noleggi il prodotto inserisci il suo valore assoluto per stabilirne la caparra")}) </p>
                    </div> 
                    <hr />
+
                   <div className="label noleggio"> <h5> {t("Inserisci il prezzo per giornata")}: </h5> 
                 
-                  <OutlinedInput
-                    id="outlined-adornment-amount-day"
+                  <input style={{width: "85%",height: "35px",textAlign: "end",fontFamily: "sans-serif",fontSize: "inherit"}}
                     type="number"
                     onChange={(e) => setProductPriceday(e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,9))} value={productPriceday}
                     startAdornment={<InputAdornment position="start">€</InputAdornment>}
-                  />,00 €
+                  ></input>,00 €
                   <p> *({t("compila questo campo solo se stai noleggiando il prodotto")}) </p>
                    </div>
                    </div> 

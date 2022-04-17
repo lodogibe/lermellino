@@ -205,6 +205,8 @@ text-align: end;
   .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
     z-index: 9;
   }
+
+  
   
   .css-1x5jdmq {
     z-index: 9;
@@ -221,6 +223,7 @@ text-align: end;
   
 
 /*gestisce l'active dei TextInput, senno lo fa blu gigante, cosi almeno lo gestisco*/
+
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: black !important;
   border-width: 1px !important;
@@ -237,6 +240,11 @@ text-align: end;
 }
 
 /*gestisce l'active dei TextInput, di quando è uploadato su GitHub che va a cambiare nome classe*/
+.MuiInputLabel-root .MuiInputLabel-formControl .MuiInputLabel-animated .MuiInputLabel-shrink .MuiInputLabel-outlined .MuiFormLabel-root .MuiFormLabel-colorPrimary .Mui-focused .css-1rcvyyg {
+  border-color: black !important;
+  border-width: 1px !important;
+}
+
 .Mui-focused .css-1ufn0jl {
   border-color: black !important;
   border-width: 1px !important;

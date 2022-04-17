@@ -93,8 +93,9 @@ p {
 
 
 
-.css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root {
+.MuiOutlinedInput-root .MuiInputBase-root .MuiInputBase-colorPrimary .MuiInputBase-adornedStart .css-1ufn0jl {
 height: 30px !important;
+z-index: 9;
 }
 
 
