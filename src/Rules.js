@@ -20,7 +20,7 @@ export default function Rules() {
                   <div className="box" style={{width:"100%",margin:"0", maxWidth:"fit-content"}}>
                 <hr style={{marginRight:"110px",border:"1px solid white"}}/>
                   <div className="textbox">
-                  <p>
+                  
                     - {t("La missione dell'Ermellino è quella di creare un ambiente comodo e sicuro per poter dare la possibilitò di vendere o noleggiare un proprio prodotto senza avere a che fare direttamente con il cliente.")}
                     
                     <br />
@@ -37,7 +37,7 @@ export default function Rules() {
                     <br />
                     
                    - {t("L'acquisto e il noleggio degli articoli presenti in questa DEMO possono essere fatti solamente attraverso un profilo sandbox di paypal in quanto l'applicazione è a solo scopo dimostrativo e i prodotti non sono quindi reali.")}
-                  </p>
+                 
                   </div>
                   </div>
                                  
@@ -45,12 +45,8 @@ export default function Rules() {
                   <hr />   
                   <ul style={{backgroundColor: "rgb(234 237 237 / 20%)",padding:"25px",fontWeight:"600"}}>
                     <li>
-                  
-                      
 
-                     
-                  
-                      <i></i>
+                   <i></i>
                       <h2>{t("Linee Guida")}</h2>
                       <b>I. {t("Commenti sotto i Post")}<br /> </b>
                   {t("E' possibile commentare i gli articoli semplicemente creando un account, qualsiasi commento ritenuto offensivo o non idoneo potrà essere eliminato dal nostro Staff.")}

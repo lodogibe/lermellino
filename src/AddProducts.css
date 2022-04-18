@@ -53,7 +53,6 @@ input[type=number] {
 
 .rightprod {
   width: 50%;
-  margin-right: 5%;
   margin-left: 5%;
   text-align: end;
   position: relative;
@@ -62,7 +61,6 @@ input[type=number] {
 .leftprod {
   width: 50%;
   text-align: left;
-  margin-left: 5%;
   margin-right: 5%;
 }
 
@@ -73,7 +71,7 @@ input[type=number] {
 
 
 p {
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .photopreview {
@@ -89,6 +87,7 @@ p {
   border: 9px dashed rgb(234,237,237);
   border-radius: 10px;
   min-width: 225px; 
+  padding: 0px 15px 0px 15px;
 }
 
 

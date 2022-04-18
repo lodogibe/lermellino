@@ -373,7 +373,7 @@ function Header() {
                     <i className="icon fas fa-cog" ></i>
                     </div>
                     </div>
-                    <Menu  
+                    <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
                         open={open}
@@ -396,7 +396,8 @@ function Header() {
                         <span className='header__optionLineTwo'> {t("acquisti")} </span>
                         </Link>
                     </div>
-            
+                  </div>
+            <div className="header__nav two">
             <div className='header__option'>
                 <Link to='/lermellino/ownshop' >
                     <span className='header__optionLineTwo'> {t("Vendi o")} </span>

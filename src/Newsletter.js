@@ -63,7 +63,7 @@ async function subscribenewsletter() {
             const docRef = await setDoc(doc(db, "newsletter", email), {
             }).then(() => {
               mailerState.email = email;
-              mailerState.html = "<h1> Benvenuto nella newsletter dell'Ermellino! </h1> <br> Sarai sempre aggiornato sui nuovi arrivi ai nostri magazzini. <br> <a href='" + window.location.hostname + "lermellino/deletesub/" + email + "'>Disiscriviti</a> <br> <br> <p> Copyright &copy; All Rights Reserved by ERMELLINO S.P.A. </p>";
+              mailerState.html = "<h1> Benvenuto nella newsletter dell'Ermellino! </h1> <br> Sarai sempre aggiornato sui nuovi arrivi ai nostri magazzini. <br> <a href='" + window.location.hostname + "/lermellino/deletesub/" + email + "'>Disiscriviti</a> <br> <br> <p> Copyright &copy; All Rights Reserved by ERMELLINO S.P.A. </p>";
               sendnewsletter();
               async function sendnewsletter () {
               const response = await fetch("https://hosteapitestlodux.herokuapp.com/"+process.env.REACT_APP_API_KEY, {
@@ -121,8 +121,8 @@ async function subscribenewsletter() {
                     <span className="intro" style={{color: "#E05D5D", fontSize:"40px"}}>Newsletter</span>
                       </div>
                       <br />
-                      <div className="newslettertext">
-                      {t("Rimani sempre connesso e scopri tutte le novità dell'ERMELLINO, iscriviti alla nostra newsletter!")}
+                      <div className="newslettertext"> <p style={{textAlign:"initial"}}>
+                      {t("Rimani sempre connesso e scopri tutte le novità dell'ERMELLINO, iscriviti alla nostra newsletter!")}</p>
                       </div>
                         <h5>{t("Inserisci il tuo indirizzo E-mail")}</h5>
                           <input style={{width:'100%',borderRadius:"inherit"}}

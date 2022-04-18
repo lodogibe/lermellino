@@ -45,20 +45,21 @@ function Checkout() {
 
 
             <TransitionGroup className="toda-lista">
-                {basket.map((item,index) => (     
+                {basket.map((item,index, key) => (     
                   
                 <CSSTransition
-                  key={item}
+                  key={index}
                   timeout={200}
                   classNames="item"
                 >
 
-                <div key={item}>
+                <div key={key} style={{margin: "1.5%"}}>
                 <CheckoutProduct 
                     key={item.id}
                     id={item.id}
                     title={item.title}
                     image={item.image}
+                    titleEN={item.titleEN}
                     price={item.price}
                     city={item.city}
                     tipo={item.tipo}

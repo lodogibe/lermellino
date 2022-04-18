@@ -20,6 +20,7 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
+import { useTranslation } from "react-i18next";
 
 
 
@@ -38,10 +39,15 @@ export default function Paysection() {
     const auth = getAuth();
     const user = auth.currentUser;
     let history = useHistory();
+    const { t } = useTranslation();
     const props = [];
     // eventuale variabile per calcolare la percentuale del totale che spetterebbe all'ermellino:
     let ermellinotax = totale * 2 / 100;
 
+    useEffect(() => {
+      if(method === 'stripe')
+      alert("Essendo un applicazione prototipo l'unico metodo di pagamento disponibile è quello in modalità SANDBOX con PayPal")
+    }, [method]);
   
     console.log(ermellinotax)
     //creo tutti i props da mandare all resoconto paypal
@@ -69,7 +75,7 @@ export default function Paysection() {
         <form onSubmit={handleSubmit}>
           <CardElement />
           <Button  type="submit" disabled={!stripe || !elements} style={{backgroundColor:"#E05D5D",color:"white",width:"-webkit-fill-available",marginTop:"10px"}}>
-           PAGA ORA </Button>
+           {t("PAGA ORA")} </Button>
         </form>
       );
     };
@@ -125,48 +131,43 @@ export default function Paysection() {
 
   <div className="form" > 
     <div>
-      <h2>Dettagli cliente</h2>
-        <h5>Nome e cognome di chi effettuerà il ritiro nelle sede/i dei prodotti</h5>          
+      <h2>{t("Dettagli cliente")}</h2>
+        <h5>{t("Nome e cognome di chi effettuerà il ritiro nella del prodotto/dei prodotti")}</h5>          
           <div className="name__surname" > 
           <div className="nome__ritiro">
-           <p> Nome </p>
-            <TextField style={{height:"23px", width:"100%"}}
+           <p> {t("Nome")} </p>
+            <input style={{height:"23px", width:"100%"}}
                   className="preview"
                   id="outlined-textarea"
-                  inputProps={{
-                    maxLength: 10,
-                  }}
                   type="input"
                   value={name}
                   onChange={(e) => setName(e.target.value)} 
-                />
+                ></input>
                 </div>
                 <div className="cognome__ritiro">
-            <p> Cognome </p>
-              <TextField style={{ width:"100%"}}
+            <p> {t("Cognome")} </p>
+              <input style={{height:"23px", width:"100%"}}
                   className="preview"
                   id="outlined-textarea"
-                  inputProps={{
-                    maxLength: 10,
-                  }}
                   value={surname}
                   onChange={(e) => setSurname(e.target.value)}
-                />
+                ></input>
               </div>       
       </div>
       <hr />
-      <h5 style={{textAlign:"start"}}>Info utente registrato che sta effettuando l'operazione</h5> 
+      <h5 style={{textAlign:"start"}}> {t("Info utente registrato che sta effettuando l'operazione")} </h5> 
       <div style={{textAlign:"start",lineHeight: "9px"}}>
-      <p>Nome: {user && user.displayName}</p>
+      <p>{t("Nome")}: {user && user.displayName}</p>
       <p>Email: {user && user.email}</p>
       <p>ID: {user && user.uid}</p>
       </div>
-    <h2>Lista acquisti</h2>
+    <h2>{t("Lista acquisti")}</h2>
       <div className="lista__uscita">
       {basket.map((item,index) => ( <CheckoutProduct 
             key={item.id}
             id={item.id}
             title={item.title}
+            titleEN={item.titleEN}
             image={item.image}
             price={item.price}
             city={item.city}
@@ -182,9 +183,9 @@ export default function Paysection() {
             </CheckoutProduct> ))}
       </div>
      
-      <h2>Dettagli pagamento</h2>
+      <h2>{t("Dettagli pagamento")}</h2>
       <fieldset style={{width:"-webkit-fill-available",textAlign:"justify"}}>
-      <legend >Metodo di pagamento</legend> 
+      <legend >{t("Metodo di pagamento")}</legend> 
       <div className="paypal">
       <Radio
         checked={method === 'paypal'}
@@ -208,9 +209,9 @@ export default function Paysection() {
       </div>
     </fieldset>
       <table>
-        <tbody>
+        <tbody style={{fontSize: "14px"}}>
           <tr>
-            <td>Da pagare ora</td>
+            <td>{t("Da pagare ora")}</td>
             <td align="right">   <CurrencyFormat
                 renderText={(value) => (
                     <>
@@ -227,7 +228,7 @@ export default function Paysection() {
             /></td>
           </tr>
           <tr>
-            <td>Caparra al momento del ritiro (*per noleggi)</td>
+            <td>{t("Caparra al momento del ritiro (*per noleggi)")}</td>
             <td align="right"><CurrencyFormat
                 renderText={(value) => (
                     <>
@@ -246,7 +247,7 @@ export default function Paysection() {
         </table>
         <hr />
         {showpaymentmethod === false &&
-        <div className="warning">Inserisci Nome e Cognome di chi verrà a ritirare il prodotto</div> }
+        <div className="warning">{t("Inserisci Nome e Cognome di chi verrà a ritirare il prodotto/i prodotti")}</div> }
           { method === 'paypal' && showpaypal === true && showpaymentmethod === true &&
           <PayPal 
           name={name}

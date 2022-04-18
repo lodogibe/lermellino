@@ -371,7 +371,7 @@ const handleCity = (event) => {
           <hr />
                 <div className="product-name"> <h5> {t("Nome prodotto")}: </h5>
                 <input style={{width: "-webkit-fill-available", height: "35px", fontFamily: "sans-serif",fontSize: "inherit"}}
-                      autocomplete='no'
+                      autoComplete='no'
                       maxLength="12"
                       value={productName}
                       onChange={(e) => setProductName(e.target.value)}>
@@ -406,7 +406,6 @@ const handleCity = (event) => {
                 <input style={{width: "85%",height: "35px",textAlign: "end",fontFamily: "sans-serif",fontSize: "inherit"}}
                     type="number"
                     onChange={(e) => setProductPrice(e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,9))} value={productPrice}
-                    startAdornment={<InputAdornment position="start">€</InputAdornment>}
                   ></input>,00 €
                   <p> *({t("se noleggi il prodotto inserisci il suo valore assoluto per stabilirne la caparra")}) </p>
                    </div> 
@@ -417,7 +416,6 @@ const handleCity = (event) => {
                   <input style={{width: "85%",height: "35px",textAlign: "end",fontFamily: "sans-serif",fontSize: "inherit"}}
                     type="number"
                     onChange={(e) => setProductPriceday(e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,9))} value={productPriceday}
-                    startAdornment={<InputAdornment position="start">€</InputAdornment>}
                   ></input>,00 €
                   <p> *({t("compila questo campo solo se stai noleggiando il prodotto")}) </p>
                    </div>

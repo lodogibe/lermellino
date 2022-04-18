@@ -194,7 +194,13 @@ textarea {
   @media screen and (max-width: 765px) {
 
     .direct-contact-container {
+      text-align: initial;
       width: 95%;
     }
   
+    .contact-wrapper {
+    display: block;
+    text-align: -webkit-center;
+    }
+
   }

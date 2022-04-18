@@ -111,7 +111,6 @@ margin: 5px;
     font-size: 17px;
     font-weight: 650;
     text-decoration: none;
-    text-align: justify;
 }
 .header__optionBasket {
     display: grid;
@@ -159,6 +158,10 @@ a:active {color:#00A19D;}  /* Selected link   */
     font-size: 14px !important;
 }
 
+.MuiMenuItem-root .MuiMenuItem-gutters .MuiButtonBase-root .css-1km1ehz {
+  min-height: 25px !important;
+  font-size: 14px !important;
+}
 
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
     margin-left: 5px !important;
@@ -335,6 +338,7 @@ background-color:  #c68525 !important;
   border-radius:100%;
   -webkit-transition:all .2s linear;
   -o-transition:all .2s linear;
+  color: white;
   transition:all .2s linear
 }
 .social-icons a:active,.social-icons a:focus,.social-icons a:hover
