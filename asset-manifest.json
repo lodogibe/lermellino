@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/lermellino/static/css/main.60374cac.chunk.css",
-    "main.js": "/lermellino/static/js/main.0d217fab.chunk.js",
-    "main.js.map": "/lermellino/static/js/main.0d217fab.chunk.js.map",
-    "runtime-main.js": "/lermellino/static/js/runtime-main.240ba203.js",
-    "runtime-main.js.map": "/lermellino/static/js/runtime-main.240ba203.js.map",
+    "main.css": "/lermellino/static/css/main.e4675297.chunk.css",
+    "main.js": "/lermellino/static/js/main.d12769b6.chunk.js",
+    "main.js.map": "/lermellino/static/js/main.d12769b6.chunk.js.map",
+    "runtime-main.js": "/lermellino/static/js/runtime-main.1791f11b.js",
+    "runtime-main.js.map": "/lermellino/static/js/runtime-main.1791f11b.js.map",
     "static/css/2.884a4aca.chunk.css": "/lermellino/static/css/2.884a4aca.chunk.css",
-    "static/js/2.d2ae796a.chunk.js": "/lermellino/static/js/2.d2ae796a.chunk.js",
-    "static/js/2.d2ae796a.chunk.js.map": "/lermellino/static/js/2.d2ae796a.chunk.js.map",
-    "static/js/3.922c7614.chunk.js": "/lermellino/static/js/3.922c7614.chunk.js",
-    "static/js/3.922c7614.chunk.js.map": "/lermellino/static/js/3.922c7614.chunk.js.map",
+    "static/js/2.37474ea3.chunk.js": "/lermellino/static/js/2.37474ea3.chunk.js",
+    "static/js/2.37474ea3.chunk.js.map": "/lermellino/static/js/2.37474ea3.chunk.js.map",
+    "static/js/3.d094da42.chunk.js": "/lermellino/static/js/3.d094da42.chunk.js",
+    "static/js/3.d094da42.chunk.js.map": "/lermellino/static/js/3.d094da42.chunk.js.map",
     "index.html": "/lermellino/index.html",
     "static/css/2.884a4aca.chunk.css.map": "/lermellino/static/css/2.884a4aca.chunk.css.map",
-    "static/css/main.60374cac.chunk.css.map": "/lermellino/static/css/main.60374cac.chunk.css.map",
-    "static/js/2.d2ae796a.chunk.js.LICENSE.txt": "/lermellino/static/js/2.d2ae796a.chunk.js.LICENSE.txt",
+    "static/css/main.e4675297.chunk.css.map": "/lermellino/static/css/main.e4675297.chunk.css.map",
+    "static/js/2.37474ea3.chunk.js.LICENSE.txt": "/lermellino/static/js/2.37474ea3.chunk.js.LICENSE.txt",
     "static/media/AddProducts.css": "/lermellino/static/media/addprod.9784095d.jfif",
     "static/media/barcode.a54ae03d.png": "/lermellino/static/media/barcode.a54ae03d.png",
     "static/media/image1.67a1c427.jpg": "/lermellino/static/media/image1.67a1c427.jpg",
@@ -32,10 +32,10 @@
     "static/media/user-icon.b89021c6.png": "/lermellino/static/media/user-icon.b89021c6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.240ba203.js",
+    "static/js/runtime-main.1791f11b.js",
     "static/css/2.884a4aca.chunk.css",
-    "static/js/2.d2ae796a.chunk.js",
-    "static/css/main.60374cac.chunk.css",
-    "static/js/main.0d217fab.chunk.js"
+    "static/js/2.37474ea3.chunk.js",
+    "static/css/main.e4675297.chunk.css",
+    "static/js/main.d12769b6.chunk.js"
   ]
 }
