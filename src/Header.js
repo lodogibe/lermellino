@@ -382,9 +382,9 @@ function Header() {
                         'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={verificaemail}>{t("Re-autentica email")}</MenuItem>
-                        <MenuItem onClick={submit}>{t("Elimina account")}</MenuItem>
-                        { showResults ? <MenuItem onClick={dashboard}> Dashboard </MenuItem> : null }
+                        <MenuItem style={{fontSize:"15px"}} onClick={verificaemail}>{t("Re-autentica email")}</MenuItem>
+                        <MenuItem style={{fontSize:"15px"}} onClick={submit}>{t("Elimina account")}</MenuItem>
+                        { showResults ? <MenuItem style={{fontSize:"15px"}} onClick={dashboard}> Dashboard </MenuItem> : null }
                     </Menu>
                   </div>
 

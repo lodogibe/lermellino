@@ -153,15 +153,6 @@ a:hover {color:#E05D5D;}   /* Mouse over link */
 a:active {color:#00A19D;}  /* Selected link   */
 
 
-.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
-    min-height: 25px !important;
-    font-size: 14px !important;
-}
-
-.css-1km1ehz {
-  min-height: 25px !important;
-  font-size: 14px !important;
-}
 
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
     margin-left: 5px !important;

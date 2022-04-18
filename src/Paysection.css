@@ -52,13 +52,14 @@ fieldset {
 
 .nome__ritiro {
   text-align: justify;
-  padding-right: 40px;
+  padding-right: 31px;
 }
 
 .cognome__ritiro {
   text-align: justify;
   border-left: 1px solid #9a9a9a;
-  padding-left: 40px;
+  padding-left: 20px;
+    padding-right: 5px;
 }
 
 

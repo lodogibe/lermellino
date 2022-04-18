@@ -83,7 +83,7 @@ useEffect(() => {
  
 
 return (
-        <div className="product" style={{transform: "none",  position: "relative"}}>
+        <div className="product" style={{transform: "none",  position: "relative", margin: "0%"}}>
         <div className="product__info" >
         <div className="countdown">
         <h4>{tipo === "VENDO" ? TextAcq : TextNol} </h4>
