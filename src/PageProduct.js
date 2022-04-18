@@ -343,9 +343,9 @@ function PageProduct() {
             switch (sentence) {
 
             case 'good' :
+
             setShowloader(false);
-            writeUserData();
-                    function writeUserData() {                  
+                 
                     set(ref(dbr, 'users/' + iduser + '/' + id), {
                         id: id,
                         preview: products.Preview,
@@ -361,7 +361,7 @@ function PageProduct() {
                         idbuyer: iduser,
                         caparra: caparra,
                     });
-                }
+                
                 //manda l'articolo all data layer (il punto raccolta dati)
                 dispatch({
                     type: 'ADD_TO_BASKET',
