@@ -6,6 +6,7 @@ import barcode from "./barcode.png"
 import 'react-toastify/dist/ReactToastify.css';
 import { collection, getDocs, getFirestore,query, orderBy, where} from "firebase/firestore";
 import { useTranslation } from "react-i18next";
+import background from "./image-background/image4.jpg";
 
 
 export default function Searchlist() {
@@ -39,7 +40,7 @@ export default function Searchlist() {
             <span className="intro">{t("Risultati ricerca")}: {slug}</span>  
             </div>
             </div>
-            <img className="home__photo" src="https://media.messe.ch/baselworld/OnlineCatalogue/images/brandimage/1440x/1031540.png" alt="" />
+            <img className="home__photo" src={background} alt="" />
             <div className="footerdistance" style={{minHeight:"1300px"}}>   
             <div className="home__row" style={{marginTop:"-65%"}} >
             <div className="home__container">
