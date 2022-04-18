@@ -42,7 +42,7 @@ export default function Searchlist() {
             </div>
             <img className="home__photo" src={background} alt="" />
             <div className="footerdistance" style={{minHeight:"1300px"}}>   
-            <div className="home__row" style={{marginTop:"-65%"}} >
+            <div className="home__row" style={{marginTop:"-55%"}} >
             <div className="home__container">
             <div className="search__row" style={{display: "flex"}}>
 
