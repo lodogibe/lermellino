@@ -343,7 +343,7 @@ function PageProduct() {
             switch (sentence) {
 
             case 'good' :
-            setShowloader(false)
+            setShowloader(false);
             writeUserData();
                     function writeUserData() {                  
                     set(ref(dbr, 'users/' + iduser + '/' + id), {
