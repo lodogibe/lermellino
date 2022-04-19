@@ -56,8 +56,8 @@ function AddProducts () {
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [id,setId] = useState('');
     const [emailowner,setEmail] = useState('');
-    const [type,setType] = useState('');
-    const [city,setCity] = useState('');
+    const [type,setType] = useState('VENDO');
+    const [city,setCity] = useState('Milano');
     const [allfiles, setAll] = useState([]);
     const [showloader, setShowloader] = useState(false);
 
@@ -197,7 +197,7 @@ function AddProducts () {
     setImages(images)
     };
 
-
+console.log(selectedFiles,productPrice, productName ,preview , description , type , city)
 
     // add photo
     const handleUpload = () => {

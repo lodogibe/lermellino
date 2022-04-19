@@ -35,7 +35,7 @@ export default function Paypal({name,surname,props,total,email, idbuyer, caparra
 
 //faccio il resoconto di ogni singolo ordine in una sola stringa per poter archiviare e mandare il resoconto via email in html
   useEffect(() => {
-    html = "<h2> Resoconto del suo ordine eseguito il: " + s + " </h2> <br> <h3> Spesa totale: <h2> " + total + " <h2> </h3> <br> <h3> Caparra totale: <h2> " + caparra + " <h2> </h3> <br> <h3> Persona delegata al ritiro (presentarsi con documento di identita valido: " + name + " " + surname + " </h3>  <br> <h2> Lista delle sue operazioni: </h2>  <br> "           
+    html = "<h2> Resoconto del suo ordine eseguito il: " + s + " </h2> <br> <h3> Spesa totale: <h2> " + total + " € <h2> </h3> <br> <h3> Caparra totale: <h2> " + caparra + " € <h2> </h3> <br> <h3> Persona delegata al ritiro (presentarsi con documento di identita valido: " + name + " " + surname + " </h3>  <br> <h2> Lista delle sue operazioni: </h2>  <br> "           
     for(var i = 0; i < props.length; i++) 
     {
       if(props[i].tipo === 'NOLEGGIO')

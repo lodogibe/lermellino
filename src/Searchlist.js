@@ -44,7 +44,7 @@ export default function Searchlist() {
             <div className="footerdistance" style={{minHeight:"1300px"}}>   
             <div className="home__row" style={{marginTop:"-55%"}} >
             <div className="home__container">
-            <div className="search__row" style={{display: "flex"}}>
+            <div className="search__row">
 
                 {products.filter((value) => {
                 if (slug === "") {return value}
