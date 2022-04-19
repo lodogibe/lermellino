@@ -9,6 +9,7 @@
     transition: transform .1s ease;
     box-shadow: 0 0 5px 5px #888;
     padding: 5px 65px;
+    margin-bottom: 20px;
     align-self: center;
     width: fit-content;
 }
@@ -68,13 +69,10 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 5px;
-
 }
 
 
-
 .MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root{
-
     color: black;
     border: 9px solid black;
     margin-right: 5px;
