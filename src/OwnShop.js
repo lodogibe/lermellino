@@ -93,7 +93,7 @@ const getdata = () => {
                  <div className="productlist" key={key} >
                     <div className="product" style={{boxShadow:"none",transform: "none"}}>
                         <div className="product__info" style={{textAlign:"start"}}>
-                    <h4> {value.Type === "Vendo" ? Noletext : Acquitext} </h4>
+                    <h4> {value.Type === "VENDO" ? Noletext : Acquitext} </h4>
                     <div className="product__description">
                         <h2>{language.language === "en" ? value.NameEN : value.Name}</h2>
                         <p>{value.preview}</p>

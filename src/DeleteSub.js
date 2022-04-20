@@ -29,7 +29,6 @@ export default function DeleteSub() {
                 setResponse("La tua email non è più presente nei nostri database")
                 }
             }
-       
         }, [])
     
 
