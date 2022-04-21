@@ -41,7 +41,7 @@ export default function Rules() {
                   </div>
                   </div>
                                  
-                  </div>  <hr style={{marginTop:"20px"}} />   <div className='separe' style={{marginTop:"40px", backgroundColor:"#1a1a1ab3", height:"20px",marginBottom:"40px"}}></div>
+                  </div>  <hr style={{marginTop:"20px"}} />   <div className='separe' style={{marginTop:"40px", backgroundColor:"#eeeeeea1", height:"20px",marginBottom:"40px"}}></div>
                   <hr />   
                   <ul style={{backgroundColor: "rgb(234 237 237 / 20%)",padding:"25px",fontWeight:"600"}}>
                     <li>
@@ -49,21 +49,21 @@ export default function Rules() {
                    <i></i>
                       <h2>{t("Linee Guida")}</h2>
                       <b>I. {t("Commenti sotto i Post")}<br /> </b>
-                  {t("E' possibile commentare i gli articoli semplicemente creando un account, qualsiasi commento ritenuto offensivo o non idoneo potrà essere eliminato dal nostro Staff.")}
+                  <p>{t("E' possibile commentare i gli articoli semplicemente creando un account, qualsiasi commento ritenuto offensivo o non idoneo potrà essere eliminato dal nostro Staff.")}</p>
                   <br />
                         
                   <br />
                   <b>II. {t("Regole sul pagamento")} <br /> </b>
-                  {t("Il pagamento può essere testato solamente con PayPal in modalità sandbox in quanto è un sito portofolio NON IN PRODUZIONE")}.
+                  <p> {t("Il pagamento può essere testato solamente con PayPal in modalità sandbox in quanto è un sito portofolio NON IN PRODUZIONE")}.</p>
                   <br />
                         
                   <br />
                   <b>III. {t("Altra regola Random")}<br /> </b>
-                    {t("Non è consentito alcun tipo di ...")}  <br />
+                  <p> {t("Non è consentito alcun tipo di ...")} </p>  <br />
                         
                   <br />
                   <b>IV. {t("Altra regola Random")} <br /> </b>
-                  {t("Non è consentito alcun tipo di ...")}    <br />
+                  <p> {t("Non è consentito alcun tipo di ...")}  </p>  <br />
                     
                     </li>
 
