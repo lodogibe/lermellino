@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/lermellino/static/css/main.d667a20f.chunk.css",
-    "main.js": "/lermellino/static/js/main.04c31a32.chunk.js",
-    "main.js.map": "/lermellino/static/js/main.04c31a32.chunk.js.map",
+    "main.js": "/lermellino/static/js/main.b11cfb44.chunk.js",
+    "main.js.map": "/lermellino/static/js/main.b11cfb44.chunk.js.map",
     "runtime-main.js": "/lermellino/static/js/runtime-main.1791f11b.js",
     "runtime-main.js.map": "/lermellino/static/js/runtime-main.1791f11b.js.map",
     "static/css/2.884a4aca.chunk.css": "/lermellino/static/css/2.884a4aca.chunk.css",
@@ -36,6 +36,6 @@
     "static/css/2.884a4aca.chunk.css",
     "static/js/2.37474ea3.chunk.js",
     "static/css/main.d667a20f.chunk.css",
-    "static/js/main.04c31a32.chunk.js"
+    "static/js/main.b11cfb44.chunk.js"
   ]
 }
