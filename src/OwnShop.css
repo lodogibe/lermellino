@@ -16,7 +16,8 @@
     z-index: 1;
     transition: transform .1s ease;   
     box-shadow: 0 0 5px 5px #888;
-    width: 441px ;
+    margin-bottom: 10px;
+    width: 437px ;
      
   }
 

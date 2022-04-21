@@ -100,15 +100,15 @@ const getdata = () => {
 
                     {value.tipo === 'Acquisto' &&
                     <div className="product__rating" style={{color:"transparent"}}>                   
-                    {t("Caparra versata")}: {value.caparra} € </div> }
+                    * {value.caparra} </div> }
 
                     {value.tipo === 'Acquisto' &&
                     <p className="product__price" style={{color:"transparent"}}> </p> }
 
                     {value.tipo === 'Acquisto' &&
                     <div className="datesinfo" style={{color:"transparent"}}>
-                    {t("Data inizio noleggio")}: {value.datainizio} </div>}  {value.tipo === 'Acquisto' &&
-                    <div className="datesinfo" style={{color:"transparent"}}> {t("Data fine noleggio")}: {value.datafine} </div>  }
+                    * {value.datainizio} </div>}  {value.tipo === 'Acquisto' &&
+                    <div className="datesinfo" style={{color:"transparent"}}> * {value.datafine} </div>  }
 
                     {value.tipo === 'Noleggio' &&
                     <div className="product__rating" >                   
