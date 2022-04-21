@@ -77,7 +77,6 @@ function AddProducts () {
     //traduco descrizione --------------
     const sendTransdescription = async () => {
       TransState.text = description
-      console.log({ TransState});
       await fetch("https://hosteapitestlodux.herokuapp.com/tran", {
         method: "POST",
         headers : { 
@@ -92,7 +91,6 @@ function AddProducts () {
     //traduco preview -------------- handleUploadok()
     const sendTranspreview = async () => {
       TransState.text = preview
-      console.log({ TransState});
        await fetch("https://hosteapitestlodux.herokuapp.com/tran", {
         method: "POST",
         headers : { 
@@ -107,7 +105,6 @@ function AddProducts () {
     //traduco titolo --------------
     const sendTranstitle = async () => {
       TransState.text = productName
-      console.log({ TransState});
       await fetch("https://hosteapitestlodux.herokuapp.com/tran", {
         method: "POST",
         headers : { 

@@ -288,7 +288,8 @@ function Home() {
                                 </div>
                                     <br />
                                     <div className="newslettertext">
-                                        {t("Rimani sempre connesso e scopri tutte le novità dell'ERMELLINO, iscriviti alla nostra newsletter!")}
+                                    <li style={{textAlign:"initial",listStyle:"none"}}>
+                                        {t("Rimani sempre connesso e scopri tutte le novità dell'ERMELLINO, iscriviti alla nostra newsletter!")}</li>
                                     </div>
                                         <h5>{t("Inserisci il tuo indirizzo E-mail")}</h5>
                                             <input style={{width:'100%',borderRadius:"inherit"}}

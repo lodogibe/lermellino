@@ -49,21 +49,21 @@ export default function Rules() {
                    <i></i>
                       <h2>{t("Linee Guida")}</h2>
                       <b>I. {t("Commenti sotto i Post")}<br /> </b>
-                  <p>{t("E' possibile commentare i gli articoli semplicemente creando un account, qualsiasi commento ritenuto offensivo o non idoneo potrà essere eliminato dal nostro Staff.")}</p>
+                  {t("E' possibile commentare gli articoli semplicemente creando un account, qualsiasi commento ritenuto offensivo o non idoneo potrà essere eliminato dal nostro Staff.")}
                   <br />
                         
                   <br />
                   <b>II. {t("Regole sul pagamento")} <br /> </b>
-                  <p> {t("Il pagamento può essere testato solamente con PayPal in modalità sandbox in quanto è un sito portofolio NON IN PRODUZIONE")}.</p>
+                  {t("Il pagamento può essere testato solamente con PayPal in modalità sandbox in quanto è un sito portofolio NON IN PRODUZIONE")}.
                   <br />
                         
                   <br />
                   <b>III. {t("Altra regola Random")}<br /> </b>
-                  <p> {t("Non è consentito alcun tipo di ...")} </p>  <br />
+                    {t("Non è consentito alcun tipo di ...")}  <br />
                         
                   <br />
                   <b>IV. {t("Altra regola Random")} <br /> </b>
-                  <p> {t("Non è consentito alcun tipo di ...")}  </p>  <br />
+                  {t("Non è consentito alcun tipo di ...")}    <br />
                     
                     </li>
 

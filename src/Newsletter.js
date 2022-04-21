@@ -121,8 +121,8 @@ async function subscribenewsletter() {
                     <span className="intro" style={{color: "#E05D5D", fontSize:"40px"}}>Newsletter</span>
                       </div>
                       <br />
-                      <div className="newslettertext"> <p style={{textAlign:"initial"}}>
-                      {t("Rimani sempre connesso e scopri tutte le novità dell'ERMELLINO, iscriviti alla nostra newsletter!")}</p>
+                      <div className="newslettertext"> <li style={{textAlign:"initial",listStyle:"none"}}>
+                      {t("Rimani sempre connesso e scopri tutte le novità dell'ERMELLINO, iscriviti alla nostra newsletter!")}</li>
                       </div>
                         <h5>{t("Inserisci il tuo indirizzo E-mail")}</h5>
                           <input style={{width:'100%',borderRadius:"inherit"}}
