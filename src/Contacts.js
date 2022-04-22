@@ -208,10 +208,9 @@ return <div className='contacts' style={{minHeight:"100%"}}>
                 <div className="login-content" style={{marginTop: "1%",color: "#fff8e5"}}>
                   <div className='login'>
                     <div className="login__container" style={{backgroundColor: "#e05d5d", borderColor:"#fff8e5", textAlign: "justify"}}>
-                      <h5>Nome</h5>
+                      <h5>{t("Nome")}</h5>
                         <div className="password"> 
                           <input style={{width:'100%',backgroundColor:"white",borderRadius: "5px"}}
-                            placeholder="Name"
                             onChange={handleStateChange}
                             name="Name"
                             value={mailerState.nome}
@@ -220,7 +219,6 @@ return <div className='contacts' style={{minHeight:"100%"}}>
                         </div>   
                       <h5>E-mail</h5>
                         <input style={{width:'100%',borderRadius: "inherit"}}
-                          placeholder="Email"
                           onChange={handleStateChange}
                           value={mailerState.email}
                           name="email"

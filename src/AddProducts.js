@@ -7,13 +7,6 @@ import {Link, useHistory} from "react-router-dom";
 import './AddProducts.css';
 import { Button } from '@mui/material';
 import { getAuth } from 'firebase/auth';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import DeleteIcon from '@mui/icons-material/Delete';
 import "react-toastify/dist/ReactToastify.min.css";
@@ -77,6 +70,7 @@ function AddProducts () {
     //traduco descrizione --------------
     const sendTransdescription = async () => {
       TransState.text = description
+      console.log({ TransState});
       await fetch("https://hosteapitestlodux.herokuapp.com/tran", {
         method: "POST",
         headers : { 
@@ -91,6 +85,7 @@ function AddProducts () {
     //traduco preview -------------- handleUploadok()
     const sendTranspreview = async () => {
       TransState.text = preview
+      console.log({ TransState});
        await fetch("https://hosteapitestlodux.herokuapp.com/tran", {
         method: "POST",
         headers : { 
@@ -105,6 +100,7 @@ function AddProducts () {
     //traduco titolo --------------
     const sendTranstitle = async () => {
       TransState.text = productName
+      console.log({ TransState});
       await fetch("https://hosteapitestlodux.herokuapp.com/tran", {
         method: "POST",
         headers : { 
@@ -265,14 +261,14 @@ console.log(selectedFiles,productPrice, productName ,preview , description , typ
   async () => {
     await 
       getDownloadURL(ref(storage, 'images/' + image.name))
-        .then((urls) => {
-          setUrls((prevState) => [...prevState, urls])
+        .then((url) => {
+          setUrls((prevState) => [...prevState, url])
         });
     });
   }) 
 }
 
-
+//una volta che l'array delle foto selezionate corrisponde alla lunghezza degli url
 useEffect(() => {
   if (selectedFiles.length === urls.length && urls.length !== 0) {
     addProduct();
@@ -325,7 +321,6 @@ const handleCity = (event) => {
           const handleClick = event => {
             hiddenFileInput.current.click();
           };
-          
 
     return (
 
@@ -369,7 +364,7 @@ const handleCity = (event) => {
                 <div className="product-name"> <h5> {t("Nome prodotto")}: </h5>
                 <input style={{width: "-webkit-fill-available", height: "35px", fontFamily: "sans-serif",fontSize: "inherit"}}
                       autoComplete='no'
-                      maxLength="12"
+                      maxLength="15"
                       value={productName}
                       onChange={(e) => setProductName(e.target.value)}>
                       </input>

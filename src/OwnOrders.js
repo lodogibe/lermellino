@@ -24,6 +24,7 @@ export default function OwnOrders() {
     const { t } = useTranslation();
     const language = React.useContext(context);
     const [infoprod,setInfoprod] = useState([])
+    const [allorders,setAllorders] = useState([])
   
   
     //utilizza l'useContext per cambiare la lingua
@@ -53,14 +54,31 @@ const getdata = () => {
                 })  
                 //in un primo momento tiro giù l'intero ordine, qui sotto invece suddivido tutti i prodotti in modo che compaiano sul client come unità singole, ma con specificato l'ordine padre di appartenza
                 if(saveFirebaseTodos.length > 0) {
-                console.log(saveFirebaseTodos) 
-                setIdorder(saveFirebaseTodos[0].id);
-                setInfoprod(saveFirebaseTodos[0].infoproducts)
+                    let count = 0; //mantiene il conto di tutti i prodotti che poi vengono associati a quel determinato IDordine
+                    for (let i = 0; i < saveFirebaseTodos.length ; i++) {
+                        console.log(saveFirebaseTodos[i].infoproducts.length)
+
+                        for (let j = 0; j < saveFirebaseTodos[i].infoproducts.length; j++) {
+                            console.log(saveFirebaseTodos[i].infoproducts[j])
+                            console.log(saveFirebaseTodos[i].id)
+                            allorders[count] = {
+                                "id" : saveFirebaseTodos[i].id,
+                                "info" : saveFirebaseTodos[i].infoproducts[j]}
+                            count++;
+                        }
+                    }
+
+                for (let i = 0; i < allorders.length ; i++) {
+               console.log(allorders[i].id,allorders[i].info.id)
+                }
+               // console.log(saveFirebaseTodos.map((value,key) => value.infoproducts[0].foto)) 
+                setInfoprod(saveFirebaseTodos)
+                console.log(allorders.map((value) => value.id)) 
                 }
             }
         } 
 
-    
+    // console.log(infoprod,idorder)
 
     useEffect(() => {
         if (user !== null) {
@@ -86,61 +104,63 @@ const getdata = () => {
             <div className="footerdistance" style={{minHeight:"1170px"}}>
             <img className="home__photo" src={background} alt="" />
             <div className="home__row" style={{marginTop:"-55%"}}  >
-            {infoprod.map((value, key) => 
+
+             {allorders.map((value, key) => 
                  <div className="productlist" key={key} >
                     <div className="product" style={{boxShadow:"none",transform: "none"}}>
                         <div className="product__info" style={{textAlign:"start"}}>
-                        <h4>{value.tipo ==='Acquisto' ? textsold : textrent} </h4>
-                    <h2>{value.titolo}</h2>
+                        <h4>{value.info.tipo ==='Acquisto' ? textsold : textrent} </h4>
+                    <h2>{value.info.titolo}</h2>
                     <div className="product__description">
-                        <h2>{value.prewiev}</h2>
+                        <h2>{value.info.prewiev}</h2>
                     </div>
                     <div className="product__rating" >                   
-                    {t("Spesa")}: {value.prezzo} € </div>
+                    {t("Spesa")}: {value.info.prezzo} € </div>
 
-                    {value.tipo === 'Acquisto' &&
+                    {value.info.tipo === 'Acquisto' &&
                     <div className="product__rating" style={{color:"transparent"}}>                   
-                    * {value.caparra} </div> }
+                    * {value.info.caparra} </div> }
 
-                    {value.tipo === 'Acquisto' &&
+                    {value.info.tipo === 'Acquisto' &&
                     <p className="product__price" style={{color:"transparent"}}> </p> }
 
-                    {value.tipo === 'Acquisto' &&
+                    {value.info.tipo === 'Acquisto' &&
                     <div className="datesinfo" style={{color:"transparent"}}>
-                    * {value.datainizio} </div>}  {value.tipo === 'Acquisto' &&
-                    <div className="datesinfo" style={{color:"transparent"}}> * {value.datafine} </div>  }
+                    * {value.datainizio} </div>}  {value.info.tipo === 'Acquisto' &&
+                    <div className="datesinfo" style={{color:"transparent"}}> * {value.info.datafine} </div>  }
 
-                    {value.tipo === 'Noleggio' &&
+                    {value.info.tipo === 'Noleggio' &&
                     <div className="product__rating" >                   
-                    {t("Caparra versata")}: {value.caparra} € </div>}
+                    {t("Caparra versata")}: {value.info.caparra} € </div>}
                     
-                    {value.tipo === 'Noleggio' &&
+                    {value.info.tipo === 'Noleggio' &&
                     <p className="product__price"> </p> }
 
-                    {value.tipo === 'Noleggio' &&
+                    {value.info.tipo === 'Noleggio' &&
                     <div className="datesinfo" >
-                    {t("Data inizio noleggio")}: {value.datainizio} </div>}  
+                    {t("Data inizio noleggio")}: {value.info.datainizio} </div>}  
 
-                    {value.tipo === 'Noleggio' &&
-                    <div className="datesinfo" > {t("Data fine noleggio")}: {value.datafine} </div>  }  
+                    {value.info.tipo === 'Noleggio' &&
+                    <div className="datesinfo" > {t("Data fine noleggio")}: {value.info.datafine} </div>  }  
                     
 
 
                 </div>   
-            <img src={value.foto} alt="" />
+            <img src={value.info.foto} alt="" />
             <div className="hovereye">
-            <Link to={`/lermellino/pageproduct/${value.id}`} style={{height:"40px"}}> <VisibilityIcon style={{color:"black",border:"1px solid black",borderRadius:"9px",width:"50%",height:"38px"}} />
+            <Link to={`/lermellino/pageproduct/${value.info.id}`} style={{height:"40px"}}> <VisibilityIcon style={{color:"black",border:"1px solid black",borderRadius:"9px",width:"50%",height:"38px"}} />
            </Link>
            </div>
            <div className="ordine">
-           {t("Ordine")}:  {idorder} <br />
-           {t("Effettuato il")}: {value.data}
+           {t("Ordine")}:  {value.id} <br />
+           {t("Effettuato il")}: {value.info.data}
            </div>
-        </div>            
+            </div>            
          </div>
-            )}
-            </div> 
-            </div>
+        )} 
+
+        </div> 
+        </div> 
         </div>
         </div>
     )

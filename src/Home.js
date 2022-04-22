@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getAuth,  signOut, } from 'firebase/auth';
 import { collection, getDocs, getFirestore, query, orderBy, where, doc, getDoc, setDoc} from "firebase/firestore";
+import { getDatabase, ref, remove } from "firebase/database";
 import { Button } from '@mui/material';
 import { useStateValue } from "./StateProvider";
 import Cookies from 'js-cookie';
@@ -223,6 +224,8 @@ function Home() {
                      progress: undefined, })
                      dispatch({
                         type: 'CLEAR_BASKET'});
+                        const dbr = getDatabase();
+                        remove(ref(dbr, 'users/' + user.uid))
                     } 
                 //carrello svuotato per timeout operazioni, o perchè l'utente elimina tutti i prodotti nel carrello durante la fase finale di pagamento, inaccessibile con 0 prodotti nel carrello
                 else if (location.state.fromCart === true) {
@@ -356,10 +359,12 @@ function Home() {
                     tipo={value.Type}
                     title={value.Name} 
                     preview={value.Preview}
+                    titleEN={value.NameEN} 
+                    previewEN={value.PreviewEN}
                     price={value.Price} 
                     priceday={value.Priceday}
                     city={value.City} 
-                    image={value.Img} />
+                    image={value.Img}/>
                 )}  
                 </div> }
                 {showallprod === false && showbutton === true && products.length > 3 &&

@@ -40,7 +40,7 @@ export default function Paypal({name,surname,props,total,email, idbuyer, caparra
     {
       if(props[i].tipo === 'NOLEGGIO')
       {
-      info = "<br> Id prodotto: " + props[i].id + " / Nome articolo: " + props[i].title + " / Tipo : Noleggio / Data inizio noleggio: " + props[i].startDate + " - Data fine noleggio: " + props[i].endDate + " / Caparra: " + props[i].caparra;
+      info = "<br> Id prodotto: " + props[i].id + " <br> Nome articolo: " + props[i].title + " <br> Tipo : Noleggio <br> Data inizio noleggio: " + props[i].startDate + " - Data fine noleggio: " + props[i].endDate + " <br> Caparra: " + props[i].caparra;
       allinfo = {id: props[i].id, titolo: props[i].title, tipo: "Noleggio", caparra: props[i].caparra, datainizio: props[i].startDate, datafine: props[i].endDate, prezzo: props[i].price, foto: props[i].image[0], data: s}
       infoprod.push(info) //pusho le info in questo modo per avere la lista in vettori 
       allinfoS.push(allinfo);
@@ -49,7 +49,7 @@ export default function Paypal({name,surname,props,total,email, idbuyer, caparra
       console.log(allinfoS)
       }
       else {
-      info = "<br> Id prodotto: " + props[i].id + " / Nome articolo: " + props[i].title + " / Nome articolo: " +  props[i].price + " / Tipo : Acquisto " ;
+      info = "<br> Id prodotto: " + props[i].id + " <br> Nome articolo: " + props[i].title + " <br> Nome articolo: " +  props[i].price + " <br> Tipo : Acquisto " ;
       allinfo = {id: props[i].id, titolo: props[i].title, tipo: "Acquisto", prezzo: props[i].price, foto: props[i].image[0], data: s }
       infoprod.push(info)
       allinfoS.push(allinfo);
@@ -128,7 +128,7 @@ export default function Paypal({name,surname,props,total,email, idbuyer, caparra
                 //setto l'id dell'ordine che poi spedisco per email al cliente
                 console.log(docRef.id)
                 mailerState.subject = "Ricevuta ordine: " + docRef.id;
-                mailerState.html = html + "<br> <p> Copyright &copy; All Rights Reserved by ERMELLINO S.P.A. </p>";
+                mailerState.html = html + "<br> <br> <br> <br> <p> Copyright &copy; All Rights Reserved by ERMELLINO S.P.A. </p>";
               }).then(() => { 
               submitEmail();
               })
