@@ -3,7 +3,7 @@ import { useParams} from "react-router-dom";
 import { getFirestore, doc, deleteDoc, getDoc} from "firebase/firestore";
 
 
-
+//Rimuove iscrizione al database delle newsletter
 
 export default function DeleteSub() {
 

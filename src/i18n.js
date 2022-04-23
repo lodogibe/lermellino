@@ -6,8 +6,8 @@ const resources = {
   it: {
     translation: {
       "Contatti" : "Contatti",
-      "Acquista o noleggia articoli usati con l'Ermellino ... " : "Acquista o noleggia articoli usati con l'Ermellino ... ",
-      " ... e vedrai che non te ne pentirai" : " ... e vedrai che non te ne pentirai",
+      "Acquista o noleggia articoli usati con l'Ermellino... " : "Acquista o noleggia articoli usati con l'Ermellino... ",
+      " ...e vedrai che non te ne pentirai" : " ...e vedrai che non te ne pentirai",
       "Benvenuto fratello/sorella" : "Benvenuto fratello/sorella",
       "Registrati!" : "Registrati!",
       "Sei gia registrato/a?" : "Sei gia registrato/a?",
@@ -134,8 +134,8 @@ const resources = {
       "Info utente registrato che sta effettuando l'operazione" : "Info registered user who is carrying out the operation",
       "Rimuovi articolo" : "Remove Item",
       "Contatti" : "Contacts",
-      "Acquista o noleggia articoli usati con l'Ermellino ... " : "Buy or rent second hand items with l'Ermellino ... ",
-      " ... e vedrai che non te ne pentirai" : " ... and you won’t regret it",
+      "Acquista o noleggia articoli usati con l'Ermellino... " : "Buy or rent second hand items with l'Ermellino... ",
+      " ...e vedrai che non te ne pentirai" : " ...and you won’t regret it",
       "Benvenuto fratello/sorella" : "Welcome brother/sister",
       "Registrati!" : "Register!",
       "Sei gia registrato/a?" : "Are you already registered?",

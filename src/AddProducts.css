@@ -3,31 +3,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.container.addproducts > p {
-  font-size: small;
-  margin: 1px;
-}
-
-.select {
-  width: 20%;
-}
-
-.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-  background-color: white;
-}
-
-.css-1x5jdmq {
-  background-color: white;
-  width: 175px !important;
-  z-index: 9;
-}
-
-
 
 
 
@@ -54,13 +29,11 @@ input[type=number] {
 .rightprod {
   width: 50%;
   margin-left: 5%;
-  text-align: end;
   position: relative;
 }
 
 .leftprod {
   width: 50%;
-  text-align: left;
   margin-right: 5%;
 }
 
@@ -92,17 +65,10 @@ p {
 
 
 
-.MuiOutlinedInput-root .MuiInputBase-root .MuiInputBase-colorPrimary .MuiInputBase-adornedStart .css-1ufn0jl {
-height: 30px !important;
-z-index: 9;
-}
-
-
 .button__photo {
   width: 116px;
   justify-self: self-end; 
 }
-
 
 
 
@@ -111,18 +77,6 @@ h5 {
   text-align: justify;
 }
 
-/*
-.allblock {
-  background-color: white;
-  margin: 40px;
-  padding: 5px;
-  box-shadow: 0 0 5px 5px #888;
-}
-*/
-
-.css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {  
-  color: black !important;
-}
 
 .selectbox {
   display: flex;
@@ -138,7 +92,10 @@ h5 {
   text-align: end;
 }
 
-
+.addbrodi p {
+  text-align: center;
+  font-size: 13px;
+}
 
 /*TUTTO STO CASINO PER FARE IN MODO DI AVERE L'IMMAGINE BACKGROUND OPACA, CSS NON HA UNA VERA E PROPRIA FUNZIONE DI OPACITY PER LE BACKGROUND IMAGE*/
 .demo-wrap {
@@ -170,17 +127,17 @@ h5 {
 }
 
 .imagepre {
-  position: absolute;
+  margin-top: 75px;
 }
 
 .noleggio {
   height: auto;
   margin: 0 auto;
-  padding-top: 15%;
+  padding-top: 55px;
   position: relative;
 }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1080px) {
 
   .addbrodi {
     display: block;
@@ -207,7 +164,7 @@ h5 {
 
   .toda-lista {
    display: block;
-   min-width: none;
+   max-width: 226px;
   }
 
   .container.addproducts {

@@ -18,7 +18,7 @@
     transition: transform .1s ease;   
     box-shadow: 0 0 5px 5px #888;
     margin-bottom: 10px;
-    width: 437px ;
+    width: 437px;
      
   }
 
@@ -27,8 +27,7 @@
     font-family: sans-serif;
     display: flex;
     /* margin-bottom: -2rem; */
-    padding: 47px;
-    height: 20px;
+    padding: 25px;
     font-size: 25px;
     box-shadow: 0 0 5px 5px #888;
     background-image: url("./image-background/redback.jpg");
@@ -43,7 +42,7 @@
   align-self: center;
   font-family: fantasy;
   font-size: 30px;
-  line-height: 35px;
+  line-height: 26px;
   }
 
 .home .headtext {
@@ -92,7 +91,7 @@
 .intro {
   color: rgb(230, 200, 160);
   font-family: 'Satisfy', cursive;
-  font-size: 3vh;
+  font-size: 30px;
   text-shadow: 1px 1px black;
   transform: rotate(-10deg);
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { getStorage, ref, getDownloadURL, uploadBytesResumable} from "firebase/storage";
+import { getStorage, ref, getDownloadURL, uploadBytesResumable, deleteObject} from "firebase/storage";
 import logo from './logo.png';
 import { useStateValue } from './StateProvider';
 import {Link, useHistory} from "react-router-dom";
@@ -14,7 +14,8 @@ import imageCompression from "browser-image-compression";
 import { toast } from 'react-toastify';
 import Loader from "./Loader";
 import { useTranslation } from "react-i18next";
-import logopic from "./piclogo.jpg"
+import logopic from "./piclogo.jpg";
+import { uuid } from 'uuidv4';
 
 
 
@@ -43,10 +44,9 @@ function AddProducts () {
     const [description, setDesc] = useState('');
     const [productPrice, setProductPrice] = useState(0);
     const [productPriceday, setProductPriceday] = useState(0);
-    const [images, setImages] = useState([]);
+    const [urlsDatabase, setUrlsDatabase] = useState([]);
     const [urls, setUrls] = useState([]);
     const [progress, setProgress] = useState(0);
-    const [selectedFiles, setSelectedFiles] = useState([]);
     const [id,setId] = useState('');
     const [emailowner,setEmail] = useState('');
     const [type,setType] = useState('VENDO');
@@ -60,9 +60,9 @@ function AddProducts () {
   
     //-----------------------------------------------------------------------------//
     //inizia l'effetto a catena per tradurre le parti di testo in inglese
-    const [previewEN, setPreviewEN] = useState('');
-    const [descriptionEN, setDescEN] = useState('');
-    const [productNameEN, setProductNameEN] = useState('');
+    let previewEN = "";
+    let descriptionEN = "";
+    let productNameEN = "";
     const TransState = {
       text: "",
     };
@@ -80,7 +80,7 @@ function AddProducts () {
         body: JSON.stringify({ TransState}),
       })
       .then((response) => response.json())
-      .then((data) => setDescEN(data.status)).then(() => handleUploadok())} 
+      .then((data) => descriptionEN = data.status).then(() => addProduct())} 
  
     //traduco preview -------------- handleUploadok()
     const sendTranspreview = async () => {
@@ -95,7 +95,7 @@ function AddProducts () {
         body: JSON.stringify({ TransState}),
       })
       .then((response) => response.json())
-      .then((data) => setPreviewEN(data.status)).then(() => sendTransdescription())} 
+      .then((data) => previewEN = data.status).then(() => sendTransdescription())} 
     
     //traduco titolo --------------
     const sendTranstitle = async () => {
@@ -110,31 +110,17 @@ function AddProducts () {
         body: JSON.stringify({ TransState}),
       })
       .then((response) => response.json())
-      .then((data) => setProductNameEN(data.status)).then(() => sendTranspreview())}
+      .then((data) => productNameEN = data.status).then(() => sendTranspreview())}
     //-----------------------------------------------------------------------------//
-
-
+  
     // This function will be triggered when the file field change
-    async function handleChange (e) {
-      
-    if (e.target.files.length <= 5 && selectedFiles.length <= 5 && images.length <= 4) {
-      if (e.target.files) {
-        const filesArray = Array.from(e.target.files).map((file) =>
-          URL.createObjectURL(file)
-        );
-
-       
-        setSelectedFiles((prevImages) => prevImages.concat(filesArray));
-        Array.from(e.target.files).map(
-          (file) => URL.revokeObjectURL(file) // avoid memory leak
-             );
-      }
-      
-     
+    
+    async function handleChange (e) {  
+    setAll([]); //azzero il contatore delle immagini
+    if (urls.length + e.target.files.length <= 5) {
+      setShowloader(true) 
       for (let i = 0; i < e.target.files.length; i++) {
-        
         const newImage = e.target.files[i];
-
         //per comprimere le immagini
         const options = {
           maxSizeMB: 1,
@@ -146,58 +132,101 @@ function AddProducts () {
           console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
           console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
           allfiles.push(compressedFile)
-          await uploadToServer(allfiles); // write your own logic
         } catch (error) {
           console.log(error);
         }
       }
-
-      function gosetAll(all) { setAll(all) }
-   
-      async function uploadToServer(allfilex) {
-        await gosetAll(allfilex);
-        await setImages(allfiles);
-        console.log(allfiles)
-        if(images.length === e.target.files.length)
-        {
-          console.log('fatto')
-        }
-      }   
+    console.log(allfiles)
+    handleUploadok();
     }
-
     else
-    {toast.warn("Stai selezionando troppe foto, il limite è di 5!", {
-      position: "top-left",
-      autoClose: true,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });}
-};
-
-
-    // This function will be triggered when the "Remove This Image" button is clicked
-    const removeSelectedImage = (index) => {
-      console.log(images)
-      images.splice(index,1)
-      selectedFiles.splice(index, 1)
-      dispatch({
-        type: 'REMOVE_FROM_BOOK',
-        id: index,
-    })
-    setImages(images)
+      {toast.warn("Stai selezionando troppe foto, il limite è di 5!", {
+        position: "top-left",
+        autoClose: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });}
     };
 
-console.log(selectedFiles,productPrice, productName ,preview , description , type , city)
+    const handleUploadok = () => { const metadata = {contentType: 'image/jpeg'};
+    console.log(allfiles)
+    setShowloader(false) 
+    allfiles.map((image) => {
+    //gli vado a creare un ID univoco per evitare che qualcuno carichi una foto con un nome uguale gia a una presente nello storage andando a sovrascriverla
+    const id = uuid();
+    const nameid = id + image.name;
+    // Upload file and metadata to the object 'images/mountains.jpg'
+    const storageRef = ref(ref(storage, 'images/' + nameid));
+    const uploadTask = uploadBytesResumable(storageRef, image, metadata);
+        uploadTask.on('state_changed', 
+        (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        switch (snapshot.state) {
+        case 'paused':
+          console.log('Upload is paused');
+          break;
+        case 'running':
+          console.log('Upload is running');
+          break;
+        }
+        setProgress(progress);
+      }, 
+    (error) => {
+      // Handle unsuccessful uploads
+    }, 
+    async () => {
+      await 
+        getDownloadURL(ref(storage, 'images/' + nameid))
+          .then((url) => {
+            const newValue = {
+              ph_id: nameid,
+              url: url,
+            };
+            //questo primo setUrls è per creare la preview con il nome dell'immagine e l'url
+            setUrls((prevState) => [...prevState,newValue])
+            //questo secondo setUrlsDatabase è per salvare solamente gli url e non stare a ricambiare tutti gli altri, ma l'array sopra sarebbe meglio per completezza
+            setUrlsDatabase((prevState) => [...prevState,url])
+            setProgress(0)
+          });
+      });
+    }) 
+  }
+
+  console.log(urls);
+  console.log(urlsDatabase);
+
+  // This function will be triggered when the "Remove This Image" button is clicked
+    const removeSelectedImage = (index, nameid) => {
+      const imageRef = ref(storage, 'images/' + nameid);
+
+      // Delete the file
+      deleteObject(imageRef).then(() => {
+
+        urlsDatabase.splice(index,1) //per settare anche l'array che va poi nel database
+        urls.splice(index,1)
+        dispatch({
+          type: 'REMOVE_FROM_BOOK',
+          id: index,
+        })
+      setUrls(urls)
+
+      }).catch((error) => {
+        alert(error);
+      });
+    };
+
+
 
     // add photo
     const handleUpload = () => {
 
     setShowloader(true)
 
-    if (selectedFiles !== '' && productPrice !== 0 && productName !== '' && preview !== '' && description !== '' && type !== '' && city !== '') {   
+    if (urls.lenght !== 0 && productPrice !== 0 && productName !== '' && preview !== '' && description !== '' && type !== '' && city !== '') {   
               
       if (type === 'NOLEGGIO' && productPriceday !== 0) 
       {
@@ -236,47 +265,7 @@ console.log(selectedFiles,productPrice, productName ,preview , description , typ
     }
   }
 
-  const handleUploadok = () => { const metadata = {contentType: 'image/jpeg'};
-  images.map((image) => {
-  // Upload file and metadata to the object 'images/mountains.jpg'
-  const storageRef = ref(ref(storage, 'images/' + image.name));
-  const uploadTask = uploadBytesResumable(storageRef, image, metadata);
-      uploadTask.on('state_changed', 
-      (snapshot) => {
-      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log('Upload is ' + progress + '% done');
-      switch (snapshot.state) {
-      case 'paused':
-        console.log('Upload is paused');
-        break;
-      case 'running':
-        console.log('Upload is running');
-        break;
-      }
-      setProgress(progress);
-    }, 
-  (error) => {
-    // Handle unsuccessful uploads
-  }, 
-  async () => {
-    await 
-      getDownloadURL(ref(storage, 'images/' + image.name))
-        .then((url) => {
-          setUrls((prevState) => [...prevState, url])
-        });
-    });
-  }) 
-}
 
-//una volta che l'array delle foto selezionate corrisponde alla lunghezza degli url
-useEffect(() => {
-  if (selectedFiles.length === urls.length && urls.length !== 0) {
-    addProduct();
-  }
- }, [urls]);
- 
-
-    
 const handleType = (event) => {
   setType(event.target.value);
 };
@@ -288,14 +277,12 @@ const handleCity = (event) => {
 // add product
  
     const addProduct = () => {
-
-
       try {
         const docRef = addDoc(collection(db, "products"), {
                 Name: productName,
                 Price: Number(productPrice),
                 Priceday: Number(productPriceday),
-                Img: urls,
+                Img: urlsDatabase,
                 City: city,
                 Type: type,
                 CreatedOn: new Date(Date.now()),
@@ -336,7 +323,7 @@ const handleCity = (event) => {
             src={logo} alt="logo"  width="160" height="118" />
             </Link>     
            
-        <div className="login__container"  style={{width:"auto"}}>
+        <div className="login__container"  style={{width:"75%"}}>
             <div className="allblock">
             <div className="headtext" style={{width:"100%"}}>
             <span className="intro" style={{color: "#E05D5D", fontSize:"40px"}}>{t("Aggiungi articolo")}</span>
@@ -428,20 +415,20 @@ const handleCity = (event) => {
                 </div>
                
                 <TransitionGroup className="toda-lista">
-                {selectedFiles.map((url, index) => (     
+                {urls.map((url, index) => (     
                   
                   <CSSTransition
-                  key={url}
+                  key={url.ph_id}
                   timeout={200}
                   classNames="item"
                   >
 
-                  <div key={url} className="photopreview">
-                  <Button style={{height:"20px"}} variant="outlined" startIcon={<DeleteIcon />} onClick={() => removeSelectedImage(index)}> {t("Rimuovi")}  </Button>
+                  <div key={url.ph_id} className="photopreview">
+                  <Button style={{height:"20px"}} variant="outlined" startIcon={<DeleteIcon />} onClick={() => removeSelectedImage(index, url.ph_id)}> {t("Rimuovi")}  </Button>
                   <br />
                   <img 
                     style={{width:"120px",objectFit: "contain", height: "170px",backgroundColor: "black"}}
-                    src={url}
+                    src={url.url}
                     alt="firebase-image"
                   />
 

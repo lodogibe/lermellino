@@ -2,13 +2,6 @@
   display: -webkit-flex;
   width: 100%;
   flex-wrap: wrap;
+  justify-content: center;
   }
         
-@media only screen and (max-width: 923px) {
-        .search__row {
-          margin-top: auto;
-          display: block;
-          position: relative;
-          text-align: -webkit-center;
-        }
-}
