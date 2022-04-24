@@ -124,7 +124,7 @@ function Home() {
                     const docRef = await setDoc(doc(db, "newsletter", email), {
                         }).then(() => {
                             mailerState.email = email;
-                            mailerState.html = "<h1> Benvenuto nella newsletter dell'Ermellino! </h1> <br> Sarai sempre aggiornato sui nuovi arrivi ai nostri magazzini. <br> <a href='" + window.location.hostname + "/Remove/" + email + "'>Disiscriviti</a> <br> <br> <p> Copyright &copy; All Rights Reserved by ERMELLINO S.P.A. </p>";
+                            mailerState.html = "<h1> Benvenuto nella newsletter dell'Ermellino! </h1> <br> Sarai sempre aggiornato sui nuovi arrivi ai nostri magazzini. <br> <a href='https://marcog145.sg-host.com/?email=" + email + "'>Disiscriviti</a> <br> <br> <p> Copyright &copy; All Rights Reserved by ERMELLINO S.P.A. </p>";
                             sendnewsletter();
                             async function sendnewsletter () {
                             const response = await fetch("https://hosteapitestlodux.herokuapp.com/"+process.env.REACT_APP_API_KEY, {
