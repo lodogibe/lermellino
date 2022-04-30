@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/lermellino/static/css/main.d997ba91.chunk.css",
+    "main.css": "/lermellino/static/css/main.33a249aa.chunk.css",
     "main.js": "/lermellino/static/js/main.960f3da2.chunk.js",
     "main.js.map": "/lermellino/static/js/main.960f3da2.chunk.js.map",
     "runtime-main.js": "/lermellino/static/js/runtime-main.1791f11b.js",
@@ -12,7 +12,7 @@
     "static/js/3.d094da42.chunk.js.map": "/lermellino/static/js/3.d094da42.chunk.js.map",
     "index.html": "/lermellino/index.html",
     "static/css/2.884a4aca.chunk.css.map": "/lermellino/static/css/2.884a4aca.chunk.css.map",
-    "static/css/main.d997ba91.chunk.css.map": "/lermellino/static/css/main.d997ba91.chunk.css.map",
+    "static/css/main.33a249aa.chunk.css.map": "/lermellino/static/css/main.33a249aa.chunk.css.map",
     "static/js/2.16104424.chunk.js.LICENSE.txt": "/lermellino/static/js/2.16104424.chunk.js.LICENSE.txt",
     "static/media/AddProducts.css": "/lermellino/static/media/addprod.9784095d.jfif",
     "static/media/barcode.a54ae03d.png": "/lermellino/static/media/barcode.a54ae03d.png",
@@ -35,7 +35,7 @@
     "static/js/runtime-main.1791f11b.js",
     "static/css/2.884a4aca.chunk.css",
     "static/js/2.16104424.chunk.js",
-    "static/css/main.d997ba91.chunk.css",
+    "static/css/main.33a249aa.chunk.css",
     "static/js/main.960f3da2.chunk.js"
   ]
 }
