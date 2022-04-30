@@ -169,7 +169,7 @@ const logIn = () => {
             </div>
             
                 <div className="resetpass">
-                    <Link to="/resetpassword">
+                    <Link to="/lermellino/resetpassword">
                    {t("Password dimenticata?")}
                     </Link>
                 </div>
@@ -180,7 +180,7 @@ const logIn = () => {
            
 
                 <div className="registrazione"> <p> {t("Non ti sei ancora registrato/a")} ? </p>
-                <Link to="/signin">
+                <Link to="/lermellino/signin">
                 <Button style={{color: "#1877f2", marginBottom: "9px",borderRadius: "7px", border: "2px solid", backgroundColor: "#fff"}} type="submit"  className='signin__registerButton'> {t("Registrati")} </Button>
                 </Link>
                 </div> 
