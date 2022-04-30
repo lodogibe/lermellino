@@ -425,7 +425,7 @@ function PageProduct() {
         { 
           if (!user) {
             setShowloader(false)
-            toast.error("Devi prima effettuare il login, per poter prenotare un prodotto nel carrello" , { 
+            toast.error("Devi prima effettuare il login per poter prenotare un prodotto nel carrello" , { 
                 position: "top-left",
                 autoClose: true,
                 hideProgressBar: false,

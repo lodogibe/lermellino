@@ -162,9 +162,12 @@ h5 {
     margin-right: 0% !important;
   }
 
+
   .toda-lista {
+    /*
    display: block;
    max-width: 226px;
+   */
   }
 
   .container.addproducts {

@@ -74,6 +74,12 @@ code {
   padding: 18px;
 }
 
+@media only screen and (max-width: 525px) {
+  .comment {
+    display: grid;
+    }
+}
+
 .comments button {
   border: 1px solid;
   align-self: center;
@@ -88,6 +94,7 @@ code {
 
 .comment-image-container img {
   border-radius: 50px;
+  display: block;
 }
 
 .comment-right-part {
@@ -290,14 +297,4 @@ width: 26px !important;
   }
 }
 
-
-/*RIMUOVE IL BLU BACKGROUND QUANDO AUTOFILLI I CAMPI TIPO EMAIL E COSI
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px white inset;
-}
-*/
 
