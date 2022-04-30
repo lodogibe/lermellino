@@ -382,7 +382,7 @@ const handleCity = (event) => {
                   <div className="prezzo">
                 <div className="label"> <h5> {t("Inserisci il prezzo")}: </h5> 
                 
-                <input style={{width: "85%",height: "35px",textAlign: "end",fontFamily: "sans-serif",fontSize: "inherit"}}
+                <input style={{width: "80%",height: "35px",textAlign: "end",fontFamily: "sans-serif",fontSize: "inherit"}}
                     type="number"
                     onChange={(e) => setProductPrice(e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,9))} value={productPrice}
                   ></input>,00 €
@@ -392,7 +392,7 @@ const handleCity = (event) => {
 
                   <div className="label noleggio"> <h5> {t("Inserisci il prezzo per giornata")}: </h5> 
                 
-                  <input style={{width: "85%",height: "35px",textAlign: "end",fontFamily: "sans-serif",fontSize: "inherit"}}
+                  <input style={{width: "80%",height: "35px",textAlign: "end",fontFamily: "sans-serif",fontSize: "inherit"}}
                     type="number"
                     onChange={(e) => setProductPriceday(e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,9))} value={productPriceday}
                   ></input>,00 €
