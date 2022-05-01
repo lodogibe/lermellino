@@ -91,7 +91,7 @@ const getdata = () => {
             <div className="home__row" style={{marginTop:"-55%"}}  >
                 {products.map((value, key) =>
                  <div className="productlist" key={key} >
-                    <div className="product" style={{boxShadow:"none",transform: "none"}}>
+                    <div className="product" style={{boxShadow:"none",transform: "none",margin:"1%"}}>
                         <div className="product__info" style={{textAlign:"start"}}>
                     <h4> {value.Type === "VENDO" ? Acquitext : Noletext} </h4>
                     <div className="product__description">
