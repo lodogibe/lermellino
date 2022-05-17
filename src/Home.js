@@ -320,7 +320,7 @@ function Home() {
                 <img className="home__photo" src={background} alt="" />
                 {showallprod === false && 
                 <div className="home__row">
-                <div className='text-on-image' style={{paddingLeft: "30px"}}>
+                <div className='text-on-image'>
                 <p className="vintage vintage__top">{t("Acquista o noleggia articoli usati con l'Ermellino... ")} <br /> {t(" ...e vedrai che non te ne pentirai")}</p>
                 <p className="vintage vintage__bot">{t("Acquista o noleggia articoli usati con l'Ermellino... ")} <br /> {t(" ...e vedrai che non te ne pentirai")}</p>
                 </div>
