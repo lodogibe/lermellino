@@ -2,7 +2,7 @@ import React, { useState, useEffect  } from 'react';
 import './Login.css';
 import logo from './logo.png';
 import {Link, useHistory} from "react-router-dom";
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import {getAuth, signInWithEmailAndPassword, signOut} from 'firebase/auth';
 import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.min.css";
@@ -59,7 +59,21 @@ const location = {
 const logIn = () => {
     setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
-    .then(() => { history.push(location)
+    .then(() => { 
+        if(auth.currentUser.emailVerified) {
+            history.push(location)
+        }
+        else {
+            signOut();
+            toast.error("Email non verificata, controllo la tua email e conferma il tuo account",  {
+                position: "top-left",
+                autoClose: true,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined, })
+        }   
     }).catch((e) => { switch (e.message) {
         case 'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).' :                         
             toast.error("Troppi tentativi di accesso sono stati tentati con questa email. Reimposta la tua password, o riprova più tardi. ",  {

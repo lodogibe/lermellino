@@ -6,6 +6,7 @@ import barcode from "./barcode.png"
 import 'react-toastify/dist/ReactToastify.css';
 import { collection, getDocs, getFirestore,query, orderBy, where} from "firebase/firestore";
 import { useTranslation } from "react-i18next";
+import Loader from "./Loader";
 import background from "./image-background/image4.jpg";
 
 
@@ -15,6 +16,7 @@ export default function Searchlist() {
     const db = getFirestore();
     const [products, setProduct] = useState([]);
     const { t } = useTranslation();
+    const [showloader, setShowloader] = useState(true);
 
     useEffect(() => {
         fetchMyAPI()
@@ -27,14 +29,15 @@ export default function Searchlist() {
             /*console.log(doc.id, " => ", doc.data());*/ 
         });
         setProduct(saveFirebaseTodos) 
+        setShowloader(false)
         }        
 }, [])
 
 
     return (
         <div>
+            { showloader && <Loader /> }
             <div className="headlist">
-            
             <div className="headtext" style={{textAlign: "start"}}>
             <span className="intro intro--num"> <img src={barcode} width={50}/> </span>
             <span className="intro">{t("Risultati ricerca")}: {slug}</span>  
@@ -65,8 +68,8 @@ export default function Searchlist() {
                     priceday={value.Priceday}
                     city={value.City} 
                     image={value.Img} 
-                    />
-            )}
+                />
+                )}
             </div>
             </div>
         </div>

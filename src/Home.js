@@ -1,11 +1,11 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css"; 
 import Product from "./Product";
 import { useLocation} from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getAuth,  signOut, } from 'firebase/auth';
-import { collection, getDocs, getFirestore, query, orderBy, where, doc, getDoc, setDoc} from "firebase/firestore";
+import { getAuth } from 'firebase/auth';
+import { collection, getDocs, getFirestore, query, orderBy, where, doc, getDoc, setDoc, limit, startAfter} from "firebase/firestore";
 import { getDatabase, ref, remove } from "firebase/database";
 import { Button } from '@mui/material';
 import { useStateValue } from "./StateProvider";
@@ -21,28 +21,27 @@ import background from "./image-background/image4.jpg";
 function Home() {
     
     const location = useLocation();
+    
     const [{basket},dispatch] = useStateValue();
     const auth = getAuth();
-    const user = auth.currentUser;
     const db = getFirestore();
     const [products, setProduct] = useState([]);
-    const [showallprod,setShowallprod] = useState(false);
-    const [showbutton,setShowbutton] = useState(false);
+    const [lastProd, setLastProd] = useState("");
     const { showpop, setShowpop } = React.useContext(context);
     const [ checkpop, setCheckpop ] = useState('')
     const [email, setEmail] = useState('');
     const [frase, setFrase] = useState('test');
     const [checkemail, setCheckemail] = useState('');
     const [classstyle, setClassstyle] = useState('default');
-    const {showloader, setShowloader} = React.useContext(context);
+    const [showloader, setShowloader] = useState(true);
     const { t } = useTranslation();
-    const [mailerState, setMailerState] = useState({
+    const mailerState = {
         sender: "L'ERMELLINO",
         email: "",
         subject: "ISCRIZIONE NEWSLETTER",
         message: "Resoconto del suo ordine eseguito il: giorno test " ,
         html: "<h1> Benvenuto nella newsletter dell'Ermellino! </h1> <br> Sarai sempre aggiornato sui nuovi arrivi ai nostri magazzini. <br> href='http://localhost:3000/test/'"      
-    });
+    };
     const [loading,setLoading] = useState(false);
     const [buttontext,setbuttontext] = useState("");
     const language = React.useContext(context);
@@ -67,22 +66,21 @@ function Home() {
     var newURL = url.split('https://firebasestorage.googleapis.com');
     console.log('https://ik.imagekit.io/l3um0lstzxmw/tr:w-900,h-900' + newURL[1]);
     */
-   useEffect(() => {
-    const timer = setTimeout(() => setShowloader(false), 1200);   
-    },[])
 
     useEffect(() => {     
         fetchMyAPI()
         async function fetchMyAPI() {
-            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"));
+            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(5));
             const querySnapshot =  await getDocs(q);
             const saveFirebaseTodos = []; 
             querySnapshot.forEach((doc) => {
             saveFirebaseTodos.push(({id: doc.id, ...doc.data()}));
-            /*console.log(doc.id, " => ", doc.data());*/ 
+            console.log(doc.id, " => ", doc.data());
+            setLastProd(doc.data().CreatedOn)
         });
         setProduct(saveFirebaseTodos) 
-        setShowbutton(true)} 
+        setShowloader(false)
+        } 
         
         setTimeout(() => {
             if (!showpop) {
@@ -154,6 +152,7 @@ function Home() {
                                       }
                                         setClassstyle("success");
                                         setEmail('')
+                                        setLoading(false);
                                     });
                                 }
                         })} catch (e) {
@@ -184,12 +183,7 @@ function Home() {
   
 
     useEffect(() => {
-        if (user !== null) {
-
-            const displayName = user.displayName;
-            const emailVerified = user.emailVerified;
-
-            
+        if (auth.currentUser !== null) {
              /* MOSTRA MESSAGGIO DOPO HISTORY PUSH, 
             tengo un location.state undefined per assicarmi che lui nn cerchi di dare un valore a "location.state.fromLogin" del secondo if */
             if (location.state !== undefined) {
@@ -203,7 +197,7 @@ function Home() {
                       else {
                         frasewelcome = "Benvenuto/a a bordo"; 
                       }
-                   toast.success(frasewelcome + " " + displayName,  {
+                   toast.success(frasewelcome + " " + auth.currentUser.displayName,  {
                     position: "top-left",
                     autoClose: true,
                     hideProgressBar: false,
@@ -225,7 +219,7 @@ function Home() {
                      dispatch({
                         type: 'CLEAR_BASKET'});
                         const dbr = getDatabase();
-                        remove(ref(dbr, 'users/' + user.uid))
+                        remove(ref(dbr, 'users/' + auth.currentUser.uid))
                     } 
                 //carrello svuotato per timeout operazioni, o perchè l'utente elimina tutti i prodotti nel carrello durante la fase finale di pagamento, inaccessibile con 0 prodotti nel carrello
                 else if (location.state.fromCart === true) {
@@ -240,42 +234,52 @@ function Home() {
                     } 
                 else 
                 {
-                    //messaggio di benvenuto
-                    if (emailVerified) {
-                        var frasewelcome = "";
-                        if(language.language == 'en') {
-                            frasewelcome = "Welcome abord";              
-                        }
-                          else {
-                            frasewelcome = "Benvenuto/a a bordo"; 
-                        }
-                       toast.success(frasewelcome + " " + displayName,   {
-                        position: "top-left",
-                        autoClose: true,
-                        autoClose: true,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined, })
+                    var frasewelcome = "";
+                    if(language.language == 'en') {
+                        frasewelcome = "Welcome abord";              
                     }
-                    //se l'email non è verificata, una volta loggato verrai subito sloggato fino all'avvenuta verifica
                     else {
-                        toast.error("Email non verificata, controllo la tua email e conferma il tuo account",  {
-                            position: "top-left",
-                            autoClose: true,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined, })
-                            signOut(auth)
-                            }
-                        }
+                    frasewelcome = "Benvenuto/a a bordo"; 
                     }
+                    toast.success(frasewelcome + " " + auth.currentUser.displayName,{
+                    position: "top-left",
+                    autoClose: true,
+                    autoClose: true,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined, })
                 }
-            }, []);
+            }
+        }
+    }, []);
 
+    const showOtherprods = () => {
+
+        fetchMyAPI()
+        async function fetchMyAPI() {
+            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),startAfter(lastProd),limit(6));
+            const querySnapshot =  await getDocs(q);
+            const saveFirebaseTodos = []; 
+            querySnapshot.forEach((doc) => {
+            saveFirebaseTodos.push(({id: doc.id, ...doc.data()}));
+            /*console.log(doc.id, " => ", doc.data());*/ 
+            setLastProd(doc.data().CreatedOn)
+        });
+
+            setProduct(products.concat(saveFirebaseTodos)) //vado ad aggiornare l'array
+            
+            /*controllo che il numero di articoli scaricati rimanenti sia pari o inferiore al limite importo nella query, 
+            in modo da sapere di essere arrivato alla fine e che quindi bisogna nascondere il button di "mostra altro"*/
+            console.log(saveFirebaseTodos.length)
+            if(saveFirebaseTodos.length < 6) {
+                setLastProd("")
+            }
+        } 
+    }
+
+    console.log(lastProd)
 
     return (
         <div className="home">
@@ -316,33 +320,10 @@ function Home() {
                     </div>
                 </div>
                 }
+
                 <div className="footerdistance" style={{minHeight:"1000px"}}>
                 <img className="home__photo" src={background} alt="" />
-                {showallprod === false && 
-                <div className="home__row">
-                <div className='text-on-image'>
-                <p className="vintage vintage__top">{t("Acquista o noleggia articoli usati con l'Ermellino... ")} <br /> {t(" ...e vedrai che non te ne pentirai")}</p>
-                <p className="vintage vintage__bot">{t("Acquista o noleggia articoli usati con l'Ermellino... ")} <br /> {t(" ...e vedrai che non te ne pentirai")}</p>
-                </div>
-                {/* Per fare un render solo dei primi quattro prodotti, magari anche per gestire la home in maniera piu artistica come amazon con file da tre / due / quattro */}
-                {products.slice(0,8).map((value, key) => 
-                    <Product 
-                    key={key}
-                    id={value.id}
-                    idowner={value.IDowner}
-                    tipo={value.Type}
-                    title={value.Name} 
-                    preview={value.Preview}
-                    titleEN={value.NameEN} 
-                    previewEN={value.PreviewEN}
-                    price={value.Price} 
-                    priceday={value.Priceday}
-                    city={value.City} 
-                    image={value.Img} />
-                )}  
-                </div>  }
-                
-                {showallprod === true && 
+
                 <div className="home__row">
     
                 <div className='text-on-image'>
@@ -366,9 +347,9 @@ function Home() {
                     city={value.City} 
                     image={value.Img}/>
                 )}  
-                </div> }
-                {showallprod === false && showbutton === true && products.length > 3 &&
-                <Button variant="contained" style= {{backgroundColor: "white",color: "black"}}  onClick={() => setShowallprod(true)}  > {t("Mostra tutti i prodotti")} &nbsp; <i className="fa fa-angle-down" style={{fontSize:"20px"}}></i> </Button> }
+                </div> 
+                {lastProd !== "" &&
+                <Button variant="contained" style= {{backgroundColor: "white",color: "black"}}  onClick={() => showOtherprods()}  > {t("Mostra tutti i prodotti")} &nbsp; <i className="fa fa-angle-down" style={{fontSize:"20px"}}></i> </Button> }
             </div>     
         </div> 
         </div>

@@ -77,7 +77,7 @@ onAuthStateChanged(auth, user => {
   return (
     <BrowserRouter>
     <Suspense fallback={<Loader />}>
-    <context.Provider value={{ showpop, setShowpop, showloader, setShowloader, language, setLanguage}} >
+    <context.Provider value={{ showpop, setShowpop, language, setLanguage}} >
       <div className="App">
       <ToastContainer />
         <Switch>
