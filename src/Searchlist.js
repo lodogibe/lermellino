@@ -15,6 +15,7 @@ export default function Searchlist() {
     let { slug } = useParams();
     const db = getFirestore();
     const [products, setProduct] = useState([]);
+    const [filteredProducts, setFilteredProduct] = useState([]);
     const { t } = useTranslation();
     const [showloader, setShowloader] = useState(true);
 
@@ -30,8 +31,19 @@ export default function Searchlist() {
         });
         setProduct(saveFirebaseTodos) 
         setShowloader(false)
-        }        
-}, [])
+        }       
+    }, [])
+
+    useEffect(() => {
+        let filteredProd = products.filter((value) => {
+            if (slug === "") {return value}
+            else if ((value.Preview.toString().toLowerCase().includes(slug.toLowerCase())) || (value.Type.toString().toLowerCase().includes(slug.toLowerCase())) || (value.City.toString().toLowerCase().includes(slug.toLowerCase()))) {
+                return value
+            }
+        }); 
+        setFilteredProduct(filteredProd)
+    console.log(filteredProd)}, [slug])
+
 
 
     return (
@@ -48,13 +60,7 @@ export default function Searchlist() {
             <div className="home__row" style={{marginTop:"-55%"}} >
             <div className="home__container">
             <div className="search__row">
-
-                {products.filter((value) => {
-                if (slug === "") {return value}
-                else if ((value.Name.toString().toLowerCase().includes(slug.toLowerCase())) || (value.Price.toString().toLowerCase().includes(slug.toLowerCase())) || (value.City.toString().toLowerCase().includes(slug.toLowerCase())) || (value.Preview.toString().toLowerCase().includes(slug.toLowerCase()))) {
-                    return value
-                }
-                }).map((value, key) =>
+                {filteredProducts.map((value, key) =>
                 <Product 
                     key={key}
                     id={value.id}
@@ -70,6 +76,7 @@ export default function Searchlist() {
                     image={value.Img} 
                 />
                 )}
+                {filteredProducts < 1 && <h1 style={{position:"absolute"}}> Nessun elemento trovato </h1> }
             </div>
             </div>
         </div>

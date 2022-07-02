@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "./Home.css"; 
+import React, { useEffect, useState, memo } from "react";
+import "./Home.css";
 import Product from "./Product";
 import { useLocation} from "react-router-dom";
 import { toast } from 'react-toastify';
@@ -19,14 +19,15 @@ import background from "./image-background/image4.jpg";
 //importo il context dall'app in modo di avere lo state impostato sull'app in modo che se rientro nell'home non riesce il pop-up (in caso di rifiuto di cookies ovviamente)
 
 function Home() {
-    
+
     const location = useLocation();
-    
+
     const [{basket},dispatch] = useStateValue();
     const auth = getAuth();
     const db = getFirestore();
     const [products, setProduct] = useState([]);
     const [lastProd, setLastProd] = useState("");
+    const [loadProd, setLoadProd] = useState(false);
     const { showpop, setShowpop } = React.useContext(context);
     const [ checkpop, setCheckpop ] = useState('')
     const [email, setEmail] = useState('');
@@ -40,13 +41,13 @@ function Home() {
         email: "",
         subject: "ISCRIZIONE NEWSLETTER",
         message: "Resoconto del suo ordine eseguito il: giorno test " ,
-        html: "<h1> Benvenuto nella newsletter dell'Ermellino! </h1> <br> Sarai sempre aggiornato sui nuovi arrivi ai nostri magazzini. <br> href='http://localhost:3000/test/'"      
+        html: "<h1> Benvenuto nella newsletter dell'Ermellino! </h1> <br> Sarai sempre aggiornato sui nuovi arrivi ai nostri magazzini. <br> href='http://localhost:3000/test/'"
     };
     const [loading,setLoading] = useState(false);
     const [buttontext,setbuttontext] = useState("");
     const language = React.useContext(context);
-  
-  
+
+
     //utilizza l'useContext per cambiare la lingua
     useEffect(() => {
       if(language.language === 'en') {
@@ -58,7 +59,7 @@ function Home() {
         console.log(language.language)
       }
     },[language]);
-    
+
     console.log(showpop);
 
     /* RE-CROP DELLE IMMAGINE TRAMITE "IMAGEKIT" CHE VA A PESCARE DALLO STORAGE FIREBASE
@@ -67,26 +68,26 @@ function Home() {
     console.log('https://ik.imagekit.io/l3um0lstzxmw/tr:w-900,h-900' + newURL[1]);
     */
 
-    useEffect(() => {     
+    useEffect(() => {
         fetchMyAPI()
         async function fetchMyAPI() {
             const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(5));
             const querySnapshot =  await getDocs(q);
-            const saveFirebaseTodos = []; 
+            const saveFirebaseTodos = [];
             querySnapshot.forEach((doc) => {
             saveFirebaseTodos.push(({id: doc.id, ...doc.data()}));
             console.log(doc.id, " => ", doc.data());
             setLastProd(doc.data().CreatedOn)
         });
-        setProduct(saveFirebaseTodos) 
+        setProduct(saveFirebaseTodos)
         setShowloader(false)
-        } 
-        
+        }
+
         setTimeout(() => {
             if (!showpop) {
                 if (Cookies.get('name') === "value")
                     {
-                    console.log('no pop') 
+                    console.log('no pop')
                     setShowpop(true);
                     setCheckpop(false);
                     }
@@ -115,8 +116,8 @@ function Home() {
                 setFrase("Email già presente nella nostra lista");
                 setClassstyle("error");
                 setLoading(false);
-            } 
-            
+            }
+
             else {
                 try {
                     const docRef = await setDoc(doc(db, "newsletter", email), {
@@ -127,7 +128,7 @@ function Home() {
                             async function sendnewsletter () {
                             const response = await fetch("https://hosteapitestlodux.herokuapp.com/"+process.env.REACT_APP_API_KEY, {
                                 method: "POST",
-                                headers : { 
+                                headers : {
                                   'Content-Type': 'application/json',
                                   'Accept': 'application/json'
                                  },
@@ -161,9 +162,9 @@ function Home() {
             }
         }
 
-        else { 
+        else {
             if(language.language === 'en') {
-                setFrase("Email not valid");              
+                setFrase("Email not valid");
             }
               else {
                 setFrase("Email non valida");
@@ -171,20 +172,20 @@ function Home() {
         setClassstyle("error");
         }
     }
-  
+
     useEffect(() => {
         let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if(!regEmail.test(email)){
         setCheckemail(false);
         }
-        else 
+        else
         setCheckemail(true);
     }, [email]);
-  
+
 
     useEffect(() => {
         if (auth.currentUser !== null) {
-             /* MOSTRA MESSAGGIO DOPO HISTORY PUSH, 
+             /* MOSTRA MESSAGGIO DOPO HISTORY PUSH,
             tengo un location.state undefined per assicarmi che lui nn cerchi di dare un valore a "location.state.fromLogin" del secondo if */
             if (location.state !== undefined) {
 
@@ -192,12 +193,12 @@ function Home() {
                     //doppia casistica in base alla lingua inserita verificata dal Contextprovider
                     var frasewelcome = "";
                     if(language.language == 'en') {
-                        frasewelcome = "Welcome abord";              
+                        frasewelcome = "Welcome abord";
                     }
                       else {
-                        frasewelcome = "Benvenuto/a a bordo"; 
-                      }
-                   toast.success(frasewelcome + " " + auth.currentUser.displayName,  {
+                        frasewelcome = "Benvenuto/a a bordo";
+                    }
+                    toast.success(frasewelcome + " " + auth.currentUser.displayName,  {
                     position: "top-left",
                     autoClose: true,
                     hideProgressBar: false,
@@ -205,7 +206,7 @@ function Home() {
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined, })
-                   } 
+                   }
                 //dopo aver effettuato correttamente il pagamento, pop di conferma invio email con tutto il resoconto necessario
                 else if (location.state.fromCheckout === true) {
                     toast.success(" Ordine effettuato con successo!, controlla la tua email per vedere la conferma dell'ordine",  {
@@ -220,7 +221,7 @@ function Home() {
                         type: 'CLEAR_BASKET'});
                         const dbr = getDatabase();
                         remove(ref(dbr, 'users/' + auth.currentUser.uid))
-                    } 
+                    }
                 //carrello svuotato per timeout operazioni, o perchè l'utente elimina tutti i prodotti nel carrello durante la fase finale di pagamento, inaccessibile con 0 prodotti nel carrello
                 else if (location.state.fromCart === true) {
                     toast.warning(" Carrello svuotato, ripetere procedura",  {
@@ -231,15 +232,15 @@ function Home() {
                         pauseOnHover: true,
                         draggable: true,
                         progress: undefined, })
-                    } 
-                else 
+                    }
+                else
                 {
                     var frasewelcome = "";
                     if(language.language == 'en') {
-                        frasewelcome = "Welcome abord";              
+                        frasewelcome = "Welcome abord";
                     }
                     else {
-                    frasewelcome = "Benvenuto/a a bordo"; 
+                    frasewelcome = "Benvenuto/a a bordo";
                     }
                     toast.success(frasewelcome + " " + auth.currentUser.displayName,{
                     position: "top-left",
@@ -256,27 +257,26 @@ function Home() {
     }, []);
 
     const showOtherprods = () => {
-
+        setLoadProd(true)
         fetchMyAPI()
         async function fetchMyAPI() {
             const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),startAfter(lastProd),limit(6));
             const querySnapshot =  await getDocs(q);
-            const saveFirebaseTodos = []; 
+            const saveFirebaseTodos = [];
             querySnapshot.forEach((doc) => {
             saveFirebaseTodos.push(({id: doc.id, ...doc.data()}));
-            /*console.log(doc.id, " => ", doc.data());*/ 
+            /*console.log(doc.id, " => ", doc.data());*/
             setLastProd(doc.data().CreatedOn)
         });
-
+            setLoadProd(false)
             setProduct(products.concat(saveFirebaseTodos)) //vado ad aggiornare l'array
-            
-            /*controllo che il numero di articoli scaricati rimanenti sia pari o inferiore al limite importo nella query, 
+            /*controllo che il numero di articoli scaricati rimanenti sia pari o inferiore al limite importo nella query,
             in modo da sapere di essere arrivato alla fine e che quindi bisogna nascondere il button di "mostra altro"*/
             console.log(saveFirebaseTodos.length)
             if(saveFirebaseTodos.length < 6) {
                 setLastProd("")
             }
-        } 
+        }
     }
 
     console.log(lastProd)
@@ -285,7 +285,7 @@ function Home() {
         <div className="home">
             { showloader && <Loader /> } {/* loader di inizializzazione */}
             <div className="home__container">
-            { checkpop && 
+            { checkpop &&
                 <div className="overlay" style={{backgroundColor:"#0000008c"}}>
                     <div className="popup">
                         <div className="login__container">
@@ -325,37 +325,37 @@ function Home() {
                 <img className="home__photo" src={background} alt="" />
 
                 <div className="home__row">
-    
+
                 <div className='text-on-image'>
                 <p className="vintage vintage__top">{t("Acquista o noleggia articoli usati con l'Ermellino ... ")} <br /> {t("... e vedrai che non te ne pentirai")}</p>
                 <p className="vintage vintage__bot">{t("Acquista o noleggia articoli usati con l'Ermellino ... ")} <br /> {t("... e vedrai che non te ne pentirai")}</p>
                 </div>
-   
+
                 {/*Qui invece dopo il click "mostra tutti i prodotti" faccio un render di tutti i prodotti, giusto per inserire funzionalità*/}
-                {products.map((value, key) => 
-                    <Product 
+                {products.map((value, key) =>
+                    <Product
                     key={key}
                     id={value.id}
                     idowner={value.IDowner}
                     tipo={value.Type}
-                    title={value.Name} 
+                    title={value.Name}
                     preview={value.Preview}
-                    titleEN={value.NameEN} 
+                    titleEN={value.NameEN}
                     previewEN={value.PreviewEN}
-                    price={value.Price} 
+                    price={value.Price}
                     priceday={value.Priceday}
-                    city={value.City} 
+                    city={value.City}
                     image={value.Img}/>
-                )}  
-                </div> 
-                {lastProd !== "" &&
-                <Button variant="contained" style= {{backgroundColor: "white",color: "black"}}  onClick={() => showOtherprods()}  > {t("Mostra tutti i prodotti")} &nbsp; <i className="fa fa-angle-down" style={{fontSize:"20px"}}></i> </Button> }
-            </div>     
-        </div> 
+                )}
+                </div>
+                {lastProd !== "" && loadProd === false &&
+                <Button variant="contained" style= {{backgroundColor: "white",color: "black"}}  onClick={() => showOtherprods()}  > {t("Mostra tutti i prodotti")} &nbsp; <i className="fa fa-angle-down" style={{fontSize:"20px"}}></i> </Button> || loadProd === true && <div className="lds-ring"><div></div><div></div><div></div><div></div></div> }
+            </div>
         </div>
+    </div>
     )
 }
 
-export default Home
+export default memo(Home)
 
 
