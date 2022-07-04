@@ -19,7 +19,7 @@ export default function Searchlist() {
     const {lastProd, setLastProd} = React.useContext(context);
     const [loadProd, setLoadProd] = useState(false);
     const [showError, setShowError] = useState(false);
-    const [numProdShow, setNumProdShowed] = useState(3)
+    const [numProdShow, setNumProdShowed] = useState(4)
     const [filteredProducts, setFilteredProduct] = useState([]);
     const { t } = useTranslation();
     const [showloader, setShowloader] = useState(true);
@@ -34,7 +34,7 @@ export default function Searchlist() {
         if (products.length < 1) {
             fetchMyAPI()
             async function fetchMyAPI() {
-                const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(3));
+                const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(4));
                 const querySnapshot =  await getDocs(q);
                 const saveFirebaseTodos = []; 
                 querySnapshot.forEach((doc) => {
@@ -85,7 +85,7 @@ export default function Searchlist() {
         setLoadProd(true)
         fetchMyAPI()
         async function fetchMyAPI() {
-            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),startAfter(lastProd),limit(3));
+            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),startAfter(lastProd),limit(4));
             const querySnapshot =  await getDocs(q);
             const saveFirebaseTodos = [];
             querySnapshot.forEach((doc) => {
@@ -93,7 +93,7 @@ export default function Searchlist() {
             /*console.log(doc.id, " => ", doc.data());*/
             setLastProd(doc.data().CreatedOn)
         });
-            if(saveFirebaseTodos.length < 3) {
+            if(saveFirebaseTodos.length < 4) {
                 setLastProd("")
             }
             
@@ -144,7 +144,7 @@ export default function Searchlist() {
                 {showError && <h1 style={{position:"absolute"}}> Nessun elemento trovato </h1> }
             </div>
             {lastProd !== "" && loadProd === false &&
-                <Button variant="contained" style= {{backgroundColor: "white",color: "black"}}  onClick={() => {showOtherprods(); setNumProdShowed(numProdShow + 3)}}  > {t("Mostra tutti i prodotti")} &nbsp; <i className="fa fa-angle-down" style={{fontSize:"20px"}}></i> </Button> || loadProd === true && <div className="lds-ring"><div></div><div></div><div></div><div></div></div> }
+                <Button variant="contained" style= {{backgroundColor: "white",color: "black"}}  onClick={() => {showOtherprods(); setNumProdShowed(numProdShow + 4)}}  > {t("Mostra tutti i prodotti")} &nbsp; <i className="fa fa-angle-down" style={{fontSize:"20px"}}></i> </Button> || loadProd === true && <div className="lds-ring"><div></div><div></div><div></div><div></div></div> }
             </div>
         </div>
     )

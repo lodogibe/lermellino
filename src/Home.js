@@ -72,7 +72,7 @@ function Home() {
         if (products.length < 1) {
             fetchMyAPI()
             async function fetchMyAPI() {
-                const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(6));
+                const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(4));
                 const querySnapshot =  await getDocs(q);
                 const saveFirebaseTodos = [];
                 querySnapshot.forEach((doc) => {
@@ -80,7 +80,7 @@ function Home() {
                 console.log(doc.id, " => ", doc.data());
                 setLastProd(doc.data().CreatedOn)
             });
-            if(saveFirebaseTodos.length < 6) {
+            if(saveFirebaseTodos.length < 4) {
                 setLastProd("")
             }
             setProduct(saveFirebaseTodos)
@@ -267,7 +267,7 @@ function Home() {
         setLoadProd(true)
         fetchMyAPI()
         async function fetchMyAPI() {
-            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),startAfter(lastProd),limit(6));
+            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),startAfter(lastProd),limit(4));
             const querySnapshot =  await getDocs(q);
             const saveFirebaseTodos = [];
             querySnapshot.forEach((doc) => {
@@ -280,7 +280,7 @@ function Home() {
             /*controllo che il numero di articoli scaricati rimanenti sia pari o inferiore al limite importo nella query,
             in modo da sapere di essere arrivato alla fine e che quindi bisogna nascondere il button di "mostra altro"*/
             console.log(saveFirebaseTodos.length)
-            if(saveFirebaseTodos.length < 6) {
+            if(saveFirebaseTodos.length < 4) {
                 setLastProd("")
             }
         }
