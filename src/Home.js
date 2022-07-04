@@ -69,22 +69,26 @@ function Home() {
     */
 
     useEffect(() => {
-        fetchMyAPI()
-        async function fetchMyAPI() {
-            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(6));
-            const querySnapshot =  await getDocs(q);
-            const saveFirebaseTodos = [];
-            querySnapshot.forEach((doc) => {
-            saveFirebaseTodos.push(({id: doc.id, ...doc.data()}));
-            console.log(doc.id, " => ", doc.data());
-            setLastProd(doc.data().CreatedOn)
-        });
-        if(saveFirebaseTodos.length < 6) {
-            setLastProd("")
+        if (products.length < 1) {
+            fetchMyAPI()
+            async function fetchMyAPI() {
+                const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(6));
+                const querySnapshot =  await getDocs(q);
+                const saveFirebaseTodos = [];
+                querySnapshot.forEach((doc) => {
+                saveFirebaseTodos.push(({id: doc.id, ...doc.data()}));
+                console.log(doc.id, " => ", doc.data());
+                setLastProd(doc.data().CreatedOn)
+            });
+            if(saveFirebaseTodos.length < 6) {
+                setLastProd("")
+            }
+            setProduct(saveFirebaseTodos)
+            setShowloader(false)
+            }
         }
-        setProduct(saveFirebaseTodos)
+        else
         setShowloader(false)
-        }
 
         setTimeout(() => {
             if (!showpop) {

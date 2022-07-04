@@ -31,21 +31,23 @@ export default function Searchlist() {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        fetchMyAPI()
-        async function fetchMyAPI() {
-            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(3));
-            const querySnapshot =  await getDocs(q);
-            const saveFirebaseTodos = []; 
-            querySnapshot.forEach((doc) => {
-            saveFirebaseTodos.push(({id: doc.id, ...doc.data()}));
-            setLastProd(doc.data().CreatedOn)
-        });
-        if(saveFirebaseTodos.length < 3) {
-            setLastProd("")
+        if (products.length < 1) {
+            fetchMyAPI()
+            async function fetchMyAPI() {
+                const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(3));
+                const querySnapshot =  await getDocs(q);
+                const saveFirebaseTodos = []; 
+                querySnapshot.forEach((doc) => {
+                saveFirebaseTodos.push(({id: doc.id, ...doc.data()}));
+                setLastProd(doc.data().CreatedOn)
+            });
+            if(saveFirebaseTodos.length < 3) {
+                setLastProd("")
+            }
+            setProduct(saveFirebaseTodos) 
+            console.log(saveFirebaseTodos)
+            }      
         }
-        setProduct(saveFirebaseTodos) 
-        console.log(saveFirebaseTodos)
-        }      
 
     }, [])
 
