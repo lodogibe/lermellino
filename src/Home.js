@@ -71,7 +71,7 @@ function Home() {
     useEffect(() => {
         fetchMyAPI()
         async function fetchMyAPI() {
-            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(5));
+            const q = query(collection(db, "products"),where("State","==","DISPONIBILE"),orderBy("CreatedOn","asc"),limit(6));
             const querySnapshot =  await getDocs(q);
             const saveFirebaseTodos = [];
             querySnapshot.forEach((doc) => {
@@ -79,6 +79,9 @@ function Home() {
             console.log(doc.id, " => ", doc.data());
             setLastProd(doc.data().CreatedOn)
         });
+        if(saveFirebaseTodos.length < 6) {
+            setLastProd("")
+        }
         setProduct(saveFirebaseTodos)
         setShowloader(false)
         }
