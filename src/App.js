@@ -63,9 +63,10 @@ export const context = React.createContext(null);
 function App() {
 
 const [showpop,setShowpop] = useState(false); //setto il pop-up 
-const [showloader, setShowloader] = useState(true);
 const [user, setUser] = useState(null);
 const [language, setLanguage] = useState(null);
+const [lastProd, setLastProd] = useState(""); //variabile necessaria per l'infinite scrolling
+const [products, setProduct] = useState([]);
 
 useEffect(() => {
 const auth = getAuth();
@@ -77,7 +78,7 @@ onAuthStateChanged(auth, user => {
   return (
     <BrowserRouter>
     <Suspense fallback={<Loader />}>
-    <context.Provider value={{ showpop, setShowpop, language, setLanguage}} >
+    <context.Provider value={{showpop, setShowpop, language, setLanguage, products, setProduct, lastProd, setLastProd}} >
       <div className="App">
       <ToastContainer />
         <Switch>

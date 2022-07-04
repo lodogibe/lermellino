@@ -25,8 +25,8 @@ function Home() {
     const [{basket},dispatch] = useStateValue();
     const auth = getAuth();
     const db = getFirestore();
-    const [products, setProduct] = useState([]);
-    const [lastProd, setLastProd] = useState("");
+    const {products, setProduct} = React.useContext(context);
+    const {lastProd, setLastProd} = React.useContext(context);
     const [loadProd, setLoadProd] = useState(false);
     const { showpop, setShowpop } = React.useContext(context);
     const [ checkpop, setCheckpop ] = useState('')

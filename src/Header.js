@@ -19,7 +19,7 @@ import Cookies from 'js-cookie';
 import { useTranslation } from "react-i18next";
 import { getDatabase, ref, child, get } from "firebase/database";
 import { context } from "./App.js";
-import background from "./image-background/redback.jpg"
+
 
 
 
@@ -287,7 +287,7 @@ function Header() {
                <li></li>
                <li></li>
            </div>
-         {/*input style={{width:"100%",height:"31px",borderRadius: "5px"}} Senza material UI */} <input style={{width:"100%",height:"31px",borderRadius: "5px"}}  
+         {/*input style={{width:"100%",height:"31px",borderRadius: "5px"}} Senza material UI */} <input style={{width:"100%",height:"31px",borderRadius: "5px",cursor: "pointer"}}  
               placeholder={t("Cerca")}
               name="search"
               type="text"

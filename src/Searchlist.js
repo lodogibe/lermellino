@@ -8,14 +8,15 @@ import { collection, getDocs, getFirestore,query, orderBy, where, limit, startAf
 import { useTranslation } from "react-i18next";
 import Loader from "./Loader";
 import background from "./image-background/image4.jpg";
+import { context } from "./App.js";
 
 
 export default function Searchlist() {
 
     let { slug } = useParams();
     const db = getFirestore();
-    const [products, setProduct] = useState([]);
-    const [lastProd, setLastProd] = useState("");
+    const {products, setProduct} = React.useContext(context);
+    const {lastProd, setLastProd} = React.useContext(context);
     const [loadProd, setLoadProd] = useState(false);
     const [showError, setShowError] = useState(false);
     const [numProdShow, setNumProdShowed] = useState(3)
