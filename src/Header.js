@@ -41,7 +41,7 @@ function Header() {
     const [classmenu,setClassmenu] = useState('menuham');
     const {language, setLanguage} = React.useContext(context);
 
-    console.log(language)
+    
 
     function classMenu () {
       if (classheader === 'header') {
@@ -100,7 +100,7 @@ function Header() {
       });
       if (user != null) {
         setShowResults(false)
-          if (user.email === 'giberti.21638@iisvolta.it') //ho impostato la mia email come admin per vedere la dashboard ed accettare i prodotti
+          if (user.uid === process.env.REACT_APP_DASHBOARD) //ho impostato la mia email come admin per vedere la dashboard ed accettare i prodotti
           {
           setShowResults(true)
           }
@@ -206,7 +206,7 @@ function Header() {
     }
 
     const dashboard = () => {
-          history.push("/lermellino/dashboard")
+          history.push("/lermellino/" + user.uid)
         }
   
 

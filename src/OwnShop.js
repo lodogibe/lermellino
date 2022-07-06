@@ -9,6 +9,7 @@ import { collection, getDocs, getFirestore, query, orderBy, where} from "firebas
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useTranslation } from "react-i18next";
 import background from './image-background/image3.jpg';
+import Loader from "./Loader";
 import { context } from "./App.js";
 
 
@@ -22,6 +23,7 @@ export default function OwnShop() {
     const auth = getAuth();
     const user = auth.currentUser;
     const [idowner,setIdowner] = useState('');
+    const [showloader, setShowloader] = useState(true);
     const { t } = useTranslation();
     const [Noletext,setNoletext] = useState("");
     const [Acquitext,setAcquitext] = useState("");
@@ -79,6 +81,7 @@ export default function OwnShop() {
     return (
         <div>
             <div className="headlist">
+            { showloader && <Loader /> }
             <div className="headtext" style={{textAlign: "start"}}>
             <span className="intro intro--num"> <img src={barcode} width={50}/> </span>
             <span className="intro">{t("Stato dei tuoi articoli")}</span>
@@ -90,7 +93,7 @@ export default function OwnShop() {
             </div>
             </div>
             <div className="home__container">
-            <img className="home__photo" src={background} alt="" />
+            <img className="home__photo" src={background} onLoad={() => setShowloader(false)} alt="" />
             <div className="footerdistance" style={{minHeight:"1000px"}}> 
             <div className="home__row" style={{marginTop:"-55%"}}  >
                 {products.map((value, key) =>

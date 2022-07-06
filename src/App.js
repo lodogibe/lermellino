@@ -59,14 +59,18 @@ initializeApp(firebaseConfig);
 export const context = React.createContext(null);
 
 
-
 function App() {
+
+
 
 const [showpop,setShowpop] = useState(false); //setto il pop-up 
 const [user, setUser] = useState(null);
 const [language, setLanguage] = useState(null);
 const [lastProd, setLastProd] = useState(""); //variabile necessaria per l'infinite scrolling
 const [products, setProduct] = useState([]);
+const pathdashbord = "/lermellino/" + process.env.REACT_APP_DASHBOARD //indirizzo per dashboard segreto, in modo da non permettere l'accesso ai non autorizzati
+
+console.log(pathdashbord)
 
 useEffect(() => {
 const auth = getAuth();
@@ -176,7 +180,7 @@ onAuthStateChanged(auth, user => {
             
 
             </Route>
-            <Route path="/lermellino/dashboard">
+            <Route path={pathdashbord}>
             <Header />
 
           
@@ -220,7 +224,7 @@ onAuthStateChanged(auth, user => {
               <DeleteSub></DeleteSub>
             </Route>
             
-            <Route path="/lermellino/">
+            <Route path={"/lermellino/"}>
             <Header />        
             <Home />       
             <Footer />
