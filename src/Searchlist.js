@@ -122,7 +122,7 @@ export default function Searchlist() {
             <span className="intro">{t("Risultati ricerca")}: {slug}</span>  
             </div>
             </div>
-            <img className="home__photo" src={background} alt="" />
+            <img className="home__photo" onLoad={() => setShowloader(false)} src={background} alt="" />
             <div className="footerdistance" style={{minHeight:"1300px"}}>   
             <div className="home__row" style={{marginTop:"-55%"}} >
                 {filteredProducts.map((value, key) =>

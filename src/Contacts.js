@@ -11,6 +11,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
+import Loader from "./Loader";
 
 export default function Contacts() {
 
@@ -27,6 +28,7 @@ export default function Contacts() {
     html: "<h1> Test da TEST.js ERMELLINO </h1>",
   });
   const [buttontext,setbuttontext] = useState("");
+  const [showloader, setShowloader] = useState(true);
   const language = React.useContext(context);
 
 
@@ -140,7 +142,9 @@ const sendEmail = async (e) => {
 
 
 return <div className='contacts' style={{minHeight:"100%"}}>
-          <img className="home__photo" src={background} alt="" />     
+        { showloader && <Loader /> }
+        {/* per evitare il rendering sbigoloso del caricamento immagine, metto il loader anche qui per evitare l'effetto */}
+          <img className="home__photo" src={background} onLoad={() => setShowloader(false)} alt="" />      
             <div className="footerdistance" style={{minHeight:"1000px"}}>   
               <div className="home__row" style={{display:"block", marginTop:"-55%", textAlign: "-webkit-center"}}>             
                 <div className='text-on-image first'>

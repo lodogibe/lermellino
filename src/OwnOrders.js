@@ -8,6 +8,7 @@ import { collection, getDocs, getFirestore, query, where} from "firebase/firesto
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import background from './image-background/image1.jpg';
 import { useTranslation } from "react-i18next";
+import Loader from "./Loader";
 import { context } from "./App.js";
 
 
@@ -20,6 +21,7 @@ export default function OwnOrders() {
     const [idowner,setIdowner] = useState('');
     const [textrent,setTextrent] = useState("");
     const [textsold,setTextsold] = useState("");
+    const [showloader, setShowloader] = useState(true);
     const { t } = useTranslation();
     const language = React.useContext(context);
     const [infoprod,setInfoprod] = useState([])
@@ -99,6 +101,7 @@ const getdata = () => {
     return (
         <div>
             <div className="headlist">
+            { showloader && <Loader /> }
             <div className="headtext" style={{textAlign: "start"}}>
             <span className="intro intro--num"> <img src={barcode} width={50}/> </span>
             <span className="intro">{t("Lista dei tuoi ordini")}</span>
@@ -106,7 +109,7 @@ const getdata = () => {
             </div>
             <div className="home__container">
             <div className="footerdistance" style={{minHeight:"1170px"}}>
-            <img className="home__photo" src={background} alt="" />
+            <img className="home__photo" src={background} onLoad={() => setShowloader(false)} alt="" />
             <div className="home__row" style={{marginTop:"-55%"}}  >
 
              {allorders.map((value, key) => 
