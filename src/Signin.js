@@ -62,22 +62,14 @@ const facebook = e => {
     const auth = getAuth();
     signInWithPopup(auth, providerf)
       .then((result) => {
-        // The signed-in user info.
-        const user = result.user;
-
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;
+       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         history.push(location)
         // ...
       })
       .catch((error) => {
         
 
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
+
 
         toast.error("Email associata al tuo account facebook già presente in lista", {
             position: "top-left",
@@ -88,9 +80,6 @@ const facebook = e => {
             draggable: true,
             progress: undefined,
             });
-        // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
-        // ...
       });
 }
 
@@ -99,20 +88,10 @@ const google = e => {
   
     signInWithPopup(auth, provider)
     .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
       history.push(location)
       // ...
     }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The AuthCredential type that was used.
+
       toast.error("Email associata al tuo account google già presente in lista", {
         position: "top-left",
         autoClose: true,

@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 
 
 function Subtotal() {
-    const [{basket}, dispatch] = useStateValue();
+    const [{basket}] = useStateValue();
     let history = useHistory();
     const { t } = useTranslation();
 

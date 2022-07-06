@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import "./OwnShop.css"; 
 import { Button } from '@mui/material';
 import {Link} from "react-router-dom";
@@ -26,8 +26,12 @@ export default function OwnShop() {
     const [Noletext,setNoletext] = useState("");
     const [Acquitext,setAcquitext] = useState("");
     const language = React.useContext(context);
-    const [titleconvertedText, setTitleConvertedText] = useState('');
 
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+    
 
     //utilizza l'useContext per cambiare la lingua
     useEffect(() => {
@@ -43,9 +47,9 @@ export default function OwnShop() {
     }
     },[language]);
 
-    products.map((value, key) => console.log(value))
 
-const getdata = () => {
+
+    const getdata = () => {
             fetchMyAPI()
             async function fetchMyAPI() {
                 const q = query(collection(db, "products"),where("IDowner", "==", idowner),orderBy("CreatedOn","desc"));
@@ -57,18 +61,18 @@ const getdata = () => {
             });
             setProduct(saveFirebaseTodos) 
             }
-        } 
+    } 
 
     
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (user !== null) {
-            const uid = user.uid;
-            setIdowner(uid);
+            setIdowner(user.uid);
         }
             if (idowner !== '')
             getdata();
     }, [user, idowner])
+    
 
 
 

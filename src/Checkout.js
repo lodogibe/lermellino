@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useLayoutEffect} from 'react';
 import './Checkout.css';
 import { useStateValue } from './StateProvider';
 import Subtotal from "./Subtotal";
 import CheckoutProduct from "./CheckoutProduct";
 import barcode from "./barcode.png";
-import { context } from "./App.js";
 import { useTranslation } from "react-i18next";
 import background from './image-background/image8.jpg';
 import {
@@ -16,13 +15,11 @@ import {
 function Checkout() {
     const [{basket}, dispatch] = useStateValue();
     const { t } = useTranslation();
-    const language = React.useContext(context);
-    const [items, setItems] = useState([
-        { id: 2, text: 'Buy eggs' },
-        { id: 3, text: 'Pay bills' },
-        { id: 4, text: 'Invite friends over' },
-        { id: 5, text: 'Fix the TV' },
-      ]);
+
+    useLayoutEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
+  
 
 
     return (

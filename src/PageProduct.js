@@ -94,6 +94,7 @@ function PageProduct() {
 
 
     useLayoutEffect(() => { 
+        window.scrollTo(0, 0)
         //fase di assegnazioni dei valori che può cambiare nei prodotti a noleggio, ma per comodità messa anche assegnazione valore totale articolo in vendita
     if (products.Type === 'VENDO') {
         setTotalcost(products.Price)

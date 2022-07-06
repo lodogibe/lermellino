@@ -13,6 +13,7 @@ export default function Aboutus() {
   const { t } = useTranslation();
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     AOS.init({
       duration : 2000
     });

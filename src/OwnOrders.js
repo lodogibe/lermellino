@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./OwnShop.css"; 
 import barcode from "./barcode.png"
 import {Link} from "react-router-dom";
@@ -15,7 +15,6 @@ export default function OwnOrders() {
 
 
     const db = getFirestore();
-    const [idorder, setIdorder] = useState("");
     const auth = getAuth();
     const user = auth.currentUser;
     const [idowner,setIdowner] = useState('');
@@ -38,6 +37,11 @@ export default function OwnOrders() {
         setTextsold("ACQUISTO");
       }
     },[language]);
+
+        
+    useLayoutEffect(() => {
+            window.scrollTo(0, 0)
+          }, [])
 
 
 
@@ -80,7 +84,7 @@ const getdata = () => {
 
     // console.log(infoprod,idorder)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (user !== null) {
             const uid = user.uid;
             setIdowner(uid);
