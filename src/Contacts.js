@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import background from './image-background/image2.jpg';
 import './Contacts.css';
 import { Button } from '@mui/material';
@@ -28,6 +28,12 @@ export default function Contacts() {
   });
   const [buttontext,setbuttontext] = useState("");
   const language = React.useContext(context);
+
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
 
 
   //utilizza l'useContext per cambiare la lingua
@@ -67,28 +73,7 @@ export default function Contacts() {
     setCheckemail(true);
 }, [mailerState.email]);
 
-/*
-TRANSLATION A MIA API SU HEROKU
-*/
 
-const TransState = {
-  text: "",
-};
-
-const sendTrans = async (e) => {
-  e.preventDefault();
-  TransState.text = "Ciao amici miei"
-  console.log({ TransState});
-  const response = await fetch("https://hosteapitestlodux.herokuapp.com/tran", {
-    method: "POST",
-    headers : { 
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-      },
-    body: JSON.stringify({ TransState}),
-  })
-  .then((response) => response.json())
-  .then((data) => console.log(data)) ;}
 
 //va a richiamare l'email all'API mandandoli i dati necessari
 const sendEmail = async (e) => {

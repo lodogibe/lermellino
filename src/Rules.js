@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import './Rules.css';
 import { useTranslation } from "react-i18next";
 import background from './image-background/image8.jpg';
@@ -6,6 +6,11 @@ import background from './image-background/image8.jpg';
 export default function Rules() {
 
   const { t } = useTranslation();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
 
   return <div className='rules' style={{minHeight:"100%"}}>     
             <img className="home__photo" style={{position:"relative"}} src={background} alt="" />   
